@@ -50,9 +50,6 @@ const chatForm = document.querySelector("[data-chat-form]");
 const chatInput = document.querySelector("[data-chat-input]");
 const chatMessages = document.querySelector("[data-chat-messages]");
 const chatStatus = document.querySelector("[data-chat-status]");
-const floatingSocial = document.querySelector("[data-floating-social]");
-const socialToggle = document.querySelector("[data-social-toggle]");
-const socialPanel = document.querySelector("[data-social-panel]");
 const telegramChatEndpoint = chatWidget?.dataset.telegramEndpoint?.trim() || "";
 const scrollSectionIds = ["home", "games", "company", "news", "contact"];
 const sections = scrollSectionIds
@@ -306,7 +303,7 @@ function layoutLogoCarousel(carousel) {
     const archY = normalizedDistance ** 2 * amplitude;
 
     item.style.setProperty("--arch-y", `${archY}px`);
-    item.style.setProperty("--logo-scale", `${1 + focus * 0.035}`);
+    item.style.setProperty("--logo-scale", `${1 + focus * 0.1}`);
   });
 }
 
@@ -735,17 +732,6 @@ function updateFloatingChatButton() {
   const isContactVisible = rect.top <= viewportHeight * 0.72 && rect.bottom >= headerOffset + 110;
 
   chatWidget.classList.toggle("is-contact-visible", isContactVisible);
-}
-
-function setFloatingSocialOpen(isOpen) {
-  if (!floatingSocial || !socialToggle || !socialPanel) {
-    return;
-  }
-
-  floatingSocial.classList.toggle("is-open", isOpen);
-  socialPanel.hidden = !isOpen;
-  socialToggle.setAttribute("aria-expanded", String(isOpen));
-  socialToggle.setAttribute("aria-label", isOpen ? "Close social media links" : "Open social media links");
 }
 
 function createChatId() {
@@ -1329,22 +1315,6 @@ function setupFloatingActions() {
     });
   }
 
-  if (socialToggle && floatingSocial) {
-    socialToggle.addEventListener("click", (event) => {
-      event.stopPropagation();
-      setFloatingSocialOpen(!floatingSocial.classList.contains("is-open"));
-    });
-
-    floatingSocial.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => setFloatingSocialOpen(false));
-    });
-
-    document.addEventListener("click", (event) => {
-      if (!floatingSocial.contains(event.target)) {
-        setFloatingSocialOpen(false);
-      }
-    });
-  }
 }
 
 function setupChatWidget() {
@@ -1618,7 +1588,6 @@ document.addEventListener("keydown", (event) => {
     closeAuthModal();
     closeGameOverlay();
     setChatOpen(false);
-    setFloatingSocialOpen(false);
   }
 });
 

@@ -56,7 +56,8 @@
       <section class="hero" id="home" aria-label="Featured Game Engine promotions">
         <div class="hero-carousel" data-carousel>
           <article class="hero-slide hero-slide-banana is-active" data-slide aria-hidden="false">
-            <img class="hero-media" src="assets/home-banana-craze-bonus-banner.png" alt="Banana Craze temple storm artwork">
+            <img class="hero-media hero-media-desktop" src="assets/home-banana-craze-bonus-banner.png" alt="Banana Craze temple storm artwork">
+            <img class="hero-media hero-media-mobile" src="assets/home-banana-craze-mobile.png" alt="Banana Craze mobile temple artwork">
             <div class="hero-content">
               <img class="hero-game-logo hero-game-logo-banana" src="assets/banana-craze-logo.png" alt="Banana Craze">
               <p>
@@ -70,7 +71,7 @@
 
           <article class="hero-slide hero-slide-lucky" data-slide aria-hidden="true">
             <video
-              class="hero-media hero-media-video"
+              class="hero-media hero-media-video hero-media-desktop"
               autoplay
               muted
               loop
@@ -80,6 +81,17 @@
               aria-label="Lucky Color Combo carnival banner"
             >
               <source src="assets/home-lucky-color-combo-banner.mp4" type="video/mp4">
+            </video>
+            <video
+              class="hero-media hero-media-video hero-media-mobile"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              aria-label="Lucky Color Combo mobile banner"
+            >
+              <source src="assets/home-lucky-color-combo-mobile.mp4" type="video/mp4">
             </video>
             <div class="hero-content">
               <img class="hero-game-logo hero-game-logo-lucky" src="assets/lucky-color-combo-logo.png" alt="Lucky Color Combo">
@@ -93,7 +105,8 @@
           </article>
 
           <article class="hero-slide hero-slide-partner" data-slide aria-hidden="true">
-            <img class="hero-media hero-media-partner" src="assets/home-partnership-banner.png" alt="Global partnership network artwork for Game Engine">
+            <img class="hero-media hero-media-partner hero-media-desktop" src="assets/home-partnership-banner.png" alt="Global partnership network artwork for Game Engine">
+            <img class="hero-media hero-media-partner hero-media-mobile" src="assets/home-partnership-mobile.png" alt="Global partnership network mobile artwork for Game Engine">
             <div class="hero-content">
               <p class="eyebrow">Global partnership network</p>
               <h1>POWERING GROWTH THROUGH PREMIUM GAMING SOLUTIONS</h1>
@@ -158,12 +171,12 @@
                   <h3>LUCKY COLOR</h3>
                 </a>
                 <a class="game-logo-item game-card" href="game-detail.html?game=bingo-flux" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/innovation/bingo-flux.webp" alt="BINGO FLUX logo">
+                  <img src="assets/game-logos/innovation/bingo-flux.png" alt="BINGO FLUX logo">
                   <h3>BINGO FLUX</h3>
                 </a>
                 <a class="game-logo-item game-card" href="game-detail.html?game=fortune-ocean" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/innovation/fortune-ocean.webp" alt="FORTUNE OCEAN logo">
-                  <h3>FORTUNE OCEAN</h3>
+                  <img src="assets/game-logos/innovation/deep-sea-mystery.png" alt="DEEP SEA MYSTERY logo">
+                  <h3>DEEP SEA MYSTERY</h3>
                 </a>
                 <a class="game-logo-item game-card" href="game-detail.html?game=lucky-color-combo" data-game-url="https://pilot.gelotto-test.com/">
                   <img src="assets/game-logos/innovation/lucky-color-combo.png" alt="LUCKY COLOR COMBO logo">
@@ -217,6 +230,31 @@
                 <a class="game-logo-item game-card" href="game-detail.html?game=pika-pika" data-game-url="https://pilot.gelotto-test.com/">
                   <img src="assets/game-logos/classic/pika-pika.webp" alt="PIKA-PIKA logo">
                   <h3>PIKA-PIKA</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section live-section" id="live-games" aria-label="Live Games">
+          <div class="section-inner">
+            <div class="game-section-title reveal">
+              <h2>LIVE GAMES</h2>
+            </div>
+
+            <div class="game-logo-carousel game-logo-carousel-live" data-logo-carousel aria-label="Live Games logo gallery" tabindex="0">
+              <div class="game-logo-track">
+                <a class="game-logo-item game-card" href="game-detail.html?game=grand-sabado" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/live/grand-sabado.png" alt="GRAND SABADO logo">
+                  <h3>GRAND SABADO</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=pick-2-win" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/live/pick-2-win.png" alt="PICK 2 WIN logo">
+                  <h3>PICK 2 WIN</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=pick-3-turbo" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/live/pick-3-turbo.png" alt="PICK 3 TURBO logo">
+                  <h3>PICK 3 TURBO</h3>
                 </a>
               </div>
             </div>
@@ -356,8 +394,8 @@
 
           <div class="news-grid" data-news-grid>
             <article class="news-card reveal" data-news-category="announcements">
-              <div class="news-card-media news-card-media-poster">
-                <img src="assets/news/banana-craze-update-hero.png" alt="Banana Craze new version artwork" width="1080" height="1920" loading="lazy" decoding="async">
+              <div class="news-card-media news-card-media-banner">
+                <img src="assets/news/banana-craze-update-hero.png" alt="Banana Craze new version artwork" width="1920" height="879" loading="lazy" decoding="async">
               </div>
               <div class="news-card-body">
                 <span>Announcements</span>
@@ -368,8 +406,8 @@
             </article>
 
             <article class="news-card reveal" data-news-category="game-release">
-              <div class="news-card-media news-card-media-poster">
-                <img src="assets/news/lucky-color-combo-overview.png" alt="Lucky Color Combo release artwork" width="1080" height="1920" loading="lazy" decoding="async">
+              <div class="news-card-media news-card-media-banner">
+                <img src="assets/news/lucky-color-combo-overview.png" alt="Lucky Color Combo release artwork" width="1920" height="879" loading="lazy" decoding="async">
               </div>
               <div class="news-card-body">
                 <span>Game Release</span>
@@ -545,32 +583,6 @@
     </div>
 
     <div class="floating-actions" aria-label="Quick actions">
-      <div class="floating-social" data-floating-social>
-        <button class="floating-action social-toggle" type="button" data-social-toggle aria-expanded="false" aria-label="Open social media links">
-          <span class="social-toggle-icon" aria-hidden="true"></span>
-        </button>
-        <div class="floating-social-panel" data-social-panel hidden>
-          <a class="floating-social-link floating-social-facebook" href="https://www.facebook.com/GameEnginePH/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <span aria-hidden="true"></span>
-          </a>
-          <a class="floating-social-link floating-social-instagram" href="https://www.instagram.com/gameengineph/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <span aria-hidden="true"></span>
-          </a>
-          <a class="floating-social-link floating-social-x" href="https://x.com/GameEnginePH" target="_blank" rel="noopener noreferrer" aria-label="X">
-            <span aria-hidden="true"></span>
-          </a>
-          <a class="floating-social-link floating-social-linkedin" href="https://www.linkedin.com/company/gameengineph" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <span aria-hidden="true"></span>
-          </a>
-          <a class="floating-social-link floating-social-tiktok" href="https://www.tiktok.com/@gameengineph" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-            <span aria-hidden="true"></span>
-          </a>
-          <a class="floating-social-link floating-social-youtube" href="https://www.youtube.com/@GameEnginePH" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-      </div>
-
       <div class="chat-widget" data-chat-widget data-telegram-endpoint="">
         <section class="chat-window" data-chat-window aria-labelledby="chat-title" hidden>
           <header class="chat-header">

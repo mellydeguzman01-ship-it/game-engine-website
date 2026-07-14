@@ -151,7 +151,7 @@ const GAME_DETAILS = {
   "bingo-flux": {
     type: "innovation",
     title: "BINGO FLUX",
-    logo: "assets/game-logos/innovation/bingo-flux.webp",
+    logo: "assets/game-logos/innovation/bingo-flux.png",
     background: "assets/game-backgrounds/innovation/bingo-flux-bg.png",
     video: "assets/game-videos/bingo-flux-video.mp4",
     tagline: "Enter the future of bingo and win instantly! Match winning patterns, complete bingo lines, and unlock exciting rewards in the fast-paced world of BINGO FLUX.",
@@ -180,11 +180,11 @@ const GAME_DETAILS = {
   },
   "fortune-ocean": {
     type: "innovation",
-    title: "FORTUNE OCEAN",
-    logo: "assets/game-logos/innovation/fortune-ocean.webp",
+    title: "DEEP SEA MYSTERY",
+    logo: "assets/game-logos/innovation/deep-sea-mystery.png",
     background: "assets/game-backgrounds/innovation/fortune-ocean-bg.png",
     video: "assets/game-videos/fortune-ocean-video.mp4",
-    tagline: "Explore the depths of the ocean and uncover hidden treasures! Match numbers, trigger exciting Bonus Games, and dive for massive Progressive Jackpot rewards in FORTUNE OCEAN.",
+    tagline: "Explore the depths of the ocean and uncover hidden treasures! Match numbers, trigger exciting Bonus Games, and dive for massive Progressive Jackpot rewards in DEEP SEA MYSTERY.",
     demoPrize: "P10,000,000.00",
     stats: {
       "ACTIVE PLAYERS": "10,000+",
@@ -193,7 +193,7 @@ const GAME_DETAILS = {
       "MAX MULTIPLIER": "10000X",
     },
     overview: [
-      "FORTUNE OCEAN is an underwater-themed instant-win number-matching game where players explore a vibrant ocean world filled with treasures, marine life, and rewarding surprises.",
+      "DEEP SEA MYSTERY is an underwater-themed instant-win number-matching game where players explore a vibrant ocean world filled with treasures, marine life, and rewarding surprises.",
       "Match winning numbers to earn instant prizes, unlock exciting Bonus Games, and chase the Progressive Jackpot for the chance to win even bigger rewards.",
     ],
     features: [
@@ -215,7 +215,6 @@ const GAME_DETAILS = {
     logo: "assets/game-logos/innovation/lucky-color-combo.png",
     background: "assets/game-backgrounds/innovation/lucky-color-combo-bg.png",
     video: "assets/game-videos/lucky-color-combo-video.mp4",
-    bannerVideo: "assets/home-lucky-color-combo-banner.mp4",
     tagline: "Step into a vibrant carnival of colors and rewards! Match colors, collect Rainbow Dice, and spin the Multiplier Wheel for exciting prizes in LUCKY COLOR COMBO.",
     demoPrize: "P10,000,000.00",
     stats: {
@@ -241,6 +240,75 @@ const GAME_DETAILS = {
       "Collect Rainbow Dice symbols during gameplay.",
       "Earn Multiplier Wheel spins based on the number of Rainbow Dice collected.",
       "Collect 5 Rainbow Dice to instantly win 10,000x your bet amount.",
+    ],
+  },
+  "grand-sabado": {
+    type: "live",
+    title: "GRAND SABADO",
+    logo: "assets/game-logos/live/grand-sabado.png",
+    background: "assets/game-backgrounds/live/grand-sabado-bg.png",
+    tagline: "Join the Grand Sabado live draw experience and follow every number reveal with high-energy anticipation.",
+    demoPrize: "LIVE GAME",
+    overview: [
+      "Grand Sabado is a live-number game experience built around clear draws, strong visual identity, and quick player recognition.",
+      "The game uses a bold Saturday draw theme designed for operators who want a familiar live format with a polished Game Engine presentation.",
+    ],
+    features: [
+      "Live draw presentation with a distinctive Grand Sabado identity.",
+      "Simple number-focused gameplay suited for broad player familiarity.",
+      "Compact, operator-ready branding for lobby and detail placement.",
+    ],
+    howToPlay: [
+      "Choose your preferred number entry.",
+      "Confirm your participation before the draw closes.",
+      "Watch the live draw results.",
+      "Match the winning result to claim eligible rewards.",
+    ],
+  },
+  "pick-2-win": {
+    type: "live",
+    title: "PICK 2 WIN",
+    logo: "assets/game-logos/live/pick-2-win.png",
+    background: "assets/game-backgrounds/live/pick-2-win-bg.png",
+    tagline: "Pick two numbers, follow the reveal, and enjoy a fast live result format made for instant excitement.",
+    demoPrize: "LIVE GAME",
+    overview: [
+      "Pick 2 Win is a compact live-number game that keeps the player journey quick, direct, and easy to understand.",
+      "Its bright branding and simple two-number format make it a strong fit for live game lobbies and recurring draw moments.",
+    ],
+    features: [
+      "Fast two-number selection format.",
+      "Clear live result flow for easy player comprehension.",
+      "Vibrant lobby artwork with strong logo readability.",
+    ],
+    howToPlay: [
+      "Select your two-number entry.",
+      "Confirm your entry before the draw begins.",
+      "Follow the live result reveal.",
+      "Win when your selected numbers match the result rules.",
+    ],
+  },
+  "pick-3-turbo": {
+    type: "live",
+    title: "PICK 3 TURBO",
+    logo: "assets/game-logos/live/pick-3-turbo.png",
+    background: "assets/game-backgrounds/live/pick-3-turbo-bg.png",
+    tagline: "A faster three-number live game with bright tropical energy and rapid-result excitement.",
+    demoPrize: "LIVE GAME",
+    overview: [
+      "Pick 3 Turbo brings a high-tempo live draw format to the catalog with a playful tropical identity and strong result anticipation.",
+      "The game is designed for players who enjoy quick number picks, clear outcomes, and a livelier draw rhythm.",
+    ],
+    features: [
+      "Three-number selection with turbo-paced live results.",
+      "Bright tropical artwork optimized for visual recognition.",
+      "Simple rules that support repeat play and quick rounds.",
+    ],
+    howToPlay: [
+      "Choose your three-number combination.",
+      "Submit your entry before the round closes.",
+      "Watch the turbo live result reveal.",
+      "Match the winning combination to receive eligible rewards.",
     ],
   },
   "instant-keno": {
@@ -420,15 +488,27 @@ const GAME_DETAILS = {
   },
 };
 
+const DETAIL_SECTION_ICONS = {
+  "banana-craze": "assets/game-detail-icons/banana-craze.png",
+  "bingo-flux": "assets/game-detail-icons/bingo-flux.png",
+  "blazing-7s": "assets/game-detail-icons/blazing-7s.png",
+  "classic-lucky-color": "assets/game-detail-icons/lucky-color.png",
+  "ginto-match": "assets/game-detail-icons/ginto-match.png",
+  "lucky-color": "assets/game-detail-icons/lucky-color.png",
+  "lucky-color-combo": "assets/game-detail-icons/lucky-color-combo.png",
+  "pika-pika": "assets/game-detail-icons/pikapika.png",
+  pikapika: "assets/game-detail-icons/pikapika.png",
+};
+
 const params = new URLSearchParams(window.location.search);
 const currentSlug = params.get("game") || "pikapika";
 const currentGame = GAME_DETAILS[currentSlug];
 const detailRoot = document.querySelector("[data-game-detail]");
 const missingRoot = document.querySelector("[data-game-missing]");
 const playGameButton = document.querySelector("[data-play-game]");
-const screenshotsSection = document.querySelector("[data-screenshots-section]");
-const screenshotsGrid = document.querySelector("[data-screenshots]");
 const defaultGameLaunchUrl = "https://pilot.gelotto-test.com/";
+const DEMO_VIDEO_TRIM_START = 0.3;
+const DEMO_VIDEO_END_PADDING = 0.3;
 
 function appendParagraphs(container, paragraphs) {
   container.replaceChildren();
@@ -465,25 +545,15 @@ function renderStats(container, stats) {
   });
 }
 
-function createImage(src, alt, loading = "lazy") {
-  const image = document.createElement("img");
-
-  image.src = src;
-  image.alt = alt;
-  image.decoding = "async";
-  image.loading = loading;
-
-  return image;
-}
-
-function renderGameBanner(game) {
+function renderDemoPreview(game) {
   const screen = document.querySelector(".detail-demo-screen");
   screen.replaceChildren();
-  screen.classList.toggle("has-video", Boolean(game.bannerVideo));
-  screen.classList.add("has-banner");
+  screen.classList.toggle("has-video", Boolean(game.video));
 
-  if (game.bannerVideo) {
+  if (game.video) {
     const video = document.createElement("video");
+    const trimStart = Math.max(0, game.videoTrimStart ?? DEMO_VIDEO_TRIM_START);
+    const trimEndPadding = Math.max(0, game.videoTrimEndPadding ?? DEMO_VIDEO_END_PADDING);
 
     const playVideo = () => {
       const playRequest = video.play();
@@ -493,8 +563,34 @@ function renderGameBanner(game) {
       }
     };
 
+    const getLoopStart = () => {
+      if (!Number.isFinite(video.duration) || video.duration <= 0) {
+        return trimStart;
+      }
+
+      return Math.min(trimStart, Math.max(0, video.duration - trimEndPadding - 0.05));
+    };
+
+    const getLoopEnd = () => {
+      if (!Number.isFinite(video.duration) || video.duration <= 0) {
+        return Number.POSITIVE_INFINITY;
+      }
+
+      return Math.max(getLoopStart() + 0.08, video.duration - trimEndPadding);
+    };
+
+    const restartVideo = () => {
+      const loopStart = getLoopStart();
+
+      if (Math.abs(video.currentTime - loopStart) > 0.02) {
+        video.currentTime = loopStart;
+      }
+
+      playVideo();
+    };
+
     video.className = "detail-demo-video";
-    video.src = game.bannerVideo;
+    video.src = game.video;
     video.autoplay = true;
     video.loop = true;
     video.muted = true;
@@ -505,68 +601,63 @@ function renderGameBanner(game) {
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
-    video.setAttribute("aria-label", `${game.title} banner video`);
+    video.setAttribute("aria-label", `${game.title} demo video`);
     video.setAttribute("disablepictureinpicture", "");
+    video.addEventListener("loadedmetadata", restartVideo, { once: true });
     video.addEventListener("canplay", () => video.classList.add("is-ready"), { once: true });
+    video.addEventListener("timeupdate", () => {
+      if (video.currentTime >= getLoopEnd()) {
+        restartVideo();
+      }
+    });
+    video.addEventListener("ended", restartVideo);
 
     screen.appendChild(video);
     playVideo();
     return;
   }
 
-  const banner = createImage(game.banner || game.background, `${game.title} banner artwork`, "eager");
+  const poster = document.createElement("div");
+  const winLabel = document.createElement("span");
+  const prize = document.createElement("strong");
+  const caption = document.createElement("small");
 
-  banner.className = "detail-banner-image";
-  banner.fetchPriority = "high";
-  screen.appendChild(banner);
+  poster.className = "detail-demo-poster";
+  winLabel.textContent = "MEGA WIN!";
+  prize.textContent = game.demoPrize || "DEMO PREVIEW";
+  caption.textContent = game.title;
+
+  poster.append(winLabel, prize, caption);
+  screen.appendChild(poster);
 }
 
-function getGameScreenshots(game) {
-  return [
-    {
-      src: game.background,
-      alt: `${game.title} background artwork`,
-    },
-    {
-      src: game.logo,
-      alt: `${game.title} game card artwork`,
-    },
-  ];
-}
+function applyDetailSectionIcons(slug) {
+  const sectionIcons = DETAIL_SECTION_ICONS[slug];
 
-function renderScreenshots(game) {
-  if (!screenshotsSection || !screenshotsGrid) {
-    return;
+  document.body.classList.toggle("has-detail-section-icons", Boolean(sectionIcons));
+
+  if (sectionIcons) {
+    document.body.style.setProperty("--detail-section-icons", `url("${sectionIcons}")`);
+  } else {
+    document.body.style.removeProperty("--detail-section-icons");
   }
-
-  const screenshots = game.screenshots || getGameScreenshots(game);
-
-  screenshotsGrid.replaceChildren();
-
-  screenshots.forEach((screenshot) => {
-    const figure = document.createElement("figure");
-    const image = createImage(screenshot.src, screenshot.alt);
-
-    figure.appendChild(image);
-    screenshotsGrid.appendChild(figure);
-  });
-
-  screenshotsSection.hidden = screenshots.length === 0;
 }
 
 function renderGameDetail(game) {
-  const sectionId = game.type === "classic" ? "classic-games" : "innovation-games";
+  const sectionId = game.type === "classic" ? "classic-games" : game.type === "live" ? "live-games" : "innovation-games";
+  const categoryLabel = game.type === "classic" ? "Classic Game" : game.type === "live" ? "Live Game" : "Innovation Game";
 
   document.title = `${game.title} | Game Engine`;
   document.body.classList.add(`game-detail-kind-${game.type}`);
   document.body.style.setProperty("--game-detail-background", `url("${game.background}")`);
+  applyDetailSectionIcons(currentSlug);
   detailRoot.hidden = false;
 
   document.querySelector(".detail-topbar-link").href = `index.html#${sectionId}`;
-  document.querySelector("[data-game-category]").textContent = game.type === "classic" ? "Classic Game" : "Innovation Game";
+  document.querySelector("[data-game-category]").textContent = categoryLabel;
   document.querySelector("[data-game-title]").textContent = game.title;
   document.querySelector("[data-game-tagline]").textContent = game.tagline;
-  renderGameBanner(game);
+  renderDemoPreview(game);
 
   if (playGameButton) {
     playGameButton.href = game.playUrl || defaultGameLaunchUrl;
@@ -584,7 +675,6 @@ function renderGameDetail(game) {
     stats.hidden = true;
   }
 
-  renderScreenshots(game);
   appendParagraphs(document.querySelector("[data-overview]"), game.overview);
   appendHowToPlay(document.querySelector("[data-how-to-play]"), game.howToPlay);
 
