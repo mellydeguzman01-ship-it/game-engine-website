@@ -1507,7 +1507,7 @@ function reclampChatWidgetPosition() {
 }
 
 function handleChatDragStart(event) {
-  if (!chatWidget || !chatToggle || event.button !== undefined && event.button !== 0) {
+  if (!chatWidget || !chatToggle || (event.button !== undefined && event.button !== 0)) {
     return;
   }
 
@@ -1539,6 +1539,8 @@ function handleChatDragMove(event) {
   event.preventDefault();
   chatDragState.hasMoved = true;
   chatWidget?.classList.add("is-dragging");
+  chatWidget?.classList.toggle("drag-left", deltaX < 0);
+  chatWidget?.classList.toggle("drag-right", deltaX >= 0);
   applyChatWidgetPosition({
     left: chatDragState.left + deltaX,
     top: chatDragState.top + deltaY,
@@ -1551,7 +1553,7 @@ function handleChatDragEnd(event) {
   }
 
   chatToggle?.releasePointerCapture?.(event.pointerId);
-  chatWidget?.classList.remove("is-dragging");
+  chatWidget?.classList.remove("is-dragging", "drag-left", "drag-right");
 
   if (chatDragState.hasMoved && chatWidget) {
     const rect = chatWidget.getBoundingClientRect();

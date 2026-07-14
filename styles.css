@@ -3077,7 +3077,7 @@ button {
 }
 
 .footer-brand img {
-  width: 118px;
+  width: 88px;
   height: auto;
 }
 
@@ -3089,7 +3089,7 @@ button {
 .footer-copy p {
   margin: 0;
   color: var(--color-muted);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 700;
   text-align: right;
 }
@@ -3250,27 +3250,23 @@ button {
 
 .chat-toggle {
   overflow: visible;
-  border: 1.5px solid rgba(255, 176, 134, 0.74);
-  background:
-    radial-gradient(circle at 42% 26%, rgba(255, 255, 255, 0.94), transparent 32%),
-    linear-gradient(145deg, rgba(255, 235, 226, 0.96), rgba(255, 181, 146, 0.76));
-  color: #9a3c20;
-  box-shadow:
-    0 0 0 1px rgba(255, 176, 134, 0.28),
-    0 10px 24px rgba(160, 54, 22, 0.18);
-  backdrop-filter: blur(8px);
+  width: 68px;
+  height: 78px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-yellow);
+  box-shadow: none;
+  backdrop-filter: none;
   transition:
     transform 300ms ease,
-    border-color 300ms ease,
-    background 300ms ease,
-    color 300ms ease,
-    box-shadow 300ms ease;
+    filter 300ms ease;
   cursor: grab;
   touch-action: none;
 }
 
 .chat-toggle::before {
-  opacity: 0;
+  display: none;
 }
 
 .chat-toggle::after {
@@ -3302,14 +3298,16 @@ button {
 
 .chat-toggle .chat-toggle-icon {
   display: block;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: url("assets/icons/chat-inquiry-button.png") center 48% / 138% auto no-repeat;
-  filter: none;
+  width: 66px;
+  height: 76px;
+  border-radius: 0;
+  background: url("assets/icons/chat-inquiry-button.png") center / contain no-repeat;
+  filter:
+    drop-shadow(0 12px 16px rgba(0, 0, 0, 0.34))
+    drop-shadow(0 0 14px rgba(255, 213, 31, 0.14));
   -webkit-mask: none;
   mask: none;
-  transform-origin: 50% 72%;
+  transform-origin: 50% 78%;
   animation: chatCharacterIdle 4.2s ease-in-out infinite;
 }
 
@@ -3327,15 +3325,13 @@ button {
 
 .chat-toggle:hover,
 .chat-toggle:focus-visible {
-  border-color: rgba(255, 145, 98, 0.96);
-  background:
-    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.68), transparent 26%),
-    linear-gradient(145deg, #fff1ec 0%, #ffb992 46%, #ff734d 100%);
   color: #61220f;
-  box-shadow:
-    0 0 0 1px rgba(255, 176, 134, 0.34),
-    0 0 18px rgba(255, 176, 134, 0.58),
-    0 10px 24px rgba(255, 115, 77, 0.28);
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  filter:
+    drop-shadow(0 0 12px rgba(255, 213, 31, 0.44))
+    drop-shadow(0 12px 22px rgba(0, 0, 0, 0.3));
   transform: translateY(-2px) scale(1.08);
 }
 
@@ -3395,6 +3391,14 @@ button {
 
 .chat-widget.is-dragging .chat-toggle .chat-toggle-icon {
   animation: chatCharacterLaugh 520ms ease-in-out infinite;
+}
+
+.chat-widget.is-dragging.drag-left .chat-toggle .chat-toggle-icon {
+  animation: chatCharacterDragLeft 520ms ease-in-out infinite;
+}
+
+.chat-widget.is-dragging.drag-right .chat-toggle .chat-toggle-icon {
+  animation: chatCharacterDragRight 520ms ease-in-out infinite;
 }
 
 .chat-widget.is-contact-visible {
@@ -4327,14 +4331,14 @@ body.game-overlay-open {
 
 .detail-info-card {
   min-height: 420px;
-  padding: clamp(26px, 3vw, 44px);
+  padding: 26px clamp(26px, 3vw, 44px) clamp(26px, 3vw, 44px);
   scroll-margin-top: 110px;
 }
 
 .detail-card-art {
-  width: min(100%, clamp(152px, 15vw, 232px));
+  width: min(100%, clamp(166px, 15vw, 232px));
   aspect-ratio: 1.1;
-  margin: 0 0 18px;
+  margin: 0 auto 26px;
   background-image: var(--detail-section-icons);
   background-repeat: no-repeat;
   background-size: 300% auto;
@@ -4357,6 +4361,8 @@ body:not(.has-detail-section-icons) .detail-card-art {
   width: auto;
   min-height: 0;
   aspect-ratio: auto;
+  margin-right: auto;
+  margin-left: auto;
   place-items: center;
   border: 1px solid rgba(255, 213, 31, 0.24);
   border-radius: 12px;
@@ -4712,6 +4718,44 @@ body:not(.has-detail-section-icons) .detail-info-card h2 .detail-heading-image::
 
   50% {
     transform: rotate(7deg) translate3d(0, -3px, 0) scale(1.1);
+  }
+}
+
+@keyframes chatCharacterDragLeft {
+  0%,
+  100% {
+    filter:
+      brightness(1.08)
+      drop-shadow(0 12px 16px rgba(0, 0, 0, 0.34))
+      drop-shadow(0 0 16px rgba(255, 213, 31, 0.2));
+    transform: rotate(-10deg) translate3d(-3px, 0, 0) scale(1.08);
+  }
+
+  50% {
+    filter:
+      brightness(1.14)
+      drop-shadow(0 14px 18px rgba(0, 0, 0, 0.36))
+      drop-shadow(0 0 20px rgba(255, 213, 31, 0.28));
+    transform: rotate(-16deg) translate3d(-7px, -5px, 0) scale(1.12) skewX(-3deg);
+  }
+}
+
+@keyframes chatCharacterDragRight {
+  0%,
+  100% {
+    filter:
+      brightness(1.08)
+      drop-shadow(0 12px 16px rgba(0, 0, 0, 0.34))
+      drop-shadow(0 0 16px rgba(255, 213, 31, 0.2));
+    transform: rotate(10deg) translate3d(3px, 0, 0) scale(1.08);
+  }
+
+  50% {
+    filter:
+      brightness(1.14)
+      drop-shadow(0 14px 18px rgba(0, 0, 0, 0.36))
+      drop-shadow(0 0 20px rgba(255, 213, 31, 0.28));
+    transform: rotate(16deg) translate3d(7px, -5px, 0) scale(1.12) skewX(3deg);
   }
 }
 
@@ -5402,6 +5446,16 @@ body:not(.has-detail-section-icons) .detail-info-card h2 .detail-heading-image::
   .floating-action {
     width: 52px;
     height: 52px;
+  }
+
+  .chat-toggle {
+    width: 60px;
+    height: 70px;
+  }
+
+  .chat-toggle .chat-toggle-icon {
+    width: 58px;
+    height: 68px;
   }
 
   .auth-dialog {

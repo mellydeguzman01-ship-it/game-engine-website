@@ -316,6 +316,7 @@ const GAME_DETAILS = {
     title: "INSTANT KENO",
     logo: "assets/game-logos/classic/instant-keno.webp",
     background: "assets/game-backgrounds/classic/instant-keno-bg.png",
+    video: "assets/game-videos/classic/instant-keno-video.mp4",
     tagline: "Choose your lucky number combination and see if fortune is on your side. Play now and experience the thrill of Keno!",
     demoPrize: "P5,000,000.00",
     overview: [
@@ -335,6 +336,7 @@ const GAME_DETAILS = {
     title: "LUCKY COLOR",
     logo: "assets/game-logos/classic/lucky-color.webp",
     background: "assets/game-backgrounds/classic/lucky-color-bg.png",
+    video: "assets/game-videos/classic/lucky-color-video.mp4",
     tagline: "Every Color Match Brings Bigger Rewards!",
     demoPrize: "MEGA WIN PREVIEW",
     overview: [
@@ -353,6 +355,7 @@ const GAME_DETAILS = {
     title: "IN BETWEEN",
     logo: "assets/game-logos/classic/in-between.webp",
     background: "assets/game-backgrounds/classic/in-between-bg.png",
+    video: "assets/game-videos/classic/in-between-video.mp4",
     tagline: "Stay In Between and Win Big!",
     demoPrize: "MEGA WIN PREVIEW",
     overview: [
@@ -372,6 +375,7 @@ const GAME_DETAILS = {
     title: "GINTO SCRATCH",
     logo: "assets/game-logos/classic/ginto-scratch.webp",
     background: "assets/game-backgrounds/classic/ginto-scratch-bg.png",
+    video: "assets/game-videos/classic/ginto-scratch-video.mp4",
     tagline: "Scratch, Match, Multiply, and Win Big!",
     demoPrize: "MEGA WIN PREVIEW",
     overview: [
@@ -432,6 +436,7 @@ const GAME_DETAILS = {
     title: "GO BANANAS",
     logo: "assets/game-logos/classic/go-bananas.webp",
     background: "assets/game-backgrounds/classic/go-bananas-bg.png",
+    video: "assets/game-videos/classic/go-bananas-video.mp4",
     tagline: "Scratch, Match, Multiply, and Go Bananas!",
     demoPrize: "MEGA WIN PREVIEW",
     overview: [
@@ -452,6 +457,7 @@ const GAME_DETAILS = {
     title: "RED HOT 7'S",
     logo: "assets/game-logos/classic/red-hot-7s.webp",
     background: "assets/game-backgrounds/classic/red-hot-7s-bg.png",
+    video: "assets/game-videos/classic/red-hot-7s-video.mp4",
     tagline: "Line Up the Lucky 7s. Ignite Big Wins!",
     demoPrize: "MEGA WIN PREVIEW",
     overview: [
@@ -471,6 +477,7 @@ const GAME_DETAILS = {
     title: "BINGO CARD",
     logo: "assets/game-logos/classic/bingo-card.webp",
     background: "assets/game-backgrounds/classic/bingo-card-bg.png",
+    video: "assets/game-videos/classic/bingo-card-video.mp4",
     tagline: "Complete the Bingo Line. Win Exciting Rewards!",
     demoPrize: "MEGA WIN PREVIEW",
     overview: [
