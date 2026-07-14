@@ -1,0 +1,614 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Game Engine delivers premium casino games, innovative mechanics, and scalable iGaming content for global operators."
+    >
+    <title>Game Engine | Premium iGaming Content Provider</title>
+    <link rel="preload" as="image" href="assets/ge-logo.png">
+    <link rel="preload" as="image" href="assets/home-banana-craze-bonus-banner.png">
+    <link rel="preload" as="video" href="assets/home-lucky-color-combo-banner.mp4" type="video/mp4">
+    <link rel="preload" as="image" href="assets/home-partnership-banner.png">
+    <link rel="preload" as="image" href="assets/banana-craze-logo.png">
+    <link rel="preload" as="image" href="assets/lucky-color-combo-logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand" href="#home" aria-label="Game Engine homepage">
+          <img src="assets/ge-logo.png" alt="Game Engine" width="291" height="86">
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-panel" id="primary-menu" data-nav-panel>
+          <ul class="nav-links">
+            <li><a class="nav-link is-active" href="#home">Home</a></li>
+            <li><a class="nav-link" href="#games">Games</a></li>
+            <li><a class="nav-link" href="#company">Company</a></li>
+            <li><a class="nav-link" href="#news">News</a></li>
+            <li><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+          <div class="auth-shell" data-auth-shell>
+            <button class="button button-primary nav-cta" type="button" data-auth-open>Sign In</button>
+            <div class="account-nav account-inline" data-account-nav hidden>
+              <span class="account-username" data-account-username>Player</span>
+              <span class="account-divider" aria-hidden="true">|</span>
+              <button class="account-logout" type="button" data-auth-sign-out>Logout</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="home" aria-label="Featured Game Engine promotions">
+        <div class="hero-carousel" data-carousel>
+          <article class="hero-slide hero-slide-banana is-active" data-slide aria-hidden="false">
+            <img class="hero-media" src="assets/home-banana-craze-bonus-banner.png" alt="Banana Craze temple storm artwork">
+            <div class="hero-content">
+              <img class="hero-game-logo hero-game-logo-banana" src="assets/banana-craze-logo.png" alt="Banana Craze">
+              <p>
+                Experience the enhanced Banana Craze featuring an exciting new Bonus Round for bigger rewards and more engaging gameplay.
+              </p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="game-detail.html?game=banana-craze">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="hero-slide hero-slide-lucky" data-slide aria-hidden="true">
+            <video
+              class="hero-media hero-media-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="assets/home-lucky-color-combo-banner.png"
+              aria-label="Lucky Color Combo carnival banner"
+            >
+              <source src="assets/home-lucky-color-combo-banner.mp4" type="video/mp4">
+            </video>
+            <div class="hero-content">
+              <img class="hero-game-logo hero-game-logo-lucky" src="assets/lucky-color-combo-logo.png" alt="Lucky Color Combo">
+              <p>
+                Discover our latest release featuring exciting bonus mechanics, colorful gameplay, and enhanced winning opportunities.
+              </p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="game-detail.html?game=lucky-color-combo">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="hero-slide hero-slide-partner" data-slide aria-hidden="true">
+            <img class="hero-media hero-media-partner" src="assets/home-partnership-banner.png" alt="Global partnership network artwork for Game Engine">
+            <div class="hero-content">
+              <p class="eyebrow">Global partnership network</p>
+              <h1>POWERING GROWTH THROUGH PREMIUM GAMING SOLUTIONS</h1>
+              <p>
+                Partner with us to access innovative games, certified solutions, and scalable gaming products designed to drive player engagement and business growth.
+              </p>
+              <div class="hero-actions hero-actions-multiple">
+                <a class="button button-primary" href="#contact" target="_blank" rel="noopener noreferrer">CONTACT US</a>
+                <a class="button button-secondary" href="https://calendar.app.google/fy8Lhbc4J5BswETo8" target="_blank" rel="noopener noreferrer">SCHEDULE A DEMO</a>
+                <a class="button button-tertiary" href="https://gameengine.sg.larksuite.com/share/base/form/shrlgPGlr3hPkco6EyRMV9ejKHf" target="_blank" rel="noopener noreferrer">BECOME A PARTNER</a>
+              </div>
+            </div>
+          </article>
+
+          <button class="carousel-arrow carousel-prev" type="button" data-carousel-prev aria-label="Previous slide">
+            <span aria-hidden="true"></span>
+          </button>
+          <button class="carousel-arrow carousel-next" type="button" data-carousel-next aria-label="Next slide">
+            <span aria-hidden="true"></span>
+          </button>
+
+          <div class="carousel-dots" role="tablist" aria-label="Hero slides">
+            <button class="carousel-dot is-active" type="button" data-carousel-dot aria-label="Show Banana Craze" aria-selected="true"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot aria-label="Show Lucky Color Combo" aria-selected="false"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot aria-label="Show partnership" aria-selected="false"></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="games-showcase" id="games" aria-label="Game Engine game catalog">
+        <div class="games-background" aria-hidden="true">
+          <img src="assets/game-section-background.png" alt="">
+          <img src="assets/game-section-background.png" alt="">
+        </div>
+
+        <section class="section game-section" id="innovation-games" aria-label="Innovation Games">
+          <div class="section-inner">
+            <div class="game-section-title reveal">
+              <h2>INNOVATION GAMES</h2>
+            </div>
+
+            <div class="game-logo-carousel game-logo-carousel-innovation" data-logo-carousel aria-label="Innovation Games logo gallery" tabindex="0">
+              <div class="game-logo-track">
+                <a class="game-logo-item game-card" href="game-detail.html?game=blazing-7s" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/innovation/blazing-7s.png" alt="BLAZING 7S logo">
+                  <h3>BLAZING 7S</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=banana-craze" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/innovation/banana-craze.png" alt="BANANA CRAZE logo">
+                  <h3>BANANA CRAZE</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=pikapika" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/innovation/pikapika.png" alt="PIKAPIKA logo">
+                  <h3>PIKAPIKA</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=ginto-match" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/innovation/ginto-match.png" alt="GINTO MATCH logo">
+                  <h3>GINTO MATCH</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=lucky-color" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/innovation/lucky-color.png" alt="LUCKY COLOR logo">
+                  <h3>LUCKY COLOR</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=bingo-flux" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/innovation/bingo-flux.webp" alt="BINGO FLUX logo">
+                  <h3>BINGO FLUX</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=fortune-ocean" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/innovation/fortune-ocean.webp" alt="FORTUNE OCEAN logo">
+                  <h3>FORTUNE OCEAN</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=lucky-color-combo" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/innovation/lucky-color-combo.png" alt="LUCKY COLOR COMBO logo">
+                  <h3>LUCKY COLOR COMBO</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section classic-section" id="classic-games" aria-label="Classic Games">
+          <div class="section-inner">
+            <div class="game-section-title reveal">
+              <h2>CLASSIC GAMES</h2>
+            </div>
+
+            <div class="game-logo-carousel game-logo-carousel-classic" data-logo-carousel aria-label="Classic Games logo gallery" tabindex="0">
+              <div class="game-logo-track">
+                <a class="game-logo-item game-card" href="game-detail.html?game=go-bananas" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/classic/go-bananas.webp" alt="GO BANANAS logo">
+                  <h3>GO BANANAS</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=red-hot-7s" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/classic/red-hot-7s.webp" alt="RED HOT 7'S logo">
+                  <h3>RED HOT 7'S</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=bingo-card" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/classic/bingo-card.webp" alt="BINGO CARD logo">
+                  <h3>BINGO CARD</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=instant-keno" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/classic/instant-keno.webp" alt="INSTANT KENO logo">
+                  <h3>INSTANT KENO</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=lucky-number" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/classic/lucky-number.webp" alt="LUCKY NUMBER logo">
+                  <h3>LUCKY NUMBER</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=in-between" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/classic/in-between.webp" alt="IN BETWEEN logo">
+                  <h3>IN BETWEEN</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=classic-lucky-color" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/classic/lucky-color.webp" alt="LUCKY COLOR logo">
+                  <h3>LUCKY COLOR</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=ginto-scratch" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/classic/ginto-scratch.webp" alt="GINTO SCRATCH logo">
+                  <h3>GINTO SCRATCH</h3>
+                </a>
+                <a class="game-logo-item game-card" href="game-detail.html?game=pika-pika" data-game-url="https://pilot.gelotto-test.com/">
+                  <img src="assets/game-logos/classic/pika-pika.webp" alt="PIKA-PIKA logo">
+                  <h3>PIKA-PIKA</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="company-section company-home-section" id="company" aria-label="Company">
+        <section class="company-hero" aria-label="Game Engine company introduction">
+          <video
+            class="company-hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-hidden="true"
+          >
+            <source src="assets/company/company-hero.mp4" type="video/mp4">
+          </video>
+          <div class="company-hero-overlay" aria-hidden="true"></div>
+          <div class="company-hero-content reveal">
+            <h1>Game Engine</h1>
+            <p>
+              Philippine-built instant-win mobile games shaped by precision, creative energy, and operator-ready reliability.
+            </p>
+          </div>
+        </section>
+
+        <section class="section company-info-page-section" aria-label="Company Information">
+          <div class="section-inner">
+            <div class="company-info-list">
+              <article class="company-info-item reveal">
+                <div>
+                  <h2>We Are Game Engine</h2>
+                  <p>
+                    Game Engine is a Philippine-based game development studio specializing in innovative instant-win mobile games for gaming operators. We combine engaging gameplay, mathematical precision, and locally inspired themes to create experiences that entertain players while delivering long-term value for our partners. Every game is built with reliability, fairness, and scalability at its core.
+                  </p>
+                </div>
+              </article>
+
+              <article class="company-info-item reveal">
+                <div>
+                  <h2>Our Mission</h2>
+                  <p>
+                    To create lightweight, instant, emotional, and localized games that balance strong playability with long-term platform value.
+                  </p>
+                </div>
+              </article>
+
+              <article class="company-info-item reveal">
+                <div>
+                  <h2>Why Game Engine</h2>
+                  <p>
+                    We focus on what matters most: well-designed game content, fair mechanics, and reliable delivery - nothing more, nothing less. Our commitment is to build games that are engaging for players and sustainable for operators through quality design, proven mathematics, and efficient execution.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section company-expertise-section" aria-labelledby="expertise-title">
+          <div class="section-inner">
+            <div class="section-heading company-expertise-heading reveal">
+              <h2 id="expertise-title">Our Expertise</h2>
+            </div>
+
+            <div class="expertise-grid" aria-label="Game Engine areas of expertise">
+              <button class="expertise-card reveal" type="button" aria-expanded="false">
+                <img src="assets/company/leadership.png" alt="" loading="lazy">
+                <span class="expertise-card-content">
+                  <span class="expertise-card-title">Leadership</span>
+                  <span class="expertise-card-description">
+                    20+ years of global gaming experience in game systems, mathematical modeling, product strategy, and commercial game delivery.
+                  </span>
+                </span>
+              </button>
+
+              <button class="expertise-card reveal" type="button" aria-expanded="false">
+                <img src="assets/company/game-production.png" alt="" loading="lazy">
+                <span class="expertise-card-content">
+                  <span class="expertise-card-title">Game Production</span>
+                  <span class="expertise-card-description">
+                    Industry-experienced game designers specializing in game mathematics, product systems, instant-win mechanics, and high-frequency player engagement.
+                  </span>
+                </span>
+              </button>
+
+              <button class="expertise-card reveal" type="button" aria-expanded="false">
+                <img src="assets/company/art-creative.png" alt="" loading="lazy">
+                <span class="expertise-card-content">
+                  <span class="expertise-card-title">Art &amp; Creative</span>
+                  <span class="expertise-card-description">
+                    Creative specialists dedicated to Filipino-inspired visual identity, intuitive mobile UI/UX, and high-impact motion design that enhances player immersion.
+                  </span>
+                </span>
+              </button>
+
+              <button class="expertise-card reveal" type="button" aria-expanded="false">
+                <img src="assets/company/engineering.png" alt="" loading="lazy">
+                <span class="expertise-card-content">
+                  <span class="expertise-card-title">Engineering</span>
+                  <span class="expertise-card-description">
+                    A scalable, high-performance technology architecture that enables rapid development, seamless integration, and reliable game delivery.
+                  </span>
+                </span>
+              </button>
+
+              <button class="expertise-card reveal" type="button" aria-expanded="false">
+                <img src="assets/company/operations.png" alt="" loading="lazy">
+                <span class="expertise-card-content">
+                  <span class="expertise-card-title">Operations</span>
+                  <span class="expertise-card-description">
+                    A data-driven operations team focused on performance monitoring, continuous optimization, and supporting sustainable long-term product growth.
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="section news-section" id="news">
+        <div class="section-inner">
+          <div class="section-heading reveal">
+            <p class="eyebrow">News & Updates</p>
+            <h2>Latest launches, announcements, and partnerships.</h2>
+          </div>
+
+          <div class="news-tabs reveal" role="group" aria-label="News categories">
+            <button class="news-tab is-active" type="button" data-news-filter="all" aria-pressed="true">ALL</button>
+            <button class="news-tab" type="button" data-news-filter="announcements" aria-pressed="false">ANNOUNCEMENTS</button>
+            <button class="news-tab" type="button" data-news-filter="game-release" aria-pressed="false">GAME RELEASE</button>
+            <button class="news-tab" type="button" data-news-filter="partners" aria-pressed="false">PARTNERS</button>
+          </div>
+
+          <div class="news-grid" data-news-grid>
+            <article class="news-card reveal" data-news-category="announcements">
+              <div class="news-card-media news-card-media-poster">
+                <img src="assets/news/banana-craze-update-hero.png" alt="Banana Craze new version artwork" width="1080" height="1920" loading="lazy" decoding="async">
+              </div>
+              <div class="news-card-body">
+                <span>Announcements</span>
+                <h3>NEW VERSION OF BANANA CRAZE!</h3>
+                <p>BANANA CRAZE is back with exciting new features and enhanced gameplay. Players can now trigger a Bonus Round by revealing 3 Scatter symbols, unlocking 3 Free Spins and more opportunities to win bigger rewards.</p>
+                <a href="news-detail.html?article=banana-craze-update">Read More</a>
+              </div>
+            </article>
+
+            <article class="news-card reveal" data-news-category="game-release">
+              <div class="news-card-media news-card-media-poster">
+                <img src="assets/news/lucky-color-combo-overview.png" alt="Lucky Color Combo release artwork" width="1080" height="1920" loading="lazy" decoding="async">
+              </div>
+              <div class="news-card-body">
+                <span>Game Release</span>
+                <h3>NEW GAME RELEASE: LUCKY COLOR COMBO</h3>
+                <p>LUCKY COLOR COMBO has officially arrived! Step into a vibrant carnival-themed adventure where colorful matching mechanics, exciting bonus features, and multiplier rewards combine to create a fun and engaging instant-win experience.</p>
+                <a href="news-detail.html?article=lucky-color-combo-release">Read More</a>
+              </div>
+            </article>
+
+            <article class="news-card reveal" data-news-category="partners">
+              <div class="news-card-media news-card-media-split">
+                <img src="assets/news/partnership-bingoplus.png" alt="BingoPlus and Game Engine partnership announcement" width="1080" height="1350" loading="lazy" decoding="async">
+                <img src="assets/news/partnership-casinoplus.png" alt="CasinoPlus and Game Engine partnership announcement" width="1024" height="1536" loading="lazy" decoding="async">
+              </div>
+              <div class="news-card-body">
+                <span>Partners</span>
+                <h3>PARTNERSHIP WITH BINGOPLUS AND CASINOPLUS</h3>
+                <p>Game Engine is proud to announce its official partnership with BingoPlus and CasinoPlus, bringing exciting gaming experiences, innovative content, and enhanced entertainment opportunities to players across both platforms.</p>
+                <a href="news-detail.html?article=bingoplus-casinoplus-partnership">Read More</a>
+              </div>
+            </article>
+          </div>
+
+          <p class="news-empty reveal" data-news-empty hidden>No updates in this category yet.</p>
+        </div>
+      </section>
+
+      <section class="section trust-section" id="certifications" aria-label="Certifications and partners">
+        <div class="section-inner trust-inner">
+          <div class="trust-block reveal">
+            <div class="logo-row" aria-label="Certification logos">
+              <img src="assets/certifications/bmm-testlabs.png" alt="BMM Testlabs" width="120" height="60" loading="lazy" decoding="async">
+              <img src="assets/certifications/gli-logo.png" alt="GLI" width="120" height="60" loading="lazy" decoding="async">
+              <img src="assets/certifications/pagcor-logo.png" alt="PAGCOR" width="120" height="60" loading="lazy" decoding="async">
+              <img src="assets/certifications/game-responsibly-21.png" alt="21+ Game Responsibly" width="120" height="60" loading="lazy" decoding="async">
+            </div>
+          </div>
+
+          <div class="trust-block reveal">
+            <div class="logo-row" aria-label="Partner logos">
+              <img src="assets/partners/casinoplus.png" alt="CasinoPlus" width="120" height="60" loading="lazy" decoding="async">
+              <img src="assets/partners/bingoplus.png" alt="BingoPlus" width="120" height="60" loading="lazy" decoding="async">
+              <img src="assets/partners/trusted-operators.png" alt="Trusted by multiple operators" width="120" height="60" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-section" id="contact">
+        <div class="section-inner contact-panel reveal">
+          <div class="contact-copy">
+            <h2>Contact Us</h2>
+            <p>
+              Bring Game Engine content to your platform. Connect with our partnership team to discuss game demos, integrations, and commercial opportunities.
+            </p>
+          </div>
+
+          <div class="contact-form-stack">
+            <form class="contact-form" data-contact-form aria-label="Partnership contact form" novalidate>
+              <div class="contact-form-grid">
+                <label>
+                  <span>Name</span>
+                  <input type="text" name="name" autocomplete="name" placeholder="Your name" required>
+                </label>
+                <label>
+                  <span>Email</span>
+                  <input type="email" name="email" autocomplete="email" placeholder="you@company.com" required>
+                </label>
+                <label>
+                  <span>Phone</span>
+                  <input type="tel" name="phone" autocomplete="tel" placeholder="+63 900 000 0000" required>
+                </label>
+                <label>
+                  <span>Company</span>
+                  <input type="text" name="company" autocomplete="organization" placeholder="Company name" required>
+                </label>
+                <label class="contact-field-wide">
+                  <span>Company Website</span>
+                  <input type="url" name="website" autocomplete="url" placeholder="https://company.com">
+                </label>
+              </div>
+              <label>
+                <span>Your Message</span>
+                <textarea name="message" rows="5" placeholder="Tell us what you want to launch" required></textarea>
+              </label>
+              <button class="button button-primary" type="submit">Submit</button>
+              <p class="form-status" data-contact-status role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="contact-social" aria-label="Social media links">
+              <a class="contact-social-link contact-social-facebook" href="https://www.facebook.com/GameEnginePH/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <span class="contact-social-icon" aria-hidden="true"></span>
+              </a>
+              <a class="contact-social-link contact-social-instagram" href="https://www.instagram.com/gameengineph/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <span class="contact-social-icon" aria-hidden="true"></span>
+              </a>
+              <a class="contact-social-link contact-social-x" href="https://x.com/GameEnginePH" target="_blank" rel="noopener noreferrer" aria-label="X">
+                <span class="contact-social-icon" aria-hidden="true"></span>
+              </a>
+              <a class="contact-social-link contact-social-linkedin" href="https://www.linkedin.com/company/gameengineph" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <span class="contact-social-icon" aria-hidden="true"></span>
+              </a>
+              <a class="contact-social-link contact-social-tiktok" href="https://www.tiktok.com/@gameengineph" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <span class="contact-social-icon" aria-hidden="true"></span>
+              </a>
+              <a class="contact-social-link contact-social-youtube" href="https://www.youtube.com/@GameEnginePH" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <span class="contact-social-icon" aria-hidden="true"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="footer">
+      <div class="footer-inner">
+        <a class="footer-brand" href="#home" aria-label="Game Engine homepage">
+          <img src="assets/ge-logo.png" alt="Game Engine" width="291" height="86">
+        </a>
+        <div class="footer-copy">
+          <p>All rights reserved.</p>
+          <p>Privacy Policy | Terms of Use</p>
+          <p>&copy; 2026 Game Engine - Instant Games Studio - For Demonstration Purposes Only</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="auth-modal" data-auth-modal hidden>
+      <button class="auth-backdrop" type="button" data-auth-close aria-label="Close sign in modal"></button>
+      <section class="auth-dialog" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+        <button class="auth-close" type="button" data-auth-close aria-label="Close">脳</button>
+        <div class="auth-form-view" data-auth-form-view>
+          <p class="eyebrow">Demo Account</p>
+          <h2 id="auth-title">Sign In / Join</h2>
+          <p>Enter a username to create a demo account or continue with an existing one.</p>
+          <form class="auth-form" data-auth-form>
+            <label>
+              <span>Username</span>
+              <input type="text" name="username" data-auth-username-input autocomplete="username" maxlength="24" placeholder="Choose a username" required>
+            </label>
+            <button class="button button-primary" type="submit">Continue</button>
+            <p class="auth-status" data-auth-status role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        <div class="auth-account-view" data-auth-account-view hidden>
+          <p class="eyebrow">My Account</p>
+          <h2>Demo Player</h2>
+          <div class="auth-account-summary">
+            <span>Username</span>
+            <strong data-auth-summary-username>Player</strong>
+          </div>
+          <div class="auth-account-summary">
+            <span>Demo Balance</span>
+            <strong data-auth-summary-balance>鈧?</strong>
+          </div>
+          <button class="button button-secondary" type="button" data-auth-close>Done</button>
+        </div>
+      </section>
+    </div>
+
+    <p class="auth-toast" data-auth-toast role="status" aria-live="polite" hidden></p>
+
+    <div class="game-overlay" id="game-overlay" data-game-overlay hidden>
+      <div class="game-overlay-toolbar">
+        <div>
+          <p class="eyebrow">Demo Game</p>
+          <h2 data-game-overlay-title>Game Engine Demo</h2>
+          <span data-game-overlay-balance>Demo Balance: 鈧?</span>
+        </div>
+        <button class="game-overlay-close" type="button" data-game-close aria-label="Close game">Close</button>
+      </div>
+      <iframe id="game-frame" data-game-frame title="Game demo" allowfullscreen></iframe>
+    </div>
+
+    <div class="floating-actions" aria-label="Quick actions">
+      <div class="floating-social" data-floating-social>
+        <button class="floating-action social-toggle" type="button" data-social-toggle aria-expanded="false" aria-label="Open social media links">
+          <span class="social-toggle-icon" aria-hidden="true"></span>
+        </button>
+        <div class="floating-social-panel" data-social-panel hidden>
+          <a class="floating-social-link floating-social-facebook" href="https://www.facebook.com/GameEnginePH/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <span aria-hidden="true"></span>
+          </a>
+          <a class="floating-social-link floating-social-instagram" href="https://www.instagram.com/gameengineph/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <span aria-hidden="true"></span>
+          </a>
+          <a class="floating-social-link floating-social-x" href="https://x.com/GameEnginePH" target="_blank" rel="noopener noreferrer" aria-label="X">
+            <span aria-hidden="true"></span>
+          </a>
+          <a class="floating-social-link floating-social-linkedin" href="https://www.linkedin.com/company/gameengineph" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <span aria-hidden="true"></span>
+          </a>
+          <a class="floating-social-link floating-social-tiktok" href="https://www.tiktok.com/@gameengineph" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <span aria-hidden="true"></span>
+          </a>
+          <a class="floating-social-link floating-social-youtube" href="https://www.youtube.com/@GameEnginePH" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="chat-widget" data-chat-widget data-telegram-endpoint="">
+        <section class="chat-window" data-chat-window aria-labelledby="chat-title" hidden>
+          <header class="chat-header">
+            <div>
+              <p class="eyebrow">Chat Inquiry</p>
+              <h2 id="chat-title">Game Engine Team</h2>
+            </div>
+            <button type="button" class="chat-icon-button" data-chat-minimize aria-label="Minimize chat">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14"></path>
+              </svg>
+            </button>
+          </header>
+          <div class="chat-messages" data-chat-messages aria-live="polite"></div>
+          <p class="chat-status" data-chat-status role="status" aria-live="polite"></p>
+          <form class="chat-form" data-chat-form>
+            <input type="text" name="message" data-chat-input autocomplete="off" placeholder="Type your message" aria-label="Type your message" required>
+            <button type="submit" aria-label="Send message">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 11.5l16-7-5.8 15-3.2-6.2L4 11.5z"></path>
+                <path d="M11 13.3l4.7-4.7"></path>
+              </svg>
+            </button>
+          </form>
+        </section>
+        <button class="floating-action chat-toggle" type="button" data-chat-toggle aria-expanded="false" aria-label="Open chat inquiry">
+          <span class="chat-toggle-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <button class="floating-action back-to-top" type="button" data-back-to-top aria-label="Back to top" hidden>
+        <span class="back-to-top-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+    <script>
+      window.TELEGRAM_CHAT_WS_URL = 'ws://localhost:3000';
+    </script>
+    <script src="http://localhost:3000/widget.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Game Engine game profile with gameplay overview, demo preview, features, and how to play details."
+    >
+    <title>Game Detail | Game Engine</title>
+    <link rel="preload" as="image" href="assets/ge-logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="game-detail.js" defer></script>
+  </head>
+  <body class="game-detail-page">
+    <header class="detail-topbar">
+      <a class="detail-topbar-link" href="index.html#innovation-games">Back to Games</a>
+      <a class="brand" href="index.html#home" aria-label="Game Engine homepage">
+        <img src="assets/ge-logo.png" alt="Game Engine" width="291" height="86">
+      </a>
+    </header>
+
+    <main id="detail-main">
+      <section class="game-detail-shell" data-game-detail hidden>
+        <section class="detail-hero-grid" aria-label="Game introduction">
+          <div class="detail-intro-card">
+            <img class="detail-game-logo" data-game-logo src="" alt="">
+            <div class="detail-game-copy">
+              <p class="detail-kicker" data-game-category></p>
+              <h1 data-game-title></h1>
+              <p data-game-tagline></p>
+            </div>
+            <a class="button button-primary detail-play-button" data-play-game href="https://pilot.gelotto-test.com/" target="_blank" rel="noopener noreferrer">PLAY GAME</a>
+          </div>
+
+          <section class="detail-demo-card" aria-label="Game banner">
+            <div class="detail-demo-screen" aria-label="Game banner preview">
+              <div class="detail-demo-poster">
+                <span>MEGA WIN!</span>
+                <strong data-demo-prize></strong>
+                <small data-demo-caption></small>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section class="detail-stats-grid" data-stats aria-label="Game statistics"></section>
+
+        <section class="detail-screenshots-section" data-screenshots-section hidden aria-label="Game screenshots">
+          <div class="detail-section-heading">
+            <p class="detail-kicker">Screenshots</p>
+            <h2>GAME SCREENSHOTS</h2>
+          </div>
+          <div class="detail-screenshot-grid" data-screenshots></div>
+        </section>
+
+        <section class="detail-info-panel" data-detail-info aria-label="Game profile details">
+          <article class="detail-info-card detail-overview-card">
+            <h2><span aria-hidden="true"></span> GAME OVERVIEW</h2>
+            <div data-overview></div>
+          </article>
+
+          <article class="detail-info-card detail-features-card" data-features-card>
+            <h2><span aria-hidden="true"></span> FEATURES</h2>
+            <div data-features></div>
+          </article>
+
+          <article class="detail-info-card detail-how-card">
+            <h2><span aria-hidden="true">i</span> HOW TO PLAY</h2>
+            <ol data-how-to-play></ol>
+          </article>
+        </section>
+      </section>
+
+      <section class="game-detail-shell detail-missing" data-game-missing hidden>
+        <div class="detail-missing-card">
+          <h1>Game profile unavailable</h1>
+          <p>The requested game profile could not be found. Please return to the games section and choose another title.</p>
+          <a class="button button-primary" href="index.html#innovation-games">View Games</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

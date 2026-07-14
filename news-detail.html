@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Game Engine news article with full update details, feature information, screenshots, and platform links."
+    >
+    <title>News Detail | Game Engine</title>
+    <link rel="preload" as="image" href="assets/ge-logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="news-detail.js" defer></script>
+  </head>
+  <body class="game-detail-page news-detail-page">
+    <header class="detail-topbar">
+      <a class="detail-topbar-link" href="index.html#news">Back to News</a>
+      <a class="brand" href="index.html#home" aria-label="Game Engine homepage">
+        <img src="assets/ge-logo.png" alt="Game Engine" width="291" height="86">
+      </a>
+    </header>
+
+    <main id="news-main">
+      <section class="news-detail-shell" data-news-detail hidden>
+        <a class="detail-back" href="index.html#news"><span aria-hidden="true"></span>Back to News</a>
+
+        <article class="news-detail-article">
+          <div class="news-detail-media" data-news-media></div>
+
+          <div class="news-detail-content">
+            <div class="news-detail-meta">
+              <span data-news-category></span>
+              <time data-news-date></time>
+            </div>
+            <h1 data-news-title></h1>
+
+            <div class="news-detail-copy" data-news-copy></div>
+
+            <section class="news-detail-section" data-news-features-section hidden>
+              <h2 data-news-features-title></h2>
+              <div class="news-feature-grid" data-news-features></div>
+            </section>
+
+            <section class="news-detail-section" data-news-links-section hidden>
+              <h2>Platform Links</h2>
+              <div class="news-platform-links" data-news-links></div>
+            </section>
+          </div>
+        </article>
+      </section>
+
+      <section class="game-detail-shell detail-missing" data-news-missing hidden>
+        <div class="detail-missing-card">
+          <h1>News article unavailable</h1>
+          <p>The requested news article could not be found. Please return to the news section and choose another update.</p>
+          <a class="button button-primary" href="index.html#news">View News</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

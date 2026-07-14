@@ -1,0 +1,603 @@
+const GAME_DETAILS = {
+  "pikapika": {
+    type: "innovation",
+    title: "PIKAPIKA",
+    logo: "assets/game-logos/innovation/pikapika.png",
+    background: "assets/game-backgrounds/innovation/pikapika-bg.png",
+    video: "assets/game-videos/pikapika-video.mp4",
+    tagline: "Experience the flavors of Filipino street food in a fun-filled scratch game packed with exciting rewards and instant winning moments!",
+    demoPrize: "P2,500,000.00",
+    stats: {
+      "ACTIVE PLAYERS": "10,000+",
+      "TOTAL GAME ROUNDS": "2M+",
+      "MAXIMUM PRIZE UP TO": "P10M",
+      "MAX MULTIPLIER": "10000X",
+    },
+    overview: [
+      "PIKAPIKA is a Match-3 scratch card game inspired by the vibrant and beloved flavors of Filipino street food.",
+      "Scratch the card to reveal 9 symbols and match 3 identical symbols to win exciting prizes.",
+      "With its colorful theme, simple gameplay, and instant rewards, PIKAPIKA delivers a fun and engaging gaming experience for players of all levels.",
+    ],
+    features: [
+      "PIKAPIKA features a fun and easy-to-play Match-3 scratch card mechanic, where players reveal 9 symbols and match 3 identical symbols to win prizes.",
+      "Inspired by Filipino street food culture, the game combines vibrant visuals, instant results, and engaging gameplay to deliver an exciting player experience.",
+    ],
+    howToPlay: [
+      "Scratch all 9 symbol positions.",
+      "Match 3 identical symbols.",
+      "Win the prize associated with the matching symbols.",
+    ],
+  },
+  "banana-craze": {
+    type: "innovation",
+    title: "BANANA CRAZE",
+    logo: "assets/game-logos/innovation/banana-craze.png",
+    background: "assets/game-backgrounds/innovation/banana-craze-bg.png",
+    video: "assets/game-videos/banana-craze-video.mp4",
+    tagline: "Embark on a thrilling Mayan jungle adventure and uncover hidden treasures in BANANA CRAZE! Match values, trigger exciting bonus features, and multiply your rewards with every scratch.",
+    demoPrize: "P10,000,000.00",
+    stats: {
+      "ACTIVE PLAYERS": "10,000+",
+      "TOTAL GAME ROUNDS": "2M+",
+      "MAXIMUM PRIZE UP TO": "P10M",
+      "MAX MULTIPLIER": "10000X",
+    },
+    overview: [
+      "BANANA CRAZE is a money-match scratch card game set in a mysterious Mayan jungle filled with hidden treasures and rewarding surprises.",
+      "Match identical cash values to win instant prizes, while special bonus features and multipliers offer even greater winning opportunities throughout the game.",
+    ],
+    features: [
+      "Discover exciting bonus features, including multipliers that can boost your winnings and a Free 10 Bonus Round triggered when 3 Scatter symbols appear.",
+      "With multiple ways to win and enhanced reward mechanics, every scratch brings a new opportunity for treasure.",
+    ],
+    howToPlay: [
+      "Scratch all play areas to reveal symbols and cash values.",
+      "Match identical cash values to win the corresponding prize.",
+      "Reveal multiplier symbols to increase your winnings.",
+      "Land 3 Scatter symbols to trigger the Free 10 Bonus Round.",
+      "Complete the bonus rounds for additional chances to win.",
+    ],
+  },
+  "ginto-match": {
+    type: "innovation",
+    title: "GINTO MATCH",
+    logo: "assets/game-logos/innovation/ginto-match.png",
+    background: "assets/game-backgrounds/innovation/ginto-match-bg.png",
+    video: "assets/game-videos/ginto-match-video.mp4",
+    tagline: "Unlock the riches of the Golden Vault and match your way to valuable rewards! Discover lucky numbers, reveal hidden treasures, and experience the excitement of every winning match in GINTO MATCH.",
+    demoPrize: "P10,000,000.00",
+    stats: {
+      "ACTIVE PLAYERS": "10,000+",
+      "TOTAL GAME ROUNDS": "2M+",
+      "MAXIMUM PRIZE UP TO": "P10M",
+      "MAX MULTIPLIER": "10000X",
+    },
+    overview: [
+      "GINTO MATCH is a number-matching scratch card game set in a luxurious Golden Vault Wealth theme.",
+      "Players reveal their Lucky Numbers and match them with the Winning Numbers to collect cumulative rewards, with every match bringing them closer to unlocking greater riches.",
+    ],
+    features: [
+      "Experience straightforward yet rewarding gameplay with cumulative prize mechanics that increase the excitement of every match.",
+      "The elegant Golden Vault theme, instant-win format, and multiple matching opportunities create an engaging and satisfying player experience.",
+    ],
+    howToPlay: [
+      "Reveal the Winning Numbers.",
+      "Scratch the Lucky Numbers area.",
+      "Match any Lucky Number with a Winning Number to win the corresponding prize.",
+      "Multiple matching numbers can result in cumulative rewards.",
+      "Reveal all play areas to maximize your winning opportunities.",
+    ],
+  },
+  "lucky-color": {
+    type: "innovation",
+    title: "LUCKY COLOR",
+    logo: "assets/game-logos/innovation/lucky-color.png",
+    background: "assets/game-backgrounds/innovation/lucky-color-bg.png",
+    video: "assets/game-videos/lucky-color-video.mp4",
+    tagline: "Step right up and discover a world of colorful rewards! Match vibrant colors, trigger exciting multipliers, and enjoy carnival-themed fun in every scratch with Lucky Color.",
+    demoPrize: "P10,000,000.00",
+    stats: {
+      "ACTIVE PLAYERS": "10,000+",
+      "TOTAL GAME ROUNDS": "2M+",
+      "MAXIMUM PRIZE UP TO": "P10M",
+      "MAX MULTIPLIER": "6000X",
+    },
+    overview: [
+      "LUCKY COLOR is a color-matching instant win scratch card game set in a lively Carnival and Amusement Park theme.",
+      "Players match colors across multiple play zones to win prizes, while multiplier features add extra excitement and bigger reward opportunities throughout the game.",
+    ],
+    features: [
+      "Enjoy simple and engaging color-matching gameplay combined with multiplier-based rewards for enhanced winning potential.",
+      "With multiple play zones, vibrant carnival-inspired visuals, and instant-win mechanics, Lucky Color delivers a fun and rewarding experience for players of all skill levels.",
+    ],
+    howToPlay: [
+      "Tap each play zone to reveal hidden colors.",
+      "Match the required color combinations to win prizes.",
+      "Reveal multiplier symbols to increase your rewards.",
+      "Multiple play zones provide multiple chances to win in a single game.",
+      "Complete all zones to maximize your winning opportunities.",
+    ],
+  },
+  "blazing-7s": {
+    type: "innovation",
+    title: "BLAZING 7S",
+    logo: "assets/game-logos/innovation/blazing-7s.png",
+    background: "assets/game-backgrounds/innovation/blazing-7s-bg.png",
+    video: "assets/game-videos/blazing-7s-video.mp4",
+    tagline: "Ignite the excitement and unleash the power of the Flaming Dragon! Match three lucky 7s across any winning line and claim multiple rewards in every thrilling scratch.",
+    demoPrize: "P10,000,000.00",
+    stats: {
+      "ACTIVE PLAYERS": "10,000+",
+      "TOTAL GAME ROUNDS": "2M+",
+      "MAXIMUM PRIZE UP TO": "P10M",
+      "MAX MULTIPLIER": "14582X",
+    },
+    overview: [
+      "BLAZING 7S is a 3x3 line-match scratch card game set in a fiery Flaming Dragon theme.",
+      "Players reveal symbols on a 3x3 grid and win by matching three 7s on any horizontal, vertical, or diagonal line, with multiple winning lines possible in a single game.",
+    ],
+    features: [
+      "Enjoy fast-paced line-match gameplay with multiple ways to win in every round.",
+      "The powerful Flaming Dragon theme, vibrant visuals, and potential for multiple winning combinations create an exciting and rewarding scratch card experience.",
+    ],
+    howToPlay: [
+      "Scratch all 9 positions on the 3x3 grid.",
+      "Match three 7 symbols on any horizontal, vertical, or diagonal line.",
+      "Each completed line wins the corresponding prize.",
+      "Multiple winning lines can be achieved in a single game.",
+      "Reveal all positions to maximize your chances of winning.",
+    ],
+  },
+  "bingo-flux": {
+    type: "innovation",
+    title: "BINGO FLUX",
+    logo: "assets/game-logos/innovation/bingo-flux.webp",
+    background: "assets/game-backgrounds/innovation/bingo-flux-bg.png",
+    video: "assets/game-videos/bingo-flux-video.mp4",
+    tagline: "Enter the future of bingo and win instantly! Match winning patterns, complete bingo lines, and unlock exciting rewards in the fast-paced world of BINGO FLUX.",
+    demoPrize: "P10,000,000.00",
+    stats: {
+      "ACTIVE PLAYERS": "10,000+",
+      "TOTAL GAME ROUNDS": "2M+",
+      "MAXIMUM PRIZE UP TO": "P10M",
+      "MAX MULTIPLIER": "10000X",
+    },
+    overview: [
+      "BINGO FLUX is a futuristic-themed instant-win bingo game that delivers the excitement of traditional bingo in a fast-paced format.",
+      "Players reveal numbers and complete winning bingo patterns to instantly claim prizes, creating an engaging and rewarding experience in every game.",
+    ],
+    features: [
+      "Experience instant-win bingo gameplay with multiple pattern-matching opportunities and quick game rounds.",
+      "The futuristic design, intuitive mechanics, and immediate prize outcomes make Bingo Flux an exciting modern take on a classic favorite.",
+    ],
+    howToPlay: [
+      "Reveal the bingo numbers on your game card.",
+      "Match the drawn numbers to complete designated bingo patterns.",
+      "Form winning lines or patterns to earn prizes.",
+      "Multiple winning patterns may be completed in a single game.",
+      "Complete more patterns for additional reward opportunities.",
+    ],
+  },
+  "fortune-ocean": {
+    type: "innovation",
+    title: "FORTUNE OCEAN",
+    logo: "assets/game-logos/innovation/fortune-ocean.webp",
+    background: "assets/game-backgrounds/innovation/fortune-ocean-bg.png",
+    video: "assets/game-videos/fortune-ocean-video.mp4",
+    tagline: "Explore the depths of the ocean and uncover hidden treasures! Match numbers, trigger exciting Bonus Games, and dive for massive Progressive Jackpot rewards in FORTUNE OCEAN.",
+    demoPrize: "P10,000,000.00",
+    stats: {
+      "ACTIVE PLAYERS": "10,000+",
+      "TOTAL GAME ROUNDS": "2M+",
+      "MAXIMUM PRIZE UP TO": "P10M",
+      "MAX MULTIPLIER": "10000X",
+    },
+    overview: [
+      "FORTUNE OCEAN is an underwater-themed instant-win number-matching game where players explore a vibrant ocean world filled with treasures, marine life, and rewarding surprises.",
+      "Match winning numbers to earn instant prizes, unlock exciting Bonus Games, and chase the Progressive Jackpot for the chance to win even bigger rewards.",
+    ],
+    features: [
+      "Dive into a rewarding underwater adventure featuring instant-win number matching, exciting Bonus Games, and a Progressive Jackpot.",
+      "Stunning ocean-themed visuals, immersive gameplay, and multiple prize opportunities make every game an exciting treasure hunt beneath the waves.",
+    ],
+    howToPlay: [
+      "Reveal the Winning Numbers and Lucky Numbers.",
+      "Match any Lucky Number with a Winning Number to win the corresponding prize.",
+      "Collect 4 Pearl symbols to trigger the Bonus Game.",
+      "Collect 3 Rabbit symbols to unlock the Super Bonus Game.",
+      "Qualify for the Progressive Jackpot for a chance to win larger rewards.",
+      "Reveal all game areas to maximize your winning opportunities.",
+    ],
+  },
+  "lucky-color-combo": {
+    type: "innovation",
+    title: "LUCKY COLOR COMBO",
+    logo: "assets/game-logos/innovation/lucky-color-combo.png",
+    background: "assets/game-backgrounds/innovation/lucky-color-combo-bg.png",
+    video: "assets/game-videos/lucky-color-combo-video.mp4",
+    bannerVideo: "assets/home-lucky-color-combo-banner.mp4",
+    tagline: "Step into a vibrant carnival of colors and rewards! Match colors, collect Rainbow Dice, and spin the Multiplier Wheel for exciting prizes in LUCKY COLOR COMBO.",
+    demoPrize: "P10,000,000.00",
+    stats: {
+      "ACTIVE PLAYERS": "10,000+",
+      "TOTAL GAME ROUNDS": "2M+",
+      "MAXIMUM PRIZE UP TO": "P10M",
+      "MAX MULTIPLIER": "10000X",
+    },
+    overview: [
+      "LUCKY COLOR COMBO is a colorful instant-win game set in a lively Carnival Theme, where players match colors to win prizes and unlock exciting bonus rewards.",
+      "Collect Rainbow Dice to earn spins on the Multiplier Wheel, offering even greater winning opportunities and the chance to land massive rewards.",
+    ],
+    features: [
+      "Enjoy fun and easy color-matching gameplay enhanced by exciting bonus mechanics.",
+      "Collect Rainbow Dice to activate the Multiplier Wheel, earn additional spins, and chase the ultimate prize of 10,000x your bet amount.",
+      "3 Rainbow Dice earns 1 Spin on the Multiplier Wheel.",
+      "4 Rainbow Dice earns 2 Spins on the Multiplier Wheel.",
+      "5 Rainbow Dice instantly wins 10,000x your bet amount.",
+    ],
+    howToPlay: [
+      "Reveal the game board and match the required color combinations.",
+      "Win prizes by completing winning color matches.",
+      "Collect Rainbow Dice symbols during gameplay.",
+      "Earn Multiplier Wheel spins based on the number of Rainbow Dice collected.",
+      "Collect 5 Rainbow Dice to instantly win 10,000x your bet amount.",
+    ],
+  },
+  "instant-keno": {
+    type: "classic",
+    title: "INSTANT KENO",
+    logo: "assets/game-logos/classic/instant-keno.webp",
+    background: "assets/game-backgrounds/classic/instant-keno-bg.png",
+    tagline: "Choose your lucky number combination and see if fortune is on your side. Play now and experience the thrill of Keno!",
+    demoPrize: "P5,000,000.00",
+    overview: [
+      "Instant Keno is an instant scratch-card game inspired by classic Keno mechanics.",
+      "Match your selected lucky numbers against the system-drawn numbers to win exciting prizes. The more numbers you match, the greater your reward.",
+    ],
+    howToPlay: [
+      "Select your preferred bet amount and click Confirm.",
+      "Click Play to begin the game.",
+      "Click Scratch It to reveal the card automatically, or scratch the card manually by dragging your cursor across the surface.",
+      "Match your selected numbers with the system-drawn numbers to determine your winnings.",
+      "If you achieve a winning combination, your prize will be credited according to the game's payout table.",
+    ],
+  },
+  "classic-lucky-color": {
+    type: "classic",
+    title: "LUCKY COLOR",
+    logo: "assets/game-logos/classic/lucky-color.webp",
+    background: "assets/game-backgrounds/classic/lucky-color-bg.png",
+    tagline: "Every Color Match Brings Bigger Rewards!",
+    demoPrize: "MEGA WIN PREVIEW",
+    overview: [
+      "Lucky Color is an instant scratch-card game where matching lucky colors can unlock exciting multiplier rewards.",
+      "Reveal the colors beneath the scratch surface and match them to the winning colors for a chance to multiply your winnings.",
+    ],
+    howToPlay: [
+      "Select your preferred bet amount and click Confirm.",
+      "Click Play to begin the game.",
+      "Click Scratch It to reveal the card automatically, or scratch the card manually by dragging your cursor across the surface.",
+      "Match the revealed colors with the winning colors to determine your prize.",
+    ],
+  },
+  "in-between": {
+    type: "classic",
+    title: "IN BETWEEN",
+    logo: "assets/game-logos/classic/in-between.webp",
+    background: "assets/game-backgrounds/classic/in-between-bg.png",
+    tagline: "Stay In Between and Win Big!",
+    demoPrize: "MEGA WIN PREVIEW",
+    overview: [
+      "In Between is an instant scratch-card game where your goal is to predict whether a hidden number falls within a defined numerical range.",
+      "Inspired by festive party traditions, each successful prediction brings exciting rewards and adds to the thrill of the celebration.",
+    ],
+    howToPlay: [
+      "Select your preferred bet amount and click Confirm.",
+      "Click Play to begin the game.",
+      "Click Scratch It to reveal the card automatically, or scratch the card manually by dragging your cursor across the surface.",
+      "Reveal the hidden number and see if it falls within the designated range.",
+      "If your prediction is correct, you win the corresponding prize based on the game's payout table.",
+    ],
+  },
+  "ginto-scratch": {
+    type: "classic",
+    title: "GINTO SCRATCH",
+    logo: "assets/game-logos/classic/ginto-scratch.webp",
+    background: "assets/game-backgrounds/classic/ginto-scratch-bg.png",
+    tagline: "Scratch, Match, Multiply, and Win Big!",
+    demoPrize: "MEGA WIN PREVIEW",
+    overview: [
+      "Ginto Scratch is a gold-themed instant scratch card game where players win by revealing three matching prize amounts on the scratch card.",
+      "Match all three to claim the prize, then uncover a 2x, 3x, or 4x multiplier to boost your winnings and maximize your rewards.",
+    ],
+    howToPlay: [
+      "Select your preferred bet amount and click Confirm.",
+      "Click Play to begin the game.",
+      "Click Scratch It to reveal the card automatically, or scratch the card manually by dragging your cursor across the surface.",
+      "Reveal all the hidden prize amounts on the scratch card.",
+      "Match three identical prize amounts to win the corresponding prize.",
+      "If you reveal a 2x, 3x, or 4x multiplier, your winning prize will be multiplied accordingly.",
+    ],
+  },
+  "pika-pika": {
+    type: "classic",
+    title: "PIKA-PIKA",
+    logo: "assets/game-logos/classic/pika-pika.webp",
+    background: "assets/game-backgrounds/classic/pika-pika-bg.png",
+    tagline: "Match 3. Enjoy the Flavor. Celebrate the Prize!",
+    demoPrize: "MEGA WIN PREVIEW",
+    overview: [
+      "Pika-Pika is an instant Match-3 scratch card game inspired by the vibrant world of Filipino street food.",
+      "Reveal the hidden symbols and match 3 identical food icons out of 9 to win exciting prizes. The more you scratch, the closer you are to a delicious victory.",
+    ],
+    howToPlay: [
+      "Select your preferred bet amount and click Confirm.",
+      "Click Play to begin the game.",
+      "Click Scratch It to reveal the card automatically, or scratch the card manually by dragging your cursor across the surface.",
+      "Reveal all 9 hidden symbols on the scratch card.",
+      "Match 3 identical street food symbols to win the corresponding prize.",
+    ],
+  },
+  "lucky-number": {
+    type: "classic",
+    title: "LUCKY NUMBER",
+    logo: "assets/game-logos/classic/lucky-number.webp",
+    background: "assets/game-backgrounds/classic/lucky-number-bg.png",
+    tagline: "Every Lucky Number Brings Bigger Rewards!",
+    demoPrize: "MEGA WIN PREVIEW",
+    overview: [
+      "Lucky Number is an instant scratch card game featuring a lucky number theme with 9 unique card variants.",
+      "Choose your lucky number and reveal the hidden numbers on the scratch card. The more times your selected number appears, the greater your reward.",
+      "Reveal a multiplier to increase your winnings even further.",
+    ],
+    howToPlay: [
+      "Select your preferred bet amount and click Confirm.",
+      "Click Play to begin the game.",
+      "Choose your Lucky Number.",
+      "Click Scratch It to reveal the card automatically, or scratch the card manually by dragging your cursor across the surface.",
+      "Reveal all the hidden numbers and count how many times your selected Lucky Number appears.",
+      "The more matching numbers you reveal, the higher your prize.",
+    ],
+  },
+  "go-bananas": {
+    type: "classic",
+    title: "GO BANANAS",
+    logo: "assets/game-logos/classic/go-bananas.webp",
+    background: "assets/game-backgrounds/classic/go-bananas-bg.png",
+    tagline: "Scratch, Match, Multiply, and Go Bananas!",
+    demoPrize: "MEGA WIN PREVIEW",
+    overview: [
+      "Go Bananas is a tropical fruit-themed instant scratch card game where players win by matching three identical prize amounts.",
+      "Match 3 to claim the base prize, then reveal a bonus multiplier to increase your winnings and enjoy even greater rewards.",
+    ],
+    howToPlay: [
+      "Select your preferred bet amount and click Confirm.",
+      "Click Play to begin the game.",
+      "Click Scratch It to reveal the card automatically, or scratch the card manually by dragging your cursor across the surface.",
+      "Reveal all the hidden prize amounts on the scratch card.",
+      "Match three identical prize amounts to win the corresponding base prize.",
+      "If you reveal a bonus multiplier, your winning prize will be multiplied according to the game's payout rules.",
+    ],
+  },
+  "red-hot-7s": {
+    type: "classic",
+    title: "RED HOT 7'S",
+    logo: "assets/game-logos/classic/red-hot-7s.webp",
+    background: "assets/game-backgrounds/classic/red-hot-7s-bg.png",
+    tagline: "Line Up the Lucky 7s. Ignite Big Wins!",
+    demoPrize: "MEGA WIN PREVIEW",
+    overview: [
+      "Red Hot 7's is a fire-themed 3x3 line-match instant scratch card game where players win by matching three Lucky 7 symbols in a straight line.",
+      "Complete any horizontal, vertical, or diagonal line with three matching 7s to receive an instant payout.",
+    ],
+    howToPlay: [
+      "Select your preferred bet amount and click Confirm.",
+      "Click Play to begin the game.",
+      "Click Scratch It to reveal the card automatically, or scratch the card manually by dragging your cursor across the surface.",
+      "Reveal all 9 symbols on the 3x3 game board.",
+      "Match three Lucky 7 symbols in any horizontal, vertical, or diagonal line to win the corresponding prize.",
+    ],
+  },
+  "bingo-card": {
+    type: "classic",
+    title: "BINGO CARD",
+    logo: "assets/game-logos/classic/bingo-card.webp",
+    background: "assets/game-backgrounds/classic/bingo-card-bg.png",
+    tagline: "Complete the Bingo Line. Win Exciting Rewards!",
+    demoPrize: "MEGA WIN PREVIEW",
+    overview: [
+      "Bingo is a bingo-themed instant scratch card game where players win by completing predefined winning line patterns.",
+      "Reveal the hidden numbers or symbols and complete the required pattern to claim exciting prizes.",
+    ],
+    howToPlay: [
+      "Select your preferred bet amount and click Confirm.",
+      "Click Play to begin the game.",
+      "Click Scratch It to reveal the card automatically, or scratch the card manually by dragging your cursor across the surface.",
+      "Reveal all the hidden numbers or symbols on the bingo card.",
+      "Complete any predefined winning line pattern to win the corresponding prize.",
+      "If you complete multiple winning patterns, you will receive the payout for each eligible winning combination according to the game's payout table.",
+    ],
+  },
+};
+
+const params = new URLSearchParams(window.location.search);
+const currentSlug = params.get("game") || "pikapika";
+const currentGame = GAME_DETAILS[currentSlug];
+const detailRoot = document.querySelector("[data-game-detail]");
+const missingRoot = document.querySelector("[data-game-missing]");
+const playGameButton = document.querySelector("[data-play-game]");
+const screenshotsSection = document.querySelector("[data-screenshots-section]");
+const screenshotsGrid = document.querySelector("[data-screenshots]");
+const defaultGameLaunchUrl = "https://pilot.gelotto-test.com/";
+
+function appendParagraphs(container, paragraphs) {
+  container.replaceChildren();
+
+  paragraphs.forEach((paragraph) => {
+    const element = document.createElement("p");
+    element.textContent = paragraph;
+    container.appendChild(element);
+  });
+}
+
+function appendHowToPlay(container, steps) {
+  container.replaceChildren();
+
+  steps.forEach((step) => {
+    const item = document.createElement("li");
+    item.textContent = step;
+    container.appendChild(item);
+  });
+}
+
+function renderStats(container, stats) {
+  container.replaceChildren();
+
+  Object.entries(stats).forEach(([label, value]) => {
+    const card = document.createElement("article");
+    const labelElement = document.createElement("span");
+    const valueElement = document.createElement("strong");
+
+    labelElement.textContent = label;
+    valueElement.textContent = value;
+    card.append(labelElement, valueElement);
+    container.appendChild(card);
+  });
+}
+
+function createImage(src, alt, loading = "lazy") {
+  const image = document.createElement("img");
+
+  image.src = src;
+  image.alt = alt;
+  image.decoding = "async";
+  image.loading = loading;
+
+  return image;
+}
+
+function renderGameBanner(game) {
+  const screen = document.querySelector(".detail-demo-screen");
+  screen.replaceChildren();
+  screen.classList.toggle("has-video", Boolean(game.bannerVideo));
+  screen.classList.add("has-banner");
+
+  if (game.bannerVideo) {
+    const video = document.createElement("video");
+
+    const playVideo = () => {
+      const playRequest = video.play();
+
+      if (playRequest?.catch) {
+        playRequest.catch(() => {});
+      }
+    };
+
+    video.className = "detail-demo-video";
+    video.src = game.bannerVideo;
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = "auto";
+    video.setAttribute("autoplay", "");
+    video.setAttribute("loop", "");
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.setAttribute("aria-label", `${game.title} banner video`);
+    video.setAttribute("disablepictureinpicture", "");
+    video.addEventListener("canplay", () => video.classList.add("is-ready"), { once: true });
+
+    screen.appendChild(video);
+    playVideo();
+    return;
+  }
+
+  const banner = createImage(game.banner || game.background, `${game.title} banner artwork`, "eager");
+
+  banner.className = "detail-banner-image";
+  banner.fetchPriority = "high";
+  screen.appendChild(banner);
+}
+
+function getGameScreenshots(game) {
+  return [
+    {
+      src: game.background,
+      alt: `${game.title} background artwork`,
+    },
+    {
+      src: game.logo,
+      alt: `${game.title} game card artwork`,
+    },
+  ];
+}
+
+function renderScreenshots(game) {
+  if (!screenshotsSection || !screenshotsGrid) {
+    return;
+  }
+
+  const screenshots = game.screenshots || getGameScreenshots(game);
+
+  screenshotsGrid.replaceChildren();
+
+  screenshots.forEach((screenshot) => {
+    const figure = document.createElement("figure");
+    const image = createImage(screenshot.src, screenshot.alt);
+
+    figure.appendChild(image);
+    screenshotsGrid.appendChild(figure);
+  });
+
+  screenshotsSection.hidden = screenshots.length === 0;
+}
+
+function renderGameDetail(game) {
+  const sectionId = game.type === "classic" ? "classic-games" : "innovation-games";
+
+  document.title = `${game.title} | Game Engine`;
+  document.body.classList.add(`game-detail-kind-${game.type}`);
+  document.body.style.setProperty("--game-detail-background", `url("${game.background}")`);
+  detailRoot.hidden = false;
+
+  document.querySelector(".detail-topbar-link").href = `index.html#${sectionId}`;
+  document.querySelector("[data-game-category]").textContent = game.type === "classic" ? "Classic Game" : "Innovation Game";
+  document.querySelector("[data-game-title]").textContent = game.title;
+  document.querySelector("[data-game-tagline]").textContent = game.tagline;
+  renderGameBanner(game);
+
+  if (playGameButton) {
+    playGameButton.href = game.playUrl || defaultGameLaunchUrl;
+    playGameButton.setAttribute("aria-label", `Play ${game.title}`);
+  }
+
+  const logo = document.querySelector("[data-game-logo]");
+  logo.src = game.logo;
+  logo.alt = `${game.title} logo`;
+
+  const stats = document.querySelector("[data-stats]");
+  if (game.type === "innovation" && game.stats) {
+    renderStats(stats, game.stats);
+  } else {
+    stats.hidden = true;
+  }
+
+  renderScreenshots(game);
+  appendParagraphs(document.querySelector("[data-overview]"), game.overview);
+  appendHowToPlay(document.querySelector("[data-how-to-play]"), game.howToPlay);
+
+  const featuresCard = document.querySelector("[data-features-card]");
+  if (game.features?.length) {
+    appendParagraphs(document.querySelector("[data-features]"), game.features);
+  } else {
+    featuresCard.hidden = true;
+  }
+}
+
+if (currentGame) {
+  renderGameDetail(currentGame);
+} else {
+  missingRoot.hidden = false;
+}
