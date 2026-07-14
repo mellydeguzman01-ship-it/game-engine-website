@@ -1,0 +1,14 @@
+{
+  "name": "game-engine-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Game Engine website with secure Telegram live chat integration.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

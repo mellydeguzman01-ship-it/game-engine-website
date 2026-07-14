@@ -9,11 +9,9 @@
     >
     <title>Game Engine | Premium iGaming Content Provider</title>
     <link rel="preload" as="image" href="assets/ge-logo.png">
-    <link rel="preload" as="image" href="assets/home-banana-craze-bonus-banner.png">
-    <link rel="preload" as="video" href="assets/home-lucky-color-combo-banner.mp4" type="video/mp4">
+    <link rel="preload" as="image" href="assets/featured-showcase-bg.png">
     <link rel="preload" as="image" href="assets/home-partnership-banner.png">
-    <link rel="preload" as="image" href="assets/banana-craze-logo.png">
-    <link rel="preload" as="image" href="assets/lucky-color-combo-logo.png">
+    <link rel="preload" as="image" href="assets/game-logos/innovation/lucky-color-combo.png">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
   </head>
@@ -55,51 +53,63 @@
     <main id="main">
       <section class="hero" id="home" aria-label="Featured Game Engine promotions">
         <div class="hero-carousel" data-carousel>
-          <article class="hero-slide hero-slide-banana is-active" data-slide aria-hidden="false">
-            <img class="hero-media hero-media-desktop" src="assets/home-banana-craze-bonus-banner.png" alt="Banana Craze temple storm artwork">
-            <img class="hero-media hero-media-mobile" src="assets/home-banana-craze-mobile.png" alt="Banana Craze mobile temple artwork">
-            <div class="hero-content">
-              <img class="hero-game-logo hero-game-logo-banana" src="assets/banana-craze-logo.png" alt="Banana Craze">
-              <p>
-                Experience the enhanced Banana Craze featuring an exciting new Bonus Round for bigger rewards and more engaging gameplay.
-              </p>
-              <div class="hero-actions">
-                <a class="button button-primary" href="game-detail.html?game=banana-craze">View Details</a>
+          <article class="hero-slide hero-slide-lucky hero-slide-showcase is-active" data-slide aria-hidden="false">
+            <img class="hero-media hero-showcase-bg" src="assets/featured-showcase-bg.png" alt="">
+            <div class="featured-showcase" data-featured-showcase>
+              <div class="featured-showcase-headline">
+                <h1>CHOOSE YOUR GAME. <span>ENTER THE ACTION.</span></h1>
               </div>
-            </div>
-          </article>
 
-          <article class="hero-slide hero-slide-lucky" data-slide aria-hidden="true">
-            <video
-              class="hero-media hero-media-video hero-media-desktop"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              poster="assets/home-lucky-color-combo-banner.png"
-              aria-label="Lucky Color Combo carnival banner"
-            >
-              <source src="assets/home-lucky-color-combo-banner.mp4" type="video/mp4">
-            </video>
-            <video
-              class="hero-media hero-media-video hero-media-mobile"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              aria-label="Lucky Color Combo mobile banner"
-            >
-              <source src="assets/home-lucky-color-combo-mobile.mp4" type="video/mp4">
-            </video>
-            <div class="hero-content">
-              <img class="hero-game-logo hero-game-logo-lucky" src="assets/lucky-color-combo-logo.png" alt="Lucky Color Combo">
-              <p>
-                Discover our latest release featuring exciting bonus mechanics, colorful gameplay, and enhanced winning opportunities.
-              </p>
-              <div class="hero-actions">
-                <a class="button button-primary" href="game-detail.html?game=lucky-color-combo">View Details</a>
+              <div class="featured-showcase-layout">
+                <a class="featured-cover" data-featured-cover-link href="game-detail.html?game=lucky-color-combo" aria-label="View Lucky Color Combo details">
+                  <span class="featured-cover-glow" aria-hidden="true"></span>
+                  <img data-featured-cover src="assets/game-logos/innovation/lucky-color-combo.png" alt="Lucky Color Combo">
+                </a>
+
+                <div class="featured-panel">
+                  <p class="featured-badge"><span aria-hidden="true"></span> Featured Game</p>
+                  <h2 data-featured-title>Lucky Color Combo</h2>
+                  <p data-featured-description>
+                    Step into a vibrant carnival of colors, match winning combinations, collect Rainbow Dice, and spin the Multiplier Wheel for instant rewards.
+                  </p>
+                  <div class="featured-badges" data-featured-badges aria-label="Featured game highlights">
+                    <span>Rainbow Dice</span>
+                    <span>Multiplier Wheel</span>
+                    <span>Instant Play</span>
+                  </div>
+                  <div class="featured-actions">
+                    <a class="button button-primary featured-launch" data-featured-launch href="game-detail.html?game=lucky-color-combo">
+                      Launch Demo <span aria-hidden="true"></span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="featured-game-list" role="listbox" aria-label="Featured games">
+                  <button class="featured-game-card is-active" type="button" data-featured-game="lucky-color-combo" aria-pressed="true">
+                    <span class="featured-game-thumb" aria-hidden="true">
+                      <img src="assets/game-backgrounds/innovation/lucky-color-combo-bg.png" alt="">
+                      <span><img src="assets/game-logos/innovation/lucky-color-combo.png" alt=""></span>
+                    </span>
+                    <span class="featured-game-name">Lucky Color Combo</span>
+                    <span class="featured-game-arrow" aria-hidden="true"></span>
+                  </button>
+                  <button class="featured-game-card" type="button" data-featured-game="banana-craze" aria-pressed="false">
+                    <span class="featured-game-thumb" aria-hidden="true">
+                      <img src="assets/game-backgrounds/innovation/banana-craze-bg.png" alt="">
+                      <span><img src="assets/game-logos/innovation/banana-craze.png" alt=""></span>
+                    </span>
+                    <span class="featured-game-name">Banana Craze</span>
+                    <span class="featured-game-arrow" aria-hidden="true"></span>
+                  </button>
+                  <button class="featured-game-card" type="button" data-featured-game="fortune-ocean" aria-pressed="false">
+                    <span class="featured-game-thumb" aria-hidden="true">
+                      <img src="assets/game-backgrounds/innovation/fortune-ocean-bg.png" alt="">
+                      <span><img src="assets/game-logos/innovation/deep-sea-mystery.png" alt=""></span>
+                    </span>
+                    <span class="featured-game-name">Deep Sea Mystery</span>
+                    <span class="featured-game-arrow" aria-hidden="true"></span>
+                  </button>
+                </div>
               </div>
             </div>
           </article>
@@ -129,8 +139,7 @@
           </button>
 
           <div class="carousel-dots" role="tablist" aria-label="Hero slides">
-            <button class="carousel-dot is-active" type="button" data-carousel-dot aria-label="Show Banana Craze" aria-selected="true"></button>
-            <button class="carousel-dot" type="button" data-carousel-dot aria-label="Show Lucky Color Combo" aria-selected="false"></button>
+            <button class="carousel-dot is-active" type="button" data-carousel-dot aria-label="Show Lucky Color Combo" aria-selected="true"></button>
             <button class="carousel-dot" type="button" data-carousel-dot aria-label="Show partnership" aria-selected="false"></button>
           </div>
         </div>
@@ -583,7 +592,7 @@
     </div>
 
     <div class="floating-actions" aria-label="Quick actions">
-      <div class="chat-widget" data-chat-widget data-telegram-endpoint="">
+      <div class="chat-widget" data-chat-widget data-telegram-api-base="" data-telegram-endpoint="/api/telegram/messages" data-telegram-events-endpoint="/api/telegram/events">
         <section class="chat-window" data-chat-window aria-labelledby="chat-title" hidden>
           <header class="chat-header">
             <div>
@@ -600,7 +609,7 @@
           <p class="chat-status" data-chat-status role="status" aria-live="polite"></p>
           <form class="chat-form" data-chat-form>
             <input type="text" name="message" data-chat-input autocomplete="off" placeholder="Type your message" aria-label="Type your message" required>
-            <button type="submit" aria-label="Send message">
+            <button type="submit" data-chat-submit aria-label="Send message">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 11.5l16-7-5.8 15-3.2-6.2L4 11.5z"></path>
                 <path d="M11 13.3l4.7-4.7"></path>
@@ -617,10 +626,6 @@
         <span class="back-to-top-icon" aria-hidden="true"></span>
       </button>
     </div>
-    <script>
-      window.TELEGRAM_CHAT_WS_URL = 'ws://localhost:3000';
-    </script>
-    <script src="http://localhost:3000/widget.js"></script>
   </body>
 </html>
 

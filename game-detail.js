@@ -493,6 +493,7 @@ const DETAIL_SECTION_ICONS = {
   "bingo-flux": "assets/game-detail-icons/bingo-flux.png",
   "blazing-7s": "assets/game-detail-icons/blazing-7s.png",
   "classic-lucky-color": "assets/game-detail-icons/lucky-color.png",
+  "fortune-ocean": "assets/game-detail-icons/deep-sea-mystery.png",
   "ginto-match": "assets/game-detail-icons/ginto-match.png",
   "lucky-color": "assets/game-detail-icons/lucky-color.png",
   "lucky-color-combo": "assets/game-detail-icons/lucky-color-combo.png",
@@ -509,6 +510,51 @@ const playGameButton = document.querySelector("[data-play-game]");
 const defaultGameLaunchUrl = "https://pilot.gelotto-test.com/";
 const DEMO_VIDEO_TRIM_START = 0.3;
 const DEMO_VIDEO_END_PADDING = 0.3;
+const DETAIL_FEATURE_BADGES = [
+  { label: "Mobile Ready", type: "mobile" },
+  { label: "Localized", type: "globe" },
+  { label: "PHP Currency", type: "currency" },
+];
+
+function createSvgElement(tag, attributes) {
+  const element = document.createElementNS("http://www.w3.org/2000/svg", tag);
+
+  Object.entries(attributes).forEach(([name, value]) => {
+    element.setAttribute(name, value);
+  });
+
+  return element;
+}
+
+function createDetailStatIcon(type) {
+  const icon = document.createElement("span");
+  icon.className = `detail-stat-icon detail-stat-icon-${type}`;
+
+  if (type === "currency") {
+    icon.textContent = "\u20b1";
+    return icon;
+  }
+
+  const svg = createSvgElement("svg", {
+    viewBox: "0 0 24 24",
+    "aria-hidden": "true",
+  });
+
+  if (type === "mobile") {
+    svg.append(
+      createSvgElement("rect", { x: "7", y: "2.5", width: "10", height: "19", rx: "2.4" }),
+      createSvgElement("path", { d: "M10.5 18h3" }),
+    );
+  } else {
+    svg.append(
+      createSvgElement("circle", { cx: "12", cy: "12", r: "8.5" }),
+      createSvgElement("path", { d: "M3.5 12h17M12 3.5c2.2 2.4 3.2 5.3 3.2 8.5s-1 6.1-3.2 8.5M12 3.5C9.8 5.9 8.8 8.8 8.8 12s1 6.1 3.2 8.5" }),
+    );
+  }
+
+  icon.appendChild(svg);
+  return icon;
+}
 
 function appendParagraphs(container, paragraphs) {
   container.replaceChildren();
@@ -543,6 +589,21 @@ function renderStats(container, stats) {
     card.append(labelElement, valueElement);
     container.appendChild(card);
   });
+
+  const featureCard = document.createElement("article");
+  featureCard.className = "detail-feature-card";
+
+  DETAIL_FEATURE_BADGES.forEach((badge) => {
+    const item = document.createElement("span");
+    const labelElement = document.createElement("strong");
+
+    item.className = "detail-feature-pill";
+    labelElement.textContent = badge.label;
+    item.append(createDetailStatIcon(badge.type), labelElement);
+    featureCard.appendChild(item);
+  });
+
+  container.appendChild(featureCard);
 }
 
 function renderDemoPreview(game) {

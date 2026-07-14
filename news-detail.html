@@ -11,6 +11,7 @@
     <link rel="preload" as="image" href="assets/ge-logo.png">
     <link rel="stylesheet" href="styles.css">
     <script src="news-detail.js" defer></script>
+    <script src="script.js" defer></script>
   </head>
   <body class="game-detail-page news-detail-page">
     <header class="detail-topbar">
@@ -57,5 +58,37 @@
         </div>
       </section>
     </main>
+
+    <div class="floating-actions" aria-label="Quick actions">
+      <div class="chat-widget" data-chat-widget data-telegram-api-base="" data-telegram-endpoint="/api/telegram/messages" data-telegram-events-endpoint="/api/telegram/events">
+        <section class="chat-window" data-chat-window aria-labelledby="chat-title" hidden>
+          <header class="chat-header">
+            <div>
+              <p class="eyebrow">Chat Inquiry</p>
+              <h2 id="chat-title">Game Engine Team</h2>
+            </div>
+            <button type="button" class="chat-icon-button" data-chat-minimize aria-label="Minimize chat">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14"></path>
+              </svg>
+            </button>
+          </header>
+          <div class="chat-messages" data-chat-messages aria-live="polite"></div>
+          <p class="chat-status" data-chat-status role="status" aria-live="polite"></p>
+          <form class="chat-form" data-chat-form>
+            <input type="text" name="message" data-chat-input autocomplete="off" placeholder="Type your message" aria-label="Type your message" required>
+            <button type="submit" data-chat-submit aria-label="Send message">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 11.5l16-7-5.8 15-3.2-6.2L4 11.5z"></path>
+                <path d="M11 13.3l4.7-4.7"></path>
+              </svg>
+            </button>
+          </form>
+        </section>
+        <button class="floating-action chat-toggle" type="button" data-chat-toggle aria-expanded="false" aria-label="Open chat inquiry">
+          <span class="chat-toggle-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
   </body>
 </html>

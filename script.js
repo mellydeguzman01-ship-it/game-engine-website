@@ -1,3 +1,49 @@
+function ensureGlobalChatWidget() {
+  if (document.querySelector("[data-chat-widget]")) {
+    return;
+  }
+
+  let floatingActions = document.querySelector(".floating-actions");
+
+  if (!floatingActions) {
+    floatingActions = document.createElement("div");
+    floatingActions.className = "floating-actions";
+    document.body.appendChild(floatingActions);
+  }
+
+  floatingActions.insertAdjacentHTML("afterbegin", `
+    <div class="chat-widget" data-chat-widget data-telegram-api-base="" data-telegram-endpoint="/api/telegram/messages" data-telegram-events-endpoint="/api/telegram/events">
+      <div class="chat-window" data-chat-window hidden>
+        <div class="chat-header">
+          <div>
+            <p class="eyebrow">Chat Inquiry</p>
+            <strong>Partnership Support</strong>
+          </div>
+          <button class="chat-icon-button" type="button" data-chat-minimize aria-label="Minimize chat">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="chat-messages" data-chat-messages></div>
+        <form class="chat-form" data-chat-form>
+          <textarea name="message" data-chat-input rows="2" placeholder="Type your message" required></textarea>
+          <button type="submit" data-chat-submit aria-label="Send message">
+            <span class="chat-submit-icon" aria-hidden="true"></span>
+            <span class="chat-submit-spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+        <p class="chat-status" data-chat-status aria-live="polite"></p>
+      </div>
+      <button class="floating-action chat-toggle" type="button" data-chat-toggle aria-label="Open chat inquiry" aria-expanded="false">
+        <span class="chat-toggle-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  `);
+}
+
+ensureGlobalChatWidget();
+
 const header = document.querySelector("[data-header]");
 const navToggle = document.querySelector(".nav-toggle");
 const navPanel = document.querySelector("[data-nav-panel]");
@@ -7,6 +53,14 @@ const slides = Array.from(document.querySelectorAll("[data-slide]"));
 const dots = Array.from(document.querySelectorAll("[data-carousel-dot]"));
 const prevButton = document.querySelector("[data-carousel-prev]");
 const nextButton = document.querySelector("[data-carousel-next]");
+const featuredShowcase = document.querySelector("[data-featured-showcase]");
+const featuredCover = document.querySelector("[data-featured-cover]");
+const featuredCoverLink = document.querySelector("[data-featured-cover-link]");
+const featuredTitle = document.querySelector("[data-featured-title]");
+const featuredDescription = document.querySelector("[data-featured-description]");
+const featuredBadges = document.querySelector("[data-featured-badges]");
+const featuredLaunch = document.querySelector("[data-featured-launch]");
+const featuredGameButtons = Array.from(document.querySelectorAll("[data-featured-game]"));
 const revealItems = Array.from(document.querySelectorAll(".reveal"));
 const logoCarousels = Array.from(document.querySelectorAll("[data-logo-carousel]"));
 const expertiseCards = Array.from(document.querySelectorAll(".expertise-card"));
@@ -50,7 +104,14 @@ const chatForm = document.querySelector("[data-chat-form]");
 const chatInput = document.querySelector("[data-chat-input]");
 const chatMessages = document.querySelector("[data-chat-messages]");
 const chatStatus = document.querySelector("[data-chat-status]");
-const telegramChatEndpoint = chatWidget?.dataset.telegramEndpoint?.trim() || "";
+const chatSubmitButton = document.querySelector("[data-chat-submit]");
+const telegramApiBase = String(
+  window.GAME_ENGINE_TELEGRAM_API_BASE_URL ||
+  chatWidget?.dataset.telegramApiBase ||
+  "",
+).replace(/\/+$/, "");
+const telegramChatEndpoint = resolveTelegramEndpoint(chatWidget?.dataset.telegramEndpoint?.trim() || "/api/telegram/messages");
+const telegramEventsEndpoint = resolveTelegramEndpoint(chatWidget?.dataset.telegramEventsEndpoint?.trim() || "/api/telegram/events");
 const scrollSectionIds = ["home", "games", "company", "news", "contact"];
 const sections = scrollSectionIds
   .map((id) => document.getElementById(id))
@@ -67,7 +128,12 @@ let revealFrame;
 let chatHistory = [];
 let chatPollTimer;
 let chatSessionId;
-let chatLastReplyId = "";
+let chatEvents;
+let chatStatusTimer;
+let chatLastReplyCursor = 0;
+let isChatSubmitting = false;
+let chatDragState;
+let chatDragSuppressClick = false;
 let demoAccounts = {};
 let demoSessionKey = "";
 let pendingGameCard;
@@ -78,9 +144,47 @@ const demoSessionStorageKey = "game-engine-demo-session-v1";
 const initialDemoBalance = 1000000;
 const chatHistoryStorageKey = "game-engine-chat-history";
 const chatSessionStorageKey = "game-engine-chat-session";
+const chatPositionStorageKey = "game-engine-chat-position";
 const chatWelcomeMessage = "Hi, welcome to Game Engine. Send us a message and our partnership team will reply here once live chat is connected.";
 
+const featuredGames = {
+  "lucky-color-combo": {
+    title: "Lucky Color Combo",
+    image: "assets/game-logos/innovation/lucky-color-combo.png",
+    background: "assets/game-backgrounds/innovation/lucky-color-combo-bg.png",
+    description: "Step into a vibrant carnival of colors, match winning combinations, collect Rainbow Dice, and spin the Multiplier Wheel for instant rewards.",
+    badges: ["Rainbow Dice", "Multiplier Wheel", "Instant Play"],
+    detailUrl: "game-detail.html?game=lucky-color-combo",
+  },
+  "banana-craze": {
+    title: "Banana Craze",
+    image: "assets/game-logos/innovation/banana-craze.png",
+    background: "assets/game-backgrounds/innovation/banana-craze-bg.png",
+    description: "Enter a mysterious Mayan jungle, reveal hidden values, trigger free spins, and chase massive rewards through energetic instant-win play.",
+    badges: ["Bonus Round", "Free Spins", "10000X Max"],
+    detailUrl: "game-detail.html?game=banana-craze",
+  },
+  "fortune-ocean": {
+    title: "Deep Sea Mystery",
+    image: "assets/game-logos/innovation/deep-sea-mystery.png",
+    background: "assets/game-backgrounds/innovation/fortune-ocean-bg.png",
+    description: "Dive into an underwater treasure hunt with number matching, pearl collection, super bonus moments, and progressive jackpot opportunities.",
+    badges: ["Pearl Bonus", "Jackpot Hunt", "Ocean Rewards"],
+    detailUrl: "game-detail.html?game=fortune-ocean",
+  },
+};
+
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function resolveTelegramEndpoint(endpoint) {
+  const value = String(endpoint || "").trim();
+
+  if (!telegramApiBase || /^https?:\/\//i.test(value)) {
+    return value;
+  }
+
+  return `${telegramApiBase}${value.startsWith("/") ? value : `/${value}`}`;
+}
 
 function setHeaderState() {
   if (!header) {
@@ -187,6 +291,107 @@ function startAutoplay() {
 function restartAutoplay() {
   window.clearInterval(autoplayTimer);
   startAutoplay();
+}
+
+function setFeaturedGame(slug) {
+  const game = featuredGames[slug] || featuredGames["lucky-color-combo"];
+
+  if (!featuredShowcase || !game) {
+    return;
+  }
+
+  featuredShowcase.classList.add("is-changing");
+  featuredShowcase.style.setProperty("--featured-cover-bg", `url("${game.background}")`);
+
+  if (featuredCover) {
+    featuredCover.src = game.image;
+    featuredCover.alt = game.title;
+  }
+
+  if (featuredCoverLink) {
+    featuredCoverLink.href = game.detailUrl;
+    featuredCoverLink.setAttribute("aria-label", `View ${game.title} details`);
+  }
+
+  if (featuredTitle) {
+    featuredTitle.textContent = game.title;
+  }
+
+  if (featuredDescription) {
+    featuredDescription.textContent = game.description;
+  }
+
+  if (featuredBadges) {
+    const badgeItems = game.badges.map((badge) => {
+      const item = document.createElement("span");
+      item.textContent = badge;
+      return item;
+    });
+
+    featuredBadges.replaceChildren(...badgeItems);
+  }
+
+  if (featuredLaunch) {
+    featuredLaunch.href = game.detailUrl;
+    featuredLaunch.setAttribute("aria-label", `Open ${game.title} game details`);
+  }
+
+  featuredGameButtons.forEach((button) => {
+    const isActive = button.dataset.featuredGame === slug;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+
+  window.setTimeout(() => {
+    featuredShowcase.classList.remove("is-changing");
+  }, prefersReducedMotion ? 0 : 180);
+}
+
+function setupFeaturedShowcase() {
+  if (!featuredShowcase || !featuredGameButtons.length) {
+    return;
+  }
+
+  featuredGameButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setFeaturedGame(button.dataset.featuredGame);
+    });
+  });
+
+  setFeaturedGame("lucky-color-combo");
+}
+
+function setupGameCardHoverCtas() {
+  gameCards.forEach((card) => {
+    let imageFrame = card.querySelector(".game-card-image-frame");
+
+    if (!imageFrame) {
+      const image = card.querySelector("img");
+
+      if (!image) {
+        return;
+      }
+
+      imageFrame = document.createElement("span");
+      imageFrame.className = "game-card-image-frame";
+      image.parentNode.insertBefore(imageFrame, image);
+      imageFrame.appendChild(image);
+    }
+
+    if (imageFrame.querySelector(".game-card-hover-cta")) {
+      return;
+    }
+
+    const cta = document.createElement("span");
+    const label = document.createElement("span");
+    const arrow = document.createElement("i");
+
+    cta.className = "game-card-hover-cta";
+    cta.setAttribute("aria-hidden", "true");
+    label.textContent = "CLICK TO SEE GAME DETAILS";
+    cta.append(label, arrow);
+    imageFrame.appendChild(cta);
+  });
 }
 
 function setActiveNav() {
@@ -567,6 +772,7 @@ function setupLogoCarousels() {
 function handleResize() {
   setActiveNav();
   updateFloatingChatButton();
+  reclampChatWidgetPosition();
   scheduleRevealCheck();
 
   if (logoCarousels.length) {
@@ -722,16 +928,11 @@ function updateBackToTopButton() {
 }
 
 function updateFloatingChatButton() {
-  if (!chatWidget || !contactSection) {
+  if (!chatWidget) {
     return;
   }
 
-  const rect = contactSection.getBoundingClientRect();
-  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-  const headerOffset = header?.offsetHeight ?? 0;
-  const isContactVisible = rect.top <= viewportHeight * 0.72 && rect.bottom >= headerOffset + 110;
-
-  chatWidget.classList.toggle("is-contact-visible", isContactVisible);
+  chatWidget.classList.add("is-contact-visible");
 }
 
 function createChatId() {
@@ -759,6 +960,22 @@ function safeStorageRemove(key) {
     window.localStorage.removeItem(key);
   } catch (error) {
     // Demo auth falls back to the current in-memory state if storage is unavailable.
+  }
+}
+
+function safeSessionStorageGet(key) {
+  try {
+    return window.sessionStorage.getItem(key);
+  } catch (error) {
+    return null;
+  }
+}
+
+function safeSessionStorageSet(key, value) {
+  try {
+    window.sessionStorage.setItem(key, value);
+  } catch (error) {
+    // Dragged chat position resets gracefully if session storage is unavailable.
   }
 }
 
@@ -1183,12 +1400,169 @@ function renderChatHistory() {
   chatHistory.forEach(renderChatMessage);
 }
 
-function setChatStatus(message) {
+function setChatStatus(message, type = "") {
   if (!chatStatus) {
     return;
   }
 
+  window.clearTimeout(chatStatusTimer);
   chatStatus.textContent = message;
+  chatStatus.classList.toggle("is-success", type === "success");
+  chatStatus.classList.toggle("is-error", type === "error");
+
+  if (message && type === "success") {
+    chatStatusTimer = window.setTimeout(() => {
+      setChatStatus("");
+    }, 3600);
+  }
+}
+
+function setChatSending(isSending) {
+  isChatSubmitting = isSending;
+  chatForm?.classList.toggle("is-sending", isSending);
+
+  if (chatInput) {
+    chatInput.disabled = isSending;
+  }
+
+  if (chatSubmitButton) {
+    chatSubmitButton.disabled = isSending;
+  }
+}
+
+function handleIncomingChatMessage(message) {
+  const replyId = String(message.id || createChatId());
+  const replyText = message.text || message.message || "";
+
+  if (!replyText.trim()) {
+    return;
+  }
+
+  appendChatMessage(message.role || "agent", replyText, true, replyId);
+
+  const cursor = Number(message.cursor ?? message.sequence ?? 0);
+  if (Number.isFinite(cursor) && cursor > chatLastReplyCursor) {
+    chatLastReplyCursor = cursor;
+  }
+}
+
+function getClampedChatPosition(left, top) {
+  if (!chatWidget) {
+    return { left, top };
+  }
+
+  const rect = chatWidget.getBoundingClientRect();
+  const margin = 12;
+  const maxLeft = Math.max(margin, window.innerWidth - rect.width - margin);
+  const maxTop = Math.max(margin, window.innerHeight - rect.height - margin);
+
+  return {
+    left: Math.min(Math.max(margin, left), maxLeft),
+    top: Math.min(Math.max(margin, top), maxTop),
+  };
+}
+
+function applyChatWidgetPosition(position, shouldSave = false) {
+  if (!chatWidget || !position) {
+    return;
+  }
+
+  const nextPosition = getClampedChatPosition(Number(position.left) || 0, Number(position.top) || 0);
+  chatWidget.classList.add("is-drag-positioned");
+  chatWidget.style.left = `${nextPosition.left}px`;
+  chatWidget.style.top = `${nextPosition.top}px`;
+  chatWidget.style.right = "auto";
+  chatWidget.style.bottom = "auto";
+
+  if (shouldSave) {
+    safeSessionStorageSet(chatPositionStorageKey, JSON.stringify(nextPosition));
+  }
+}
+
+function restoreChatWidgetPosition() {
+  const storedPosition = safeSessionStorageGet(chatPositionStorageKey);
+
+  if (!storedPosition) {
+    return;
+  }
+
+  try {
+    const parsedPosition = JSON.parse(storedPosition);
+
+    if (Number.isFinite(parsedPosition?.left) && Number.isFinite(parsedPosition?.top)) {
+      applyChatWidgetPosition(parsedPosition);
+    }
+  } catch (error) {
+    // Invalid session data should never block the chat from opening.
+  }
+}
+
+function reclampChatWidgetPosition() {
+  if (!chatWidget?.classList.contains("is-drag-positioned")) {
+    return;
+  }
+
+  const rect = chatWidget.getBoundingClientRect();
+  applyChatWidgetPosition({ left: rect.left, top: rect.top }, true);
+}
+
+function handleChatDragStart(event) {
+  if (!chatWidget || !chatToggle || event.button !== undefined && event.button !== 0) {
+    return;
+  }
+
+  const rect = chatWidget.getBoundingClientRect();
+  chatDragState = {
+    pointerId: event.pointerId,
+    startX: event.clientX,
+    startY: event.clientY,
+    left: rect.left,
+    top: rect.top,
+    hasMoved: false,
+  };
+
+  chatToggle.setPointerCapture?.(event.pointerId);
+}
+
+function handleChatDragMove(event) {
+  if (!chatDragState || chatDragState.pointerId !== event.pointerId) {
+    return;
+  }
+
+  const deltaX = event.clientX - chatDragState.startX;
+  const deltaY = event.clientY - chatDragState.startY;
+
+  if (!chatDragState.hasMoved && Math.hypot(deltaX, deltaY) < 6) {
+    return;
+  }
+
+  event.preventDefault();
+  chatDragState.hasMoved = true;
+  chatWidget?.classList.add("is-dragging");
+  applyChatWidgetPosition({
+    left: chatDragState.left + deltaX,
+    top: chatDragState.top + deltaY,
+  });
+}
+
+function handleChatDragEnd(event) {
+  if (!chatDragState || chatDragState.pointerId !== event.pointerId) {
+    return;
+  }
+
+  chatToggle?.releasePointerCapture?.(event.pointerId);
+  chatWidget?.classList.remove("is-dragging");
+
+  if (chatDragState.hasMoved && chatWidget) {
+    const rect = chatWidget.getBoundingClientRect();
+    applyChatWidgetPosition({ left: rect.left, top: rect.top }, true);
+    chatDragSuppressClick = true;
+    window.setTimeout(() => {
+      chatDragSuppressClick = false;
+    }, 80);
+  }
+
+  chatDragState = undefined;
 }
 
 function setChatOpen(isOpen) {
@@ -1201,7 +1575,9 @@ function setChatOpen(isOpen) {
   chatToggle.setAttribute("aria-label", isOpen ? "Close chat inquiry" : "Open chat inquiry");
 
   if (isOpen) {
+    window.setTimeout(reclampChatWidgetPosition, 0);
     window.setTimeout(() => chatInput?.focus(), 80);
+    startChatEvents();
     startChatPolling();
   }
 }
@@ -1214,8 +1590,8 @@ async function syncChatReplies() {
   const replyUrl = new URL(telegramChatEndpoint, window.location.href);
   replyUrl.searchParams.set("sessionId", chatSessionId);
 
-  if (chatLastReplyId) {
-    replyUrl.searchParams.set("after", chatLastReplyId);
+  if (chatLastReplyCursor) {
+    replyUrl.searchParams.set("after", String(chatLastReplyCursor));
   }
 
   const response = await fetch(replyUrl.toString(), {
@@ -1231,12 +1607,35 @@ async function syncChatReplies() {
   const data = await response.json();
   const replies = Array.isArray(data.messages) ? data.messages : [];
 
-  replies.forEach((reply) => {
-    const replyId = String(reply.id || createChatId());
-    const replyText = reply.text || reply.message || "";
+  replies.forEach(handleIncomingChatMessage);
 
-    appendChatMessage("agent", replyText, true, replyId);
-    chatLastReplyId = replyId;
+  const cursor = Number(data.cursor ?? 0);
+  if (Number.isFinite(cursor) && cursor > chatLastReplyCursor) {
+    chatLastReplyCursor = cursor;
+  }
+}
+
+function startChatEvents() {
+  if (!telegramEventsEndpoint || !chatSessionId || chatEvents || !("EventSource" in window)) {
+    return;
+  }
+
+  const eventsUrl = new URL(telegramEventsEndpoint, window.location.href);
+  eventsUrl.searchParams.set("sessionId", chatSessionId);
+
+  chatEvents = new EventSource(eventsUrl.toString());
+
+  chatEvents.addEventListener("message", (event) => {
+    try {
+      handleIncomingChatMessage(JSON.parse(event.data));
+    } catch (error) {
+      // Ignore malformed server-sent events and keep the chat connected.
+    }
+  });
+
+  chatEvents.addEventListener("error", () => {
+    chatEvents?.close();
+    chatEvents = undefined;
   });
 }
 
@@ -1248,13 +1647,13 @@ function startChatPolling() {
   syncChatReplies().catch(() => {});
   chatPollTimer = window.setInterval(() => {
     syncChatReplies().catch(() => {});
-  }, 7000);
+  }, 3000);
 }
 
 async function handleChatSubmit(event) {
   event.preventDefault();
 
-  if (!chatInput) {
+  if (!chatInput || isChatSubmitting) {
     return;
   }
 
@@ -1264,15 +1663,8 @@ async function handleChatSubmit(event) {
     return;
   }
 
-  appendChatMessage("user", message);
-  chatInput.value = "";
-
-  if (!telegramChatEndpoint) {
-    setChatStatus("Telegram chat inquiry is ready for UI testing, but the secure Telegram endpoint is not connected yet.");
-    return;
-  }
-
   setChatStatus("");
+  setChatSending(true);
 
   try {
     const response = await fetch(telegramChatEndpoint, {
@@ -1287,13 +1679,22 @@ async function handleChatSubmit(event) {
     });
 
     if (!response.ok) {
-      throw new Error("Telegram endpoint returned an error.");
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || "Telegram could not confirm delivery.");
     }
 
-    setChatStatus("");
+    const data = await response.json();
+    chatSessionId = data.sessionId || chatSessionId;
+    safeStorageSet(chatSessionStorageKey, chatSessionId);
+    appendChatMessage("user", message, true, data.visitorMessageId || createChatId());
+    chatInput.value = "";
+    setChatStatus("Message delivered to Telegram.", "success");
     await syncChatReplies();
   } catch (error) {
-    setChatStatus("We could not reach Telegram right now. Please try again in a moment.");
+    setChatStatus(error.message || "We could not deliver your message to Telegram. Please try again.", "error");
+  } finally {
+    setChatSending(false);
+    window.setTimeout(() => chatInput?.focus(), 40);
   }
 }
 
@@ -1326,6 +1727,13 @@ function setupChatWidget() {
     return;
   }
 
+  if (chatWidget.dataset.initialized === "true") {
+    return;
+  }
+
+  chatWidget.dataset.initialized = "true";
+  restoreChatWidgetPosition();
+
   chatSessionId = getChatSessionId();
   chatHistory = loadChatHistory();
 
@@ -1340,7 +1748,18 @@ function setupChatWidget() {
     renderChatHistory();
   }
 
-  chatToggle.addEventListener("click", () => {
+  chatToggle.addEventListener("pointerdown", handleChatDragStart);
+  chatToggle.addEventListener("pointermove", handleChatDragMove);
+  chatToggle.addEventListener("pointerup", handleChatDragEnd);
+  chatToggle.addEventListener("pointercancel", handleChatDragEnd);
+
+  chatToggle.addEventListener("click", (event) => {
+    if (chatDragSuppressClick) {
+      event.preventDefault();
+      chatDragSuppressClick = false;
+      return;
+    }
+
     setChatOpen(chatWindow.hidden);
   });
 
@@ -1559,6 +1978,7 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach(revealItem);
 }
 
+setupFeaturedShowcase();
 setupNewsFilters();
 window.addEventListener("load", scheduleRevealCheck);
 window.addEventListener("hashchange", scheduleRevealCheck);
@@ -1592,6 +2012,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 setupDemoAuth();
+setupGameCardHoverCtas();
 setupGameLauncher();
 setupContactForm();
 setupFloatingActions();

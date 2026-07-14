@@ -1,5 +1,8 @@
 node_modules/
 telegram-chat-widget/
+.env
+.env.local
+!.env.example
 *.zip
 .DS_Store
 *.log
