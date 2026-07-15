@@ -75,7 +75,7 @@
     </main>
 
     <div class="floating-actions" aria-label="Quick actions">
-      <div class="chat-widget" data-chat-widget data-telegram-api-base="" data-telegram-endpoint="/api/telegram/messages" data-telegram-events-endpoint="/api/telegram/events">
+      <div class="chat-widget" data-chat-widget data-telegram-api-base="https://telegram-chat-widget-t1m3.onrender.com" data-telegram-endpoint="/api/telegram/messages" data-telegram-events-endpoint="/api/telegram/events">
         <section class="chat-window" data-chat-window aria-labelledby="chat-title" hidden>
           <header class="chat-header">
             <div>
@@ -90,8 +90,9 @@
           </header>
           <div class="chat-messages" data-chat-messages aria-live="polite"></div>
           <p class="chat-status" data-chat-status role="status" aria-live="polite"></p>
+          <p class="chat-character-counter" data-chat-counter>0 / 3,000 characters</p>
           <form class="chat-form" data-chat-form>
-            <input type="text" name="message" data-chat-input autocomplete="off" placeholder="Type your message" aria-label="Type your message" required>
+            <input type="text" name="message" data-chat-input autocomplete="off" placeholder="Type your message" aria-label="Type your message" maxlength="3000" required>
             <button type="submit" data-chat-submit aria-label="Send message">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 11.5l16-7-5.8 15-3.2-6.2L4 11.5z"></path>

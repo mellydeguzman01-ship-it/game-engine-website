@@ -5,7 +5,7 @@ const { URL } = require("url");
 
 const rootDir = __dirname;
 const sessionIdPattern = /^[a-zA-Z0-9_-]{8,80}$/;
-const maxMessageLength = 3900;
+const maxMessageLength = 3000;
 const sessions = new Map();
 const clientsBySession = new Map();
 const sessionsByTelegramMessage = new Map();
@@ -307,10 +307,15 @@ async function handlePostMessage(request, response) {
   try {
     const body = await readJsonBody(request);
     const sessionId = normalizeSessionId(body.sessionId);
-    const text = String(body.message || body.text || "").trim().slice(0, maxMessageLength);
+    const text = String(body.message || body.text || "").trim();
 
     if (!text) {
       sendJson(response, 400, { ok: false, message: "Message is required." });
+      return;
+    }
+
+    if (text.length > maxMessageLength) {
+      sendJson(response, 400, { ok: false, message: `Please keep your message within ${maxMessageLength.toLocaleString()} characters.` });
       return;
     }
 

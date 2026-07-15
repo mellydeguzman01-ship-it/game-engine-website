@@ -10,12 +10,13 @@
     <title>Game Engine | Premium iGaming Content Provider</title>
     <link rel="preload" as="image" href="assets/ge-logo.png">
     <link rel="preload" as="image" href="assets/featured-showcase-bg.png">
-    <link rel="preload" as="image" href="assets/home-partnership-banner.png">
+    <link rel="preload" as="image" href="assets/home-partnership-banner-desktop-final.png">
+    <link rel="preload" as="image" href="assets/game-section-background.png">
     <link rel="preload" as="image" href="assets/game-logos/innovation/lucky-color-combo.png">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
   </head>
-  <body>
+  <body class="home-page">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header" data-header>
@@ -39,7 +40,9 @@
             <li><a class="nav-link" href="#contact">Contact</a></li>
           </ul>
           <div class="auth-shell" data-auth-shell>
-            <button class="button button-primary nav-cta" type="button" data-auth-open>Sign In</button>
+            <div class="auth-actions" data-auth-actions>
+              <button class="button button-primary nav-cta" type="button" data-auth-open data-auth-mode="sign-in">Sign In</button>
+            </div>
             <div class="account-nav account-inline" data-account-nav hidden>
               <span class="account-username" data-account-username>Player</span>
               <span class="account-divider" aria-hidden="true">|</span>
@@ -62,8 +65,9 @@
 
               <div class="featured-showcase-layout">
                 <a class="featured-cover" data-featured-cover-link href="game-detail.html?game=lucky-color-combo" aria-label="View Lucky Color Combo details">
+                  <img class="featured-cover-art" data-featured-cover-art src="assets/game-backgrounds/innovation/lucky-color-combo-bg.png" alt="">
                   <span class="featured-cover-glow" aria-hidden="true"></span>
-                  <img data-featured-cover src="assets/game-logos/innovation/lucky-color-combo.png" alt="Lucky Color Combo">
+                  <img class="featured-cover-logo" data-featured-cover src="assets/game-logos/innovation/lucky-color-combo.png" alt="Lucky Color Combo">
                 </a>
 
                 <div class="featured-panel">
@@ -115,7 +119,7 @@
           </article>
 
           <article class="hero-slide hero-slide-partner" data-slide aria-hidden="true">
-            <img class="hero-media hero-media-partner hero-media-desktop" src="assets/home-partnership-banner.png" alt="Global partnership network artwork for Game Engine">
+            <img class="hero-media hero-media-partner hero-media-desktop" src="assets/home-partnership-banner-desktop-final.png" alt="Global partnership network artwork for Game Engine">
             <img class="hero-media hero-media-partner hero-media-mobile" src="assets/home-partnership-mobile.png" alt="Global partnership network mobile artwork for Game Engine">
             <div class="hero-content">
               <p class="eyebrow">Global partnership network</p>
@@ -145,12 +149,12 @@
         </div>
       </section>
 
-      <section class="games-showcase" id="games" aria-label="Game Engine game catalog">
-        <div class="games-background" aria-hidden="true">
-          <img src="assets/game-section-background.png" alt="">
-          <img src="assets/game-section-background.png" alt="">
-        </div>
+      <div class="homepage-motion-background" aria-hidden="true">
+        <img src="assets/game-section-background.png" alt="">
+        <img src="assets/game-section-background.png" alt="">
+      </div>
 
+      <section class="games-showcase" id="games" aria-label="Game Engine game catalog">
         <section class="section game-section" id="innovation-games" aria-label="Innovation Games">
           <div class="section-inner">
             <div class="game-section-title reveal">
@@ -607,8 +611,9 @@
           </header>
           <div class="chat-messages" data-chat-messages aria-live="polite"></div>
           <p class="chat-status" data-chat-status role="status" aria-live="polite"></p>
+          <p class="chat-character-counter" data-chat-counter>0 / 3,000 characters</p>
           <form class="chat-form" data-chat-form>
-            <input type="text" name="message" data-chat-input autocomplete="off" placeholder="Type your message" aria-label="Type your message" required>
+            <input type="text" name="message" data-chat-input autocomplete="off" placeholder="Type your message" aria-label="Type your message" maxlength="3000" required>
             <button type="submit" data-chat-submit aria-label="Send message">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 11.5l16-7-5.8 15-3.2-6.2L4 11.5z"></path>
