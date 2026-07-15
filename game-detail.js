@@ -27,6 +27,42 @@ const GAME_DETAILS = {
       "Match 3 identical symbols.",
       "Win the prize associated with the matching symbols.",
     ],
+    overviewTable: [
+      { label: "Game Type", value: "Match-3 Scratch Card" },
+      { label: "Theme", value: "Filipino Street Food" },
+      { label: "Mechanic", value: "Reveal 9 symbols, match 3 to win" },
+    ],
+    featuresTable: [
+      { feature: "Match-3 Mechanic", detail: "Reveal 9 symbols, match 3 identical to win prizes" },
+      { feature: "Filipino Theme", detail: "Vibrant street food visuals with instant-win excitement" },
+      { feature: "Instant Rewards", detail: "Prizes credited automatically upon winning match" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals all 9 positions" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal all 9 hidden positions" },
+      { step: 3, action: "System auto-checks for 3 matching symbols" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "What is Turbo mode?", answer: "Turbo skips scratch animation for instant results." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Confirm" },
+      { step: 2, action: "Scratch all 9 symbol positions" },
+      { step: 3, action: "Match 3 identical symbols to win" },
+    ],
   },
   "banana-craze": {
     type: "innovation",
@@ -56,6 +92,44 @@ const GAME_DETAILS = {
       "Reveal multiplier symbols to increase your winnings.",
       "Land 3 Scatter symbols to trigger the Free 10 Bonus Round.",
       "Complete the bonus rounds for additional chances to win.",
+    ],
+    overviewTable: [
+      { label: "Game Type", value: "Money-Match Scratch Card" },
+      { label: "Theme", value: "Mayan Jungle Treasure" },
+      { label: "Mechanic", value: "Match cash values, collect multipliers & bonuses" },
+    ],
+    featuresTable: [
+      { feature: "Money Match", detail: "Match identical cash values to win instant prizes" },
+      { feature: "Multipliers", detail: "Reveal multiplier symbols to boost winnings" },
+      { feature: "Free 10 Bonus Round", detail: "Triggered when 3 Scatter symbols appear" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals all play areas" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal all symbols and cash values" },
+      { step: 3, action: "System checks matches, multipliers, and bonus triggers" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "What triggers the Bonus Round?", answer: "Landing 3 Scatter symbols triggers Free 10 Bonus Round." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Confirm" },
+      { step: 2, action: "Scratch all play areas to reveal symbols and cash values" },
+      { step: 3, action: "Match identical cash values to win" },
+      { step: 4, action: "Reveal multipliers to boost winnings" },
+      { step: 5, action: "Land 3 Scatters to trigger Free 10 Bonus Round" },
     ],
   },
   "ginto-match": {
@@ -87,6 +161,43 @@ const GAME_DETAILS = {
       "Multiple matching numbers can result in cumulative rewards.",
       "Reveal all play areas to maximize your winning opportunities.",
     ],
+    overviewTable: [
+      { label: "Game Type", value: "Number-Match Scratch Card" },
+      { label: "Theme", value: "Golden Vault Wealth" },
+      { label: "Mechanic", value: "Match Lucky Numbers with Winning Numbers" },
+    ],
+    featuresTable: [
+      { feature: "Number Matching", detail: "Match Lucky Numbers to Winning Numbers for instant prizes" },
+      { feature: "Cumulative Rewards", detail: "Multiple matches stack for bigger payouts" },
+      { feature: "Golden Vault Theme", detail: "Luxurious gold-themed visuals with elegant design" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals all numbers" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal Winning Numbers and Lucky Numbers" },
+      { step: 3, action: "System auto-checks for matching numbers" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "What if I match multiple numbers?", answer: "Each match adds to your total prize — cumulative rewards apply." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Confirm" },
+      { step: 2, action: "Reveal Winning Numbers" },
+      { step: 3, action: "Scratch Lucky Numbers area" },
+      { step: 4, action: "Match any Lucky Number to a Winning Number to win" },
+    ],
   },
   "lucky-color": {
     type: "innovation",
@@ -116,6 +227,43 @@ const GAME_DETAILS = {
       "Reveal multiplier symbols to increase your rewards.",
       "Multiple play zones provide multiple chances to win in a single game.",
       "Complete all zones to maximize your winning opportunities.",
+    ],
+    overviewTable: [
+      { label: "Game Type", value: "Color-Match Scratch Card" },
+      { label: "Theme", value: "Carnival & Amusement Park" },
+      { label: "Mechanic", value: "Match colors across multiple play zones" },
+    ],
+    featuresTable: [
+      { feature: "Color Matching", detail: "Match color combinations across multiple pay zones" },
+      { feature: "Multipliers", detail: "Reveal multiplier symbols to increase rewards" },
+      { feature: "Multiple Play Zones", detail: "Several chances to win in a single game round" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals all play zones" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or tap each play zone" },
+      { step: 2, action: "Reveal hidden colors in all zones" },
+      { step: 3, action: "System auto-checks color combinations and multipliers" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "How many play zones are there?", answer: "Multiple zones — each offers a chance to win." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Confirm" },
+      { step: 2, action: "Tap each play zone to reveal hidden colors" },
+      { step: 3, action: "Match required color combinations to win" },
+      { step: 4, action: "Reveal multipliers to increase rewards" },
     ],
   },
   "blazing-7s": {
@@ -147,6 +295,43 @@ const GAME_DETAILS = {
       "Multiple winning lines can be achieved in a single game.",
       "Reveal all positions to maximize your chances of winning.",
     ],
+    overviewTable: [
+      { label: "Game Type", value: "3x3 Line-Match Scratch Card" },
+      { label: "Theme", value: "Flaming Dragon" },
+      { label: "Mechanic", value: "Match three 7s on any line (horizontal, vertical, diagonal)" },
+    ],
+    featuresTable: [
+      { feature: "Line Match", detail: "Win by matching 3 sevens on horizontal, vertical, or diagonal lines" },
+      { feature: "Multiple Wins", detail: "Several winning lines possible in a single game" },
+      { feature: "Flaming Dragon Theme", detail: "Fiery visuals with intense, high-energy design" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals all 9 grid positions" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal all 9 positions on the 3x3 grid" },
+      { step: 3, action: "System checks all lines for matching 7s" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "Can I win on multiple lines?", answer: "Yes — multiple winning lines in one game stack your prizes." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Confirm" },
+      { step: 2, action: "Scratch all 9 positions on the 3x3 grid" },
+      { step: 3, action: "Match three 7 symbols on any line to win" },
+      { step: 4, action: "Multiple winning lines stack prizes" },
+    ],
   },
   "bingo-flux": {
     type: "innovation",
@@ -176,6 +361,43 @@ const GAME_DETAILS = {
       "Form winning lines or patterns to earn prizes.",
       "Multiple winning patterns may be completed in a single game.",
       "Complete more patterns for additional reward opportunities.",
+    ],
+    overviewTable: [
+      { label: "Game Type", value: "Instant-Win Bingo" },
+      { label: "Theme", value: "Futuristic / Neon" },
+      { label: "Mechanic", value: "Reveal numbers, complete bingo patterns to win" },
+    ],
+    featuresTable: [
+      { feature: "Instant Bingo", detail: "Reveal numbers and complete patterns for instant wins" },
+      { feature: "Multiple Patterns", detail: "Several winning patterns possible per game" },
+      { feature: "Futuristic Design", detail: "Modern neon-themed bingo experience" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals the bingo card" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal bingo numbers on your card" },
+      { step: 3, action: "System checks for completed patterns" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "How many patterns can I complete?", answer: "Multiple patterns can be completed in a single game." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Confirm" },
+      { step: 2, action: "Reveal bingo numbers on your game card" },
+      { step: 3, action: "Match drawn numbers to complete bingo patterns" },
+      { step: 4, action: "Form winning lines or patterns to earn prizes" },
     ],
   },
   "fortune-ocean": {
@@ -207,6 +429,43 @@ const GAME_DETAILS = {
       "Collect 3 Rabbit symbols to unlock the Super Bonus Game.",
       "Qualify for the Progressive Jackpot for a chance to win larger rewards.",
       "Reveal all game areas to maximize your winning opportunities.",
+    ],
+    overviewTable: [
+      { label: "Game Type", value: "Number-Match with Progressive Jackpot" },
+      { label: "Theme", value: "Underwater Ocean Treasure" },
+      { label: "Mechanic", value: "Match numbers, collect symbols for bonuses & jackpot" },
+    ],
+    featuresTable: [
+      { feature: "Number Matching", detail: "Match Lucky Numbers to Winning Numbers for prizes" },
+      { feature: "Bonus Games", detail: "Collect 4 Pearl symbols for Bonus, 3 Rabbits for Super Bonus" },
+      { feature: "Progressive Jackpot", detail: "Qualify for the growing Progressive Jackpot prize" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals all game areas" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal Winning Numbers and Lucky Numbers" },
+      { step: 3, action: "System checks matches, bonus triggers, and jackpot" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "What is the Progressive Jackpot?", answer: "A growing prize pool you can qualify for during gameplay." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Confirm" },
+      { step: 2, action: "Reveal Winning Numbers and Lucky Numbers" },
+      { step: 3, action: "Match Lucky Numbers to Winning Numbers to win" },
+      { step: 4, action: "Collect 4 Pearls for Bonus Game, 3 Rabbits for Super Bonus" },
     ],
   },
   "lucky-color-combo": {
@@ -241,6 +500,43 @@ const GAME_DETAILS = {
       "Earn Multiplier Wheel spins based on the number of Rainbow Dice collected.",
       "Collect 5 Rainbow Dice to instantly win 10,000x your bet amount.",
     ],
+    overviewTable: [
+      { label: "Game Type", value: "Color-Match with Multiplier Wheel" },
+      { label: "Theme", value: "Carnival" },
+      { label: "Mechanic", value: "Match colors, collect Rainbow Dice for Multiplier Wheel spins" },
+    ],
+    featuresTable: [
+      { feature: "Color Matching", detail: "Match color combinations to win prizes" },
+      { feature: "Rainbow Dice", detail: "Collect dice to earn Multiplier Wheel spins" },
+      { feature: "10,000x Jackpot", detail: "Collect 5 Rainbow Dice to instantly win 10,000x" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals the game board" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal game board and match color combinations" },
+      { step: 3, action: "Collect Rainbow Dice and spin the Multiplier Wheel" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "How do Rainbow Dice work?", answer: "3 Dice = 1 Spin, 4 Dice = 2 Spins, 5 Dice = 10,000x win." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Confirm" },
+      { step: 2, action: "Reveal game board and match color combinations" },
+      { step: 3, action: "Collect Rainbow Dice symbols" },
+      { step: 4, action: "Earn Multiplier Wheel spins based on dice collected" },
+    ],
   },
   "grand-sabado": {
     type: "live",
@@ -263,6 +559,41 @@ const GAME_DETAILS = {
       "Confirm your participation before the draw closes.",
       "Watch the live draw results.",
       "Match the winning result to claim eligible rewards.",
+    ],
+    overviewTable: [
+      { label: "Game Type", value: "Live Number Draw" },
+      { label: "Theme", value: "Grand Saturday Draw" },
+      { label: "Mechanic", value: "Select numbers, watch live draw, match to win" },
+    ],
+    featuresTable: [
+      { feature: "Live Draw", detail: "Real-time draw presentation with Grand Sabado identity" },
+      { feature: "Simple Numbers", detail: "Number-focused gameplay for broad player familiarity" },
+      { feature: "Operator-Ready", detail: "Compact branding for lobby and detail placement" },
+    ],
+    buttonsFields: [
+      { name: "Number Entry", function: "Choose your preferred numbers" },
+      { name: "Confirm", function: "Submit entry before draw closes" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Choose your preferred number entry" },
+      { step: 2, action: "Confirm participation before draw closes" },
+      { step: 3, action: "Watch live draw results revealed in real time" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "When are draws held?", answer: "Draws follow the live schedule — check the lobby for upcoming draw times." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Choose your preferred number entry" },
+      { step: 2, action: "Confirm participation before draw closes" },
+      { step: 3, action: "Watch live draw results" },
+      { step: 4, action: "Match winning result to claim eligible rewards" },
     ],
   },
   "pick-2-win": {
@@ -287,6 +618,41 @@ const GAME_DETAILS = {
       "Follow the live result reveal.",
       "Win when your selected numbers match the result rules.",
     ],
+    overviewTable: [
+      { label: "Game Type", value: "Live Number Draw" },
+      { label: "Theme", value: "Fast Two-Number Draw" },
+      { label: "Mechanic", value: "Pick two numbers, match live draw result" },
+    ],
+    featuresTable: [
+      { feature: "Fast Format", detail: "Quick two-number selection and result flow" },
+      { feature: "Clear Results", detail: "Simple live reveal for easy player comprehension" },
+      { feature: "Vibrant Branding", detail: "Bright lobby artwork with strong logo readability" },
+    ],
+    buttonsFields: [
+      { name: "Number Entry", function: "Select your two-number combination" },
+      { name: "Confirm", function: "Submit entry before draw begins" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Select your two-number entry" },
+      { step: 2, action: "Confirm entry before draw begins" },
+      { step: 3, action: "Follow the live result reveal" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "How fast are results?", answer: "Results are revealed immediately in the live draw." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select your two-number entry" },
+      { step: 2, action: "Confirm your entry before the draw begins" },
+      { step: 3, action: "Follow the live result reveal" },
+      { step: 4, action: "Win when your numbers match the result rules" },
+    ],
   },
   "pick-3-turbo": {
     type: "live",
@@ -310,6 +676,41 @@ const GAME_DETAILS = {
       "Watch the turbo live result reveal.",
       "Match the winning combination to receive eligible rewards.",
     ],
+    overviewTable: [
+      { label: "Game Type", value: "Live Number Draw" },
+      { label: "Theme", value: "Tropical Turbo Draw" },
+      { label: "Mechanic", value: "Pick three numbers, turbo-paced live draw" },
+    ],
+    featuresTable: [
+      { feature: "Turbo Pace", detail: "Fast three-number selection with rapid live results" },
+      { feature: "Tropical Theme", detail: "Bright tropical artwork optimized for visual recognition" },
+      { feature: "Quick Rounds", detail: "Simple rules supporting repeat play and fast sessions" },
+    ],
+    buttonsFields: [
+      { name: "Number Entry", function: "Choose your three-number combination" },
+      { name: "Confirm", function: "Submit entry before round closes" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Choose your three-number combination" },
+      { step: 2, action: "Submit entry before the round closes" },
+      { step: 3, action: "Watch the turbo live result reveal" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "What makes it Turbo?", answer: "Faster draw pace and quicker result reveal than standard games." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Choose your three-number combination" },
+      { step: 2, action: "Submit your entry before the round closes" },
+      { step: 3, action: "Watch the turbo live result reveal" },
+      { step: 4, action: "Match the winning combination to receive rewards" },
+    ],
   },
   "instant-keno": {
     type: "classic",
@@ -330,6 +731,43 @@ const GAME_DETAILS = {
       "Match your selected numbers with the system-drawn numbers to determine your winnings.",
       "If you achieve a winning combination, your prize will be credited according to the game's payout table.",
     ],
+    overviewTable: [
+      { label: "Game Type", value: "Instant Keno Scratch Card" },
+      { label: "Theme", value: "Classic Keno" },
+      { label: "Mechanic", value: "Match selected numbers against system-drawn numbers" },
+    ],
+    featuresTable: [
+      { feature: "Keno Mechanics", detail: "Classic Keno number-matching in instant scratch format" },
+      { feature: "Multiple Matches", detail: "More matching numbers equal greater rewards" },
+      { feature: "Auto-Scratch", detail: "Scratch It button reveals the full card instantly" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals all card positions" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal all hidden numbers" },
+      { step: 3, action: "System matches your numbers against drawn numbers" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "What is Turbo mode?", answer: "Turbo skips scratch animation for instant results." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Click Confirm" },
+      { step: 2, action: "Click Play to begin" },
+      { step: 3, action: "Click Scratch It or manually scratch card" },
+      { step: 4, action: "Match numbers to determine winnings" },
+    ],
   },
   "classic-lucky-color": {
     type: "classic",
@@ -348,6 +786,43 @@ const GAME_DETAILS = {
       "Click Play to begin the game.",
       "Click Scratch It to reveal the card automatically, or scratch the card manually by dragging your cursor across the surface.",
       "Match the revealed colors with the winning colors to determine your prize.",
+    ],
+    overviewTable: [
+      { label: "Game Type", value: "Color-Match Scratch Card" },
+      { label: "Theme", value: "Lucky Color Matching" },
+      { label: "Mechanic", value: "Reveal colors, match to winning colors for multiplier rewards" },
+    ],
+    featuresTable: [
+      { feature: "Color Matching", detail: "Match revealed colors to winning colors for prizes" },
+      { feature: "Multiplier Rewards", detail: "Winning color matches can unlock multiplier bonuses" },
+      { feature: "Instant Win", detail: "Results are instant — no waiting for draws" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals all card positions" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal all hidden colors beneath the scratch surface" },
+      { step: 3, action: "System matches revealed colors with winning colors" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "What is Turbo mode?", answer: "Turbo skips scratch animation for instant results." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Click Confirm" },
+      { step: 2, action: "Click Play to begin" },
+      { step: 3, action: "Click Scratch It or manually scratch card" },
+      { step: 4, action: "Match revealed colors with winning colors to win" },
     ],
   },
   "in-between": {
@@ -368,6 +843,43 @@ const GAME_DETAILS = {
       "Click Scratch It to reveal the card automatically, or scratch the card manually by dragging your cursor across the surface.",
       "Reveal the hidden number and see if it falls within the designated range.",
       "If your prediction is correct, you win the corresponding prize based on the game's payout table.",
+    ],
+    overviewTable: [
+      { label: "Game Type", value: "Range-Prediction Scratch Card" },
+      { label: "Theme", value: "Festive Party" },
+      { label: "Mechanic", value: "Predict if the hidden number falls within the range" },
+    ],
+    featuresTable: [
+      { feature: "Range Prediction", detail: "Predict whether the hidden number is in range to win" },
+      { feature: "Festive Theme", detail: "Party-inspired visuals with celebratory atmosphere" },
+      { feature: "Instant Result", detail: "Immediate outcome after revealing the hidden number" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals the hidden number" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal the hidden number" },
+      { step: 3, action: "System checks if number falls within the range" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "What is Turbo mode?", answer: "Turbo skips scratch animation for instant results." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Click Confirm" },
+      { step: 2, action: "Click Play to begin" },
+      { step: 3, action: "Click Scratch It or manually scratch card" },
+      { step: 4, action: "Reveal hidden number — win if it's within range" },
     ],
   },
   "ginto-scratch": {
@@ -390,6 +902,44 @@ const GAME_DETAILS = {
       "Match three identical prize amounts to win the corresponding prize.",
       "If you reveal a 2x, 3x, or 4x multiplier, your winning prize will be multiplied accordingly.",
     ],
+    overviewTable: [
+      { label: "Game Type", value: "Prize-Match Scratch Card" },
+      { label: "Theme", value: "Gold Treasure" },
+      { label: "Mechanic", value: "Match 3 identical prize amounts, then apply multipliers" },
+    ],
+    featuresTable: [
+      { feature: "Prize Matching", detail: "Reveal prize amounts — match 3 identical to win" },
+      { feature: "Multipliers", detail: "2x, 3x, or 4x multipliers boost your winning prize" },
+      { feature: "Gold Theme", detail: "Rich gold-themed visuals with premium design" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals all prize amounts" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal all hidden prize amounts" },
+      { step: 3, action: "System checks for 3 matching prizes and multipliers" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "What multipliers are available?", answer: "Reveal 2x, 3x, or 4x multipliers to boost your winning prize." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Click Confirm" },
+      { step: 2, action: "Click Play to begin" },
+      { step: 3, action: "Click Scratch It or manually scratch card" },
+      { step: 4, action: "Match 3 identical prize amounts to win" },
+      { step: 5, action: "Reveal 2x, 3x, or 4x multiplier to boost prize" },
+    ],
   },
   "pika-pika": {
     type: "classic",
@@ -408,6 +958,43 @@ const GAME_DETAILS = {
       "Click Scratch It to reveal the card automatically, or scratch the card manually by dragging your cursor across the surface.",
       "Reveal all 9 hidden symbols on the scratch card.",
       "Match 3 identical street food symbols to win the corresponding prize.",
+    ],
+    overviewTable: [
+      { label: "Game Type", value: "Match-3 Scratch Card" },
+      { label: "Theme", value: "Filipino Street Food" },
+      { label: "Mechanic", value: "Reveal 9 symbols, match 3 identical to win" },
+    ],
+    featuresTable: [
+      { feature: "Match-3 Mechanic", detail: "Reveal 9 symbols, match 3 identical food icons to win" },
+      { feature: "Street Food Theme", detail: "Vibrant Filipino street food visuals and flavors" },
+      { feature: "Instant Rewards", detail: "Prizes credited immediately upon each winning match" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals all 9 positions" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal all 9 hidden symbols" },
+      { step: 3, action: "System auto-checks for 3 matching symbols" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "What is Turbo mode?", answer: "Turbo skips scratch animation for instant results." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Click Confirm" },
+      { step: 2, action: "Click Play to begin" },
+      { step: 3, action: "Click Scratch It or manually scratch card" },
+      { step: 4, action: "Reveal all 9 symbols — match 3 identical to win" },
     ],
   },
   "lucky-number": {
@@ -430,6 +1017,44 @@ const GAME_DETAILS = {
       "Reveal all the hidden numbers and count how many times your selected Lucky Number appears.",
       "The more matching numbers you reveal, the higher your prize.",
     ],
+    overviewTable: [
+      { label: "Game Type", value: "Number-Match Scratch Card" },
+      { label: "Theme", value: "Lucky Number" },
+      { label: "Mechanic", value: "Choose a lucky number, count matching reveals for prizes" },
+    ],
+    featuresTable: [
+      { feature: "Lucky Number Pick", detail: "Choose your favorite number before revealing the card" },
+      { feature: "9 Card Variants", detail: "9 unique card designs offering varied gameplay" },
+      { feature: "Multiplier Boost", detail: "Reveal a multiplier to increase your winnings further" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals all card positions" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal all hidden numbers" },
+      { step: 3, action: "System counts matching Lucky Number appearances" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "What if my lucky number appears multiple times?", answer: "More matches = higher prize. Multipliers boost it further." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Click Confirm" },
+      { step: 2, action: "Click Play to begin" },
+      { step: 3, action: "Choose your Lucky Number" },
+      { step: 4, action: "Click Scratch It or manually scratch card" },
+      { step: 5, action: "Count Lucky Number matches — more matches = higher prize" },
+    ],
   },
   "go-bananas": {
     type: "classic",
@@ -451,6 +1076,44 @@ const GAME_DETAILS = {
       "Match three identical prize amounts to win the corresponding base prize.",
       "If you reveal a bonus multiplier, your winning prize will be multiplied according to the game's payout rules.",
     ],
+    overviewTable: [
+      { label: "Game Type", value: "Prize-Match Scratch Card" },
+      { label: "Theme", value: "Tropical Fruit" },
+      { label: "Mechanic", value: "Match 3 identical prize amounts, then apply bonus multipliers" },
+    ],
+    featuresTable: [
+      { feature: "Prize Matching", detail: "Reveal and match 3 identical prize amounts to win" },
+      { feature: "Bonus Multipliers", detail: "Uncover bonus multipliers to boost your winnings" },
+      { feature: "Tropical Theme", detail: "Fun fruit-themed visuals with vibrant tropical energy" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals all prize amounts" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal all hidden prize amounts" },
+      { step: 3, action: "System checks for 3 matching prizes and bonus multipliers" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "What is Turbo mode?", answer: "Turbo skips scratch animation for instant results." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Click Confirm" },
+      { step: 2, action: "Click Play to begin" },
+      { step: 3, action: "Click Scratch It or manually scratch card" },
+      { step: 4, action: "Match 3 identical prize amounts to win base prize" },
+      { step: 5, action: "Reveal bonus multiplier to boost your winnings" },
+    ],
   },
   "red-hot-7s": {
     type: "classic",
@@ -470,6 +1133,43 @@ const GAME_DETAILS = {
       "Click Scratch It to reveal the card automatically, or scratch the card manually by dragging your cursor across the surface.",
       "Reveal all 9 symbols on the 3x3 game board.",
       "Match three Lucky 7 symbols in any horizontal, vertical, or diagonal line to win the corresponding prize.",
+    ],
+    overviewTable: [
+      { label: "Game Type", value: "3x3 Line-Match Scratch Card" },
+      { label: "Theme", value: "Fire / Red Hot 7s" },
+      { label: "Mechanic", value: "Match three Lucky 7s on any straight line to win" },
+    ],
+    featuresTable: [
+      { feature: "Line Match", detail: "Win by matching 3 sevens on horizontal, vertical, or diagonal lines" },
+      { feature: "Fire Theme", detail: "Intense fire-themed visuals with high-energy design" },
+      { feature: "Instant Payout", detail: "Immediate payout when a winning line is completed" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals all 9 board positions" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal all 9 symbols on the 3x3 board" },
+      { step: 3, action: "System checks all lines for matching 7s" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "What is Turbo mode?", answer: "Turbo skips scratch animation for instant results." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Click Confirm" },
+      { step: 2, action: "Click Play to begin" },
+      { step: 3, action: "Click Scratch It or manually scratch card" },
+      { step: 4, action: "Reveal all 9 symbols — match three 7s on any line to win" },
     ],
   },
   "bingo-card": {
@@ -492,6 +1192,44 @@ const GAME_DETAILS = {
       "Complete any predefined winning line pattern to win the corresponding prize.",
       "If you complete multiple winning patterns, you will receive the payout for each eligible winning combination according to the game's payout table.",
     ],
+    overviewTable: [
+      { label: "Game Type", value: "Bingo Scratch Card" },
+      { label: "Theme", value: "Classic Bingo" },
+      { label: "Mechanic", value: "Reveal numbers, complete winning line patterns to win" },
+    ],
+    featuresTable: [
+      { feature: "Bingo Patterns", detail: "Complete predefined winning line patterns for prizes" },
+      { feature: "Multiple Wins", detail: "Several winning patterns can be completed in one game" },
+      { feature: "Classic Theme", detail: "Traditional bingo card design with familiar gameplay" },
+    ],
+    buttonsFields: [
+      { name: "Bet Amount", function: "Select stake before play" },
+      { name: "Play Button", function: "Starts the game round" },
+      { name: "Scratch It", function: "Auto-reveals the bingo card" },
+      { name: "Turbo", function: "Skips animation, instant result" },
+    ],
+    scratchHowTo: [
+      { step: 1, action: "Click Scratch It or drag cursor across card surface" },
+      { step: 2, action: "Reveal all hidden numbers or symbols on the bingo card" },
+      { step: 3, action: "System checks for completed winning line patterns" },
+    ],
+    freeTicket: [
+      { condition: "Daily Login", reward: "1 Free Ticket" },
+      { condition: "3 Consecutive Days", reward: "2 Free Tickets" },
+      { condition: "Refer a Friend", reward: "5 Free Tickets" },
+    ],
+    faq: [
+      { question: "How do I claim my prize?", answer: "Prizes auto-credit to your account after each win." },
+      { question: "Can I play for free?", answer: "Yes, use Free Tickets from daily login or promotions." },
+      { question: "Can I win on multiple patterns?", answer: "Yes — each completed winning pattern pays out individually." },
+    ],
+    howToPlayTable: [
+      { step: 1, action: "Select bet amount → Click Confirm" },
+      { step: 2, action: "Click Play to begin" },
+      { step: 3, action: "Click Scratch It or manually scratch card" },
+      { step: 4, action: "Reveal all numbers — complete patterns to win" },
+      { step: 5, action: "Multiple patterns = multiple payouts" },
+    ],
   },
 };
 
@@ -509,6 +1247,62 @@ const DETAIL_SECTION_ICONS = {
 };
 
 const params = new URLSearchParams(window.location.search);
+
+function renderTable(container, rows, columns) {
+  container.replaceChildren();
+  const table = document.createElement("table");
+  table.className = "rule-table";
+  const thead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+  columns.forEach((col) => {
+    const th = document.createElement("th");
+    th.textContent = col;
+    headerRow.appendChild(th);
+  });
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+  const tbody = document.createElement("tbody");
+  rows.forEach((row) => {
+    const tr = document.createElement("tr");
+    columns.forEach((col) => {
+      const td = document.createElement("td");
+      const key = col.toLowerCase().replace(/[^a-z0-9]/g, "");
+      td.textContent = row[key] ?? row[col] ?? "";
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  container.appendChild(table);
+}
+
+function renderHowToPlayTable(container, steps) {
+  container.replaceChildren();
+  const table = document.createElement("table");
+  table.className = "rule-table";
+  const thead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+  ["Step", "Action"].forEach((col) => {
+    const th = document.createElement("th");
+    th.textContent = col;
+    headerRow.appendChild(th);
+  });
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+  const tbody = document.createElement("tbody");
+  steps.forEach((row) => {
+    const tr = document.createElement("tr");
+    const tdStep = document.createElement("td");
+    tdStep.textContent = row.step;
+    tr.appendChild(tdStep);
+    const tdAction = document.createElement("td");
+    tdAction.textContent = row.action;
+    tr.appendChild(tdAction);
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  container.appendChild(table);
+}
 const currentSlug = params.get("game") || "pikapika";
 const currentGame = GAME_DETAILS[currentSlug];
 const detailRoot = document.querySelector("[data-game-detail]");
@@ -751,6 +1545,56 @@ function renderGameDetail(game) {
     appendParagraphs(document.querySelector("[data-features]"), game.features);
   } else {
     featuresCard.hidden = true;
+  }
+
+  const overviewTable = game.overviewTable;
+  if (overviewTable?.length) {
+    renderTable(document.querySelector("[data-overview]"), overviewTable, ["Label", "Value"]);
+  }
+
+  const featuresTable = game.featuresTable;
+  const featuresContainer = document.querySelector("[data-features]");
+  if (featuresTable?.length) {
+    renderTable(featuresContainer, featuresTable, ["Feature", "Detail"]);
+    if (featuresCard) featuresCard.hidden = false;
+  }
+
+  const howToPlayTable = game.howToPlayTable;
+  const howContainer = document.querySelector("[data-how-to-play]");
+  if (howToPlayTable?.length) {
+    renderHowToPlayTable(howContainer, howToPlayTable);
+  }
+
+  const buttonsFields = game.buttonsFields;
+  const bfContainer = document.querySelector("[data-buttons-fields]");
+  if (buttonsFields?.length && bfContainer) {
+    renderTable(bfContainer, buttonsFields, ["Name", "Function"]);
+    const bfCard = document.getElementById("game-buttons");
+    if (bfCard) bfCard.hidden = false;
+  }
+
+  const scratchHowTo = game.scratchHowTo;
+  const shContainer = document.querySelector("[data-scratch-howto]");
+  if (scratchHowTo?.length && shContainer) {
+    renderHowToPlayTable(shContainer, scratchHowTo);
+    const shCard = document.getElementById("scratch-howto");
+    if (shCard) shCard.hidden = false;
+  }
+
+  const freeTicket = game.freeTicket;
+  const ftContainer = document.querySelector("[data-free-ticket]");
+  if (freeTicket?.length && ftContainer) {
+    renderTable(ftContainer, freeTicket, ["Condition", "Reward"]);
+    const ftCard = document.getElementById("free-ticket");
+    if (ftCard) ftCard.hidden = false;
+  }
+
+  const faq = game.faq;
+  const faqContainer = document.querySelector("[data-faq]");
+  if (faq?.length && faqContainer) {
+    renderTable(faqContainer, faq, ["Question", "Answer"]);
+    const faqCard = document.getElementById("faq");
+    if (faqCard) faqCard.hidden = false;
   }
 }
 

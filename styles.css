@@ -1929,6 +1929,92 @@ button {
   object-fit: contain;
 }
 
+.game-logo-carousel-innovation .game-logo-item {
+  cursor: default;
+}
+
+.game-logo-carousel-innovation .game-card-image-frame {
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: none;
+  transition:
+    box-shadow 260ms ease,
+    transform 260ms ease;
+}
+
+.game-logo-carousel-innovation .game-card-hover-cta {
+  inset: 0;
+  border-radius: inherit;
+}
+
+.game-logo-carousel-innovation .game-logo-item:hover,
+.game-logo-carousel-innovation .game-logo-item:focus-visible {
+  transform: translate3d(0, var(--arch-y, 0), 0) scale(var(--logo-scale, 1));
+}
+
+.game-logo-carousel-innovation .game-logo-item:hover::before {
+  opacity: 0.78;
+  transform: none;
+}
+
+.game-logo-carousel-innovation .game-logo-item:hover img,
+.game-logo-carousel-innovation .game-logo-item:focus-visible img {
+  filter:
+    drop-shadow(0 20px 28px rgba(0, 0, 0, 0.34))
+    drop-shadow(0 0 16px rgba(255, 213, 31, 0.16))
+    drop-shadow(0 0 26px rgba(32, 151, 255, 0.12));
+  transform: none;
+}
+
+.game-logo-carousel-innovation .game-logo-item:hover .game-card-hover-cta,
+.game-logo-carousel-innovation .game-logo-item:hover .game-card-hover-inner,
+.game-logo-carousel-innovation .game-logo-item:hover .game-card-hover-arrow i {
+  animation-play-state: paused;
+  opacity: 0;
+  transform: translateY(10px) scale(0.92);
+}
+
+.game-logo-carousel-innovation .game-logo-item:focus-visible .game-card-image-frame,
+.game-logo-carousel-innovation .game-card-image-frame:hover {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 213, 31, 0.26),
+    inset 0 0 22px rgba(255, 213, 31, 0.18),
+    inset 0 0 34px rgba(32, 151, 255, 0.14);
+  transform: translateY(-4px) scale(1.045);
+}
+
+.game-logo-carousel-innovation .game-logo-item:focus-visible .game-card-image-frame > img,
+.game-logo-carousel-innovation .game-card-image-frame:hover > img {
+  filter:
+    drop-shadow(0 22px 32px rgba(0, 0, 0, 0.42))
+    drop-shadow(0 0 20px rgba(255, 213, 31, 0.18));
+  transform: scale(1.06);
+}
+
+.game-logo-carousel-innovation .game-logo-item:focus-visible .game-card-hover-cta,
+.game-logo-carousel-innovation .game-card-image-frame:hover .game-card-hover-cta {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation-play-state: running;
+  box-shadow:
+    inset 0 0 42px rgba(0, 0, 0, 0.36),
+    inset 0 0 0 1px rgba(255, 213, 31, 0.26),
+    inset 0 0 24px rgba(255, 213, 31, 0.28),
+    inset 0 0 38px rgba(32, 151, 255, 0.18);
+}
+
+.game-logo-carousel-innovation .game-logo-item:focus-visible .game-card-hover-inner,
+.game-logo-carousel-innovation .game-card-image-frame:hover .game-card-hover-inner {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.game-logo-carousel-innovation .game-logo-item:focus-visible .game-card-hover-arrow i,
+.game-logo-carousel-innovation .game-card-image-frame:hover .game-card-hover-arrow i {
+  opacity: 0;
+  animation-play-state: running;
+}
+
 .game-logo-carousel-live {
   --game-logo-size: clamp(330px, 28vw, 460px);
   --game-logo-card-size: calc(var(--game-logo-size) + 24px);
@@ -1991,6 +2077,42 @@ button {
 .game-logo-item:hover h3,
 .game-logo-item:focus-within h3 {
   color: var(--color-white);
+}
+
+.game-logo-carousel-innovation .game-logo-item:hover::before,
+.game-logo-carousel-innovation .game-logo-item:focus-within::before {
+  opacity: 0.78;
+  transform: none;
+}
+
+.game-logo-carousel-innovation .game-logo-item:hover img,
+.game-logo-carousel-innovation .game-logo-item:focus-within img {
+  filter:
+    drop-shadow(0 20px 28px rgba(0, 0, 0, 0.34))
+    drop-shadow(0 0 16px rgba(255, 213, 31, 0.16))
+    drop-shadow(0 0 26px rgba(32, 151, 255, 0.12));
+  transform: none;
+}
+
+.game-logo-carousel-innovation .game-logo-item:hover h3 {
+  color: rgba(233, 238, 248, 0.88);
+}
+
+.game-logo-carousel-innovation .game-logo-item:focus-visible .game-card-image-frame,
+.game-logo-carousel-innovation .game-card-image-frame:hover {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 213, 31, 0.26),
+    inset 0 0 22px rgba(255, 213, 31, 0.18),
+    inset 0 0 34px rgba(32, 151, 255, 0.14);
+  transform: translateY(-4px) scale(1.045);
+}
+
+.game-logo-carousel-innovation .game-logo-item:focus-visible .game-card-image-frame > img,
+.game-logo-carousel-innovation .game-card-image-frame:hover > img {
+  filter:
+    drop-shadow(0 22px 32px rgba(0, 0, 0, 0.42))
+    drop-shadow(0 0 20px rgba(255, 213, 31, 0.18));
+  transform: scale(1.06);
 }
 
 .feature-layout {
@@ -4709,7 +4831,7 @@ body.game-overlay-open {
 
 .detail-info-panel {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   width: min(100%, 1400px);
   margin: 24px auto 0;
   overflow: hidden;
@@ -4741,6 +4863,59 @@ body.game-overlay-open {
 
 .detail-card-art-how {
   background-position: right top;
+}
+
+.detail-card-art-buttons {
+  background-position: left bottom;
+}
+
+.detail-card-art-scratch {
+  background-position: center bottom;
+}
+
+.detail-card-art-ticket {
+  background-position: right bottom;
+}
+
+.detail-card-art-faq {
+  background-position: right center;
+}
+
+/* Rule Table Styles */
+.rule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.rule-table th {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--color-orange);
+  border-bottom: 2px solid rgba(255, 122, 26, 0.34);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.rule-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.88);
+  vertical-align: top;
+}
+
+.rule-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.rule-table td:first-child {
+  font-weight: 600;
+  color: var(--color-muted-strong);
+  white-space: nowrap;
 }
 
 body:not(.has-detail-section-icons) .detail-card-art {
