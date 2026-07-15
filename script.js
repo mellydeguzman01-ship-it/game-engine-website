@@ -156,10 +156,17 @@ const chatHistoryStorageKey = "game-engine-chat-history";
 const chatSessionStorageKey = "game-engine-chat-session";
 const chatPositionStorageKey = "game-engine-chat-position";
 const chatMaxMessageLength = 3000;
-const chatWidgetVideoSrc = "assets/icons/chat-widget-loop.webm";
+const chatWidgetVideoSrc = "assets/icons/chat-inquiry-character.webm";
 const chatWidgetVideoSegments = {
-  idle: { start: 0, end: 2 },
-  hover: { start: 2, end: 5 },
+  idle: { start: 1, end: 2 },
+  hover: { start: 3, end: 5 },
+};
+const contactRequiredFields = {
+  name: "Name is required.",
+  email: "Email is required.",
+  phone: "Phone Number is required.",
+  company: "Company is required.",
+  message: "Your Message is required.",
 };
 const chatWelcomeMessage = "Hi, welcome to Game Engine. Send us a message and our partnership team will reply here once live chat is connected.";
 
@@ -458,23 +465,20 @@ function setupGameCardHoverCtas() {
 
     const cta = document.createElement("span");
     const inner = document.createElement("span");
-    const arrow = document.createElement("span");
-    const firstArrow = document.createElement("i");
-    const secondArrow = document.createElement("i");
     const copy = document.createElement("span");
     const firstLine = document.createElement("span");
     const secondLine = document.createElement("strong");
+    const arrow = document.createElement("span");
 
     cta.className = "game-card-hover-cta";
     inner.className = "game-card-hover-inner";
-    arrow.className = "game-card-hover-arrow";
     copy.className = "game-card-hover-copy";
+    arrow.className = "game-card-hover-arrow";
     cta.setAttribute("aria-hidden", "true");
     firstLine.textContent = "CLICK TO SEE";
-    secondLine.textContent = "MORE GAME DETAILS";
-    arrow.append(firstArrow, secondArrow);
+    secondLine.textContent = "more game details";
     copy.append(firstLine, secondLine);
-    inner.append(arrow, copy);
+    inner.append(copy, arrow);
     cta.appendChild(inner);
     imageFrame.appendChild(cta);
   });
@@ -1018,6 +1022,129 @@ function setContactStatus(type, message) {
   contactStatus.classList.toggle("is-error", type === "error");
 }
 
+function getContactSubmitButton() {
+  return contactForm?.querySelector('button[type="submit"]');
+}
+
+function getContactRequiredControls() {
+  if (!contactForm) {
+    return [];
+  }
+
+  return Object.keys(contactRequiredFields)
+    .map((fieldName) => contactForm.elements[fieldName])
+    .filter(Boolean);
+}
+
+function isContactEmailValid(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function getContactFieldError(control) {
+  const value = String(control.value || "").trim();
+
+  if (!value) {
+    return contactRequiredFields[control.name] || "";
+  }
+
+  if (control.name === "email" && !isContactEmailValid(value)) {
+    return "Please enter a valid email address.";
+  }
+
+  return "";
+}
+
+function ensureContactErrorElement(control) {
+  const field = control.closest("label");
+
+  if (!field) {
+    return undefined;
+  }
+
+  const errorId = `contact-${control.name}-error`;
+  let errorElement = field.querySelector(`[data-contact-error="${control.name}"]`);
+
+  if (!errorElement) {
+    errorElement = document.createElement("p");
+    errorElement.className = "contact-validation-error";
+    errorElement.dataset.contactError = control.name;
+    errorElement.id = errorId;
+    errorElement.setAttribute("aria-live", "polite");
+    errorElement.hidden = true;
+    control.insertAdjacentElement("afterend", errorElement);
+  }
+
+  const describedBy = control.getAttribute("aria-describedby") || "";
+  const describedByItems = describedBy.split(/\s+/).filter(Boolean);
+
+  if (!describedByItems.includes(errorId)) {
+    describedByItems.push(errorId);
+    control.setAttribute("aria-describedby", describedByItems.join(" "));
+  }
+
+  return errorElement;
+}
+
+function validateContactField(control, options = {}) {
+  const { showError = false } = options;
+  const errorElement = ensureContactErrorElement(control);
+  const errorMessage = getContactFieldError(control);
+  const shouldShowError =
+    Boolean(errorMessage) &&
+    (showError || control.dataset.contactTouched === "true" || contactForm?.classList.contains("was-validated"));
+
+  control.setCustomValidity(errorMessage);
+  control.setAttribute("aria-invalid", errorMessage ? "true" : "false");
+
+  if (errorElement) {
+    errorElement.textContent = shouldShowError ? errorMessage : "";
+    errorElement.hidden = !shouldShowError;
+  }
+
+  return !errorMessage;
+}
+
+function validateContactForm(options = {}) {
+  return getContactRequiredControls()
+    .map((control) => validateContactField(control, options))
+    .every(Boolean);
+}
+
+function updateContactSubmitState(options = {}) {
+  const submitButton = getContactSubmitButton();
+  const isValid = validateContactForm(options);
+
+  if (submitButton) {
+    submitButton.disabled = !isValid;
+    submitButton.setAttribute("aria-disabled", String(!isValid));
+  }
+
+  return isValid;
+}
+
+function resetContactValidation() {
+  if (!contactForm) {
+    return;
+  }
+
+  contactForm.classList.remove("was-validated");
+
+  getContactRequiredControls().forEach((control) => {
+    delete control.dataset.contactTouched;
+    control.setCustomValidity("");
+    control.setAttribute("aria-invalid", "false");
+
+    const errorElement = ensureContactErrorElement(control);
+
+    if (errorElement) {
+      errorElement.textContent = "";
+      errorElement.hidden = true;
+    }
+  });
+
+  updateContactSubmitState();
+}
+
 function handleContactSubmit(event) {
   event.preventDefault();
 
@@ -1027,9 +1154,11 @@ function handleContactSubmit(event) {
 
   contactForm.classList.add("was-validated");
 
-  if (!contactForm.checkValidity()) {
+  if (!updateContactSubmitState({ showError: true })) {
     setContactStatus("error", "Please complete all required fields before submitting.");
-    contactForm.reportValidity();
+    const firstInvalidField = getContactRequiredControls().find((control) => getContactFieldError(control));
+
+    firstInvalidField?.focus();
     return;
   }
 
@@ -1057,7 +1186,7 @@ function handleContactSubmit(event) {
   window.location.href = `mailto:brand@lottoplay.ph?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   setContactStatus("success", "Your inquiry is ready to send to brand@lottoplay.ph in your email app.");
   contactForm.reset();
-  contactForm.classList.remove("was-validated");
+  resetContactValidation();
 }
 
 function updateBackToTopButton() {
@@ -1787,7 +1916,10 @@ function syncChatWidgetVideoSegment() {
 }
 
 function playChatWidgetVideoSegment(mode, shouldRestart = false) {
-  chatWidgetVideoMode = mode === "hover" ? "hover" : "idle";
+  const nextMode = mode === "hover" ? "hover" : "idle";
+  const isSameMode = chatWidgetVideoMode === nextMode;
+
+  chatWidgetVideoMode = nextMode;
   chatWidget?.classList.toggle("is-chat-video-hover", chatWidgetVideoMode === "hover");
 
   if (!chatWidgetVideo) {
@@ -1799,7 +1931,7 @@ function playChatWidgetVideoSegment(mode, shouldRestart = false) {
   if (chatWidgetVideo.readyState >= 1) {
     const currentTime = chatWidgetVideo.currentTime;
 
-    if (shouldRestart || currentTime < segment.start || currentTime >= segment.end) {
+    if ((shouldRestart && !isSameMode) || currentTime < segment.start || currentTime >= segment.end) {
       chatWidgetVideo.currentTime = segment.start;
     }
   }
@@ -1811,12 +1943,31 @@ function playChatWidgetVideoSegment(mode, shouldRestart = false) {
   }
 }
 
+function setChatWidgetVisualMode(mode) {
+  playChatWidgetVideoSegment(mode);
+}
+
+function preloadChatWidgetVideo() {
+  if (document.querySelector(`link[rel="preload"][href="${chatWidgetVideoSrc}"]`)) {
+    return;
+  }
+
+  const preloadLink = document.createElement("link");
+  preloadLink.rel = "preload";
+  preloadLink.as = "video";
+  preloadLink.type = "video/webm";
+  preloadLink.href = chatWidgetVideoSrc;
+  document.head.appendChild(preloadLink);
+}
+
 function setupChatWidgetVideo() {
   if (!chatToggleIcon) {
     return;
   }
 
-  let video = chatToggleIcon.querySelector("video");
+  preloadChatWidgetVideo();
+
+  let video = chatToggleIcon.querySelector("video.chat-widget-video");
 
   if (!video) {
     video = document.createElement("video");
@@ -1843,10 +1994,12 @@ function setupChatWidgetVideo() {
     chatWidgetVideo.addEventListener("loadedmetadata", startVideoLoop, { once: true });
   }
 
-  chatToggle?.addEventListener("pointerenter", () => playChatWidgetVideoSegment("hover", true));
-  chatToggle?.addEventListener("pointerleave", () => playChatWidgetVideoSegment("idle", true));
-  chatToggle?.addEventListener("focus", () => playChatWidgetVideoSegment("hover", true));
-  chatToggle?.addEventListener("blur", () => playChatWidgetVideoSegment("idle", true));
+  chatWidgetVideo.load();
+
+  chatToggle?.addEventListener("pointerenter", () => setChatWidgetVisualMode("hover"));
+  chatToggle?.addEventListener("pointerleave", () => setChatWidgetVisualMode("idle"));
+  chatToggle?.addEventListener("focus", () => setChatWidgetVisualMode("hover"));
+  chatToggle?.addEventListener("blur", () => setChatWidgetVisualMode("idle"));
 }
 
 function handleChatDragStart(event) {
@@ -2055,6 +2208,26 @@ function setupContactForm() {
     return;
   }
 
+  getContactRequiredControls().forEach((control) => {
+    ensureContactErrorElement(control);
+
+    control.addEventListener("input", () => {
+      if (String(control.value || "").trim() || control.dataset.contactTouched === "true") {
+        control.dataset.contactTouched = "true";
+      }
+
+      validateContactField(control);
+      updateContactSubmitState();
+    });
+
+    control.addEventListener("blur", () => {
+      control.dataset.contactTouched = "true";
+      validateContactField(control, { showError: true });
+      updateContactSubmitState();
+    });
+  });
+
+  updateContactSubmitState();
   contactForm.addEventListener("submit", handleContactSubmit);
 }
 
@@ -2115,6 +2288,7 @@ function setupChatWidget() {
 
     const shouldOpen = chatWindow.hidden;
 
+    playChatWidgetVideoSegment("hover");
     playChatClickAnimation();
 
     if (shouldOpen && !prefersReducedMotion) {
