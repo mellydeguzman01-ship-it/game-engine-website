@@ -17,7 +17,8 @@
   --radius-md: 18px;
   --radius-lg: 30px;
   --header-height: 86px;
-  --max-width: 1360px;
+  --max-width: 1600px;
+  --site-gutter: clamp(14px, 1.8vw, 32px);
 }
 
 * {
@@ -125,7 +126,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: calc(100% - 40px);
+  width: calc(100% - (var(--site-gutter) * 2));
   max-width: var(--max-width);
   height: 100%;
   margin: 0 auto;
@@ -705,7 +706,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: calc(100% - 40px);
+  width: calc(100% - (var(--site-gutter) * 2));
   max-width: var(--max-width);
   min-height: 92svh;
   margin: 0 auto;
@@ -1372,7 +1373,7 @@ button {
 
 .section {
   position: relative;
-  padding: clamp(70px, 8vw, 112px) clamp(18px, 3vw, 44px);
+  padding: clamp(70px, 8vw, 112px) var(--site-gutter);
   background: var(--color-navy);
 }
 
@@ -1423,7 +1424,7 @@ button {
 .live-section .section-inner {
   position: relative;
   z-index: 2;
-  width: min(100%, 1440px);
+  width: min(100%, 1640px);
 }
 
 .classic-section,
@@ -1527,8 +1528,29 @@ button {
   scrollbar-width: none;
   touch-action: pan-y pinch-zoom;
   user-select: none;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.game-logo-carousel::before,
+.game-logo-carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 5;
+  width: clamp(30px, 7vw, 96px);
+  pointer-events: none;
+}
+
+.game-logo-carousel::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(5, 8, 20, 0.96), rgba(5, 8, 20, 0));
+}
+
+.game-logo-carousel::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(5, 8, 20, 0.96), rgba(5, 8, 20, 0));
 }
 
 .game-logo-carousel::-webkit-scrollbar {
@@ -1555,6 +1577,7 @@ button {
     28px;
   transform: translate3d(calc(var(--carousel-x, 0) * -1px), 0, 0);
   will-change: transform;
+  backface-visibility: hidden;
 }
 
 .game-logo-item {
@@ -1576,6 +1599,7 @@ button {
   user-select: none;
   -webkit-user-drag: none;
   will-change: transform;
+  backface-visibility: hidden;
 }
 
 .game-logo-item::before {
@@ -1602,8 +1626,10 @@ button {
   place-items: center;
   width: min(100%, var(--game-logo-size));
   height: var(--game-logo-size);
-  overflow: hidden;
+  overflow: visible;
   border-radius: 18px;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .game-logo-item img {
@@ -1630,17 +1656,26 @@ button {
 }
 
 .game-card-hover-cta {
+  --rainbow-angle: 0deg;
   position: absolute;
   inset: 0;
   z-index: 3;
   display: grid;
   place-items: center;
-  gap: 10px;
-  border: 1px solid rgba(255, 213, 31, 0.24);
+  border: 2px solid transparent;
   border-radius: inherit;
+  box-sizing: border-box;
   background:
-    radial-gradient(circle at 50% 38%, rgba(255, 213, 31, 0.18), transparent 48%),
-    rgba(5, 8, 20, 0.56);
+    linear-gradient(rgba(4, 6, 18, 0.72), rgba(4, 6, 18, 0.74)) padding-box,
+    conic-gradient(
+      from var(--rainbow-angle),
+      rgba(255, 213, 31, 0.96),
+      rgba(255, 67, 56, 0.92),
+      rgba(174, 73, 255, 0.92),
+      rgba(32, 151, 255, 0.96),
+      rgba(39, 226, 255, 0.92),
+      rgba(255, 213, 31, 0.96)
+    ) border-box;
   color: var(--color-white);
   font-size: clamp(0.76rem, 0.86vw, 0.94rem);
   font-weight: 950;
@@ -1654,25 +1689,75 @@ button {
   transition:
     opacity 220ms ease,
     transform 220ms ease,
-    border-color 220ms ease;
-  backdrop-filter: blur(5px);
+    box-shadow 220ms ease;
+  animation: rainbowBorderSpin 2.8s linear infinite;
+  animation-play-state: paused;
+  box-shadow: inset 0 0 38px rgba(0, 0, 0, 0.28);
+  backdrop-filter: none;
 }
 
-.game-card-hover-cta span {
-  max-width: 13ch;
+.game-card-hover-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  max-width: min(88%, 310px);
   text-shadow:
     0 0 12px rgba(255, 213, 31, 0.52),
     0 8px 20px rgba(0, 0, 0, 0.7);
+  transform: scale(0.96);
+  transition: transform 220ms ease;
 }
 
-.game-card-hover-cta i {
-  width: 17px;
-  height: 17px;
-  border-top: 3px solid var(--color-yellow);
-  border-right: 3px solid var(--color-yellow);
-  filter: drop-shadow(0 0 10px rgba(255, 213, 31, 0.5));
+.game-card-hover-arrow {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: repeat(2, 16px);
+  align-items: center;
+  width: 52px;
+  height: 24px;
+  filter:
+    drop-shadow(0 0 8px rgba(255, 213, 31, 0.82))
+    drop-shadow(0 0 18px rgba(39, 226, 255, 0.34));
+}
+
+.game-card-hover-arrow i {
+  width: 15px;
+  height: 15px;
+  border-top: 4px solid var(--color-yellow);
+  border-right: 4px solid var(--color-yellow);
+  opacity: 0;
   transform: rotate(45deg);
-  animation: ctaArrowPulse 950ms ease-in-out infinite;
+  animation: gameCardArrowTrail 1.05s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.game-card-hover-arrow i:nth-child(2) {
+  margin-left: -4px;
+  animation-delay: 140ms;
+}
+
+.game-card-hover-copy {
+  display: grid;
+  gap: 2px;
+  justify-items: start;
+}
+
+.game-card-hover-copy > span,
+.game-card-hover-copy > strong {
+  display: block;
+  letter-spacing: 0.05em;
+}
+
+.game-card-hover-copy > span {
+  color: var(--color-white);
+  font-size: clamp(0.74rem, 0.84vw, 0.96rem);
+}
+
+.game-card-hover-copy > strong {
+  color: var(--color-yellow);
+  font-size: clamp(0.82rem, 0.96vw, 1.08rem);
+  font-weight: 950;
 }
 
 .game-logo-item:hover,
@@ -1689,18 +1774,31 @@ button {
 .game-logo-item:hover img,
 .game-logo-item:focus-visible img {
   filter:
-    blur(2.2px)
-    brightness(0.72)
     drop-shadow(0 22px 32px rgba(0, 0, 0, 0.42))
     drop-shadow(0 0 20px rgba(255, 213, 31, 0.18));
-  transform: scale(1.035);
+  transform: scale(1.06);
 }
 
 .game-logo-item:hover .game-card-hover-cta,
 .game-logo-item:focus-visible .game-card-hover-cta {
-  border-color: rgba(255, 213, 31, 0.56);
   opacity: 1;
   transform: translateY(0) scale(1);
+  animation-play-state: running;
+  box-shadow:
+    inset 0 0 42px rgba(0, 0, 0, 0.36),
+    0 0 0 1px rgba(255, 213, 31, 0.26),
+    0 0 24px rgba(255, 213, 31, 0.4),
+    0 0 38px rgba(32, 151, 255, 0.22);
+}
+
+.game-logo-item:hover .game-card-hover-inner,
+.game-logo-item:focus-visible .game-card-hover-inner {
+  transform: scale(1);
+}
+
+.game-logo-item:hover .game-card-hover-arrow i,
+.game-logo-item:focus-visible .game-card-hover-arrow i {
+  animation-play-state: running;
 }
 
 .game-logo-carousel-innovation .game-logo-item img {
@@ -1762,8 +1860,6 @@ button {
 .game-logo-item:focus-within img {
   transform: scale(1.06);
   filter:
-    blur(2.2px)
-    brightness(0.72)
     drop-shadow(0 24px 34px rgba(0, 0, 0, 0.38))
     drop-shadow(0 0 20px rgba(255, 122, 26, 0.34))
     drop-shadow(0 0 34px rgba(32, 151, 255, 0.26));
@@ -1987,7 +2083,7 @@ button {
   position: relative;
   z-index: 2;
   align-self: end;
-  width: min(calc(100% - 40px), var(--max-width));
+  width: min(calc(100% - (var(--site-gutter) * 2)), var(--max-width));
   margin: 0 auto;
   padding: calc(var(--header-height) + 80px) 0 clamp(54px, 7vw, 92px);
 }
@@ -2392,6 +2488,25 @@ button {
   min-height: 100%;
   overflow: hidden;
   padding: 0;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease,
+    filter 220ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.news-card.is-filtered-out {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(14px) scale(0.985);
+  filter: saturate(0.86) brightness(0.78);
+}
+
+.news-card[hidden] {
+  display: none;
 }
 
 .news-card-media {
@@ -2865,12 +2980,12 @@ button {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: clamp(14px, 3vw, 30px);
+  gap: clamp(18px, 3vw, 36px);
 }
 
 .logo-row img {
-  width: 120px;
-  height: 60px;
+  width: clamp(138px, 12vw, 162px);
+  height: clamp(70px, 6vw, 82px);
 }
 
 .logo-row img {
@@ -3250,8 +3365,8 @@ button {
 
 .chat-toggle {
   overflow: visible;
-  width: 68px;
-  height: 78px;
+  width: 90px;
+  height: 106px;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -3272,8 +3387,8 @@ button {
 .chat-toggle::after {
   content: "Hello";
   position: absolute;
-  top: -23px;
-  left: -14px;
+  top: -18px;
+  left: -6px;
   z-index: 2;
   border: 1px solid rgba(255, 213, 31, 0.48);
   border-radius: 999px;
@@ -3298,10 +3413,10 @@ button {
 
 .chat-toggle .chat-toggle-icon {
   display: block;
-  width: 66px;
-  height: 76px;
+  width: 88px;
+  height: 104px;
   border-radius: 0;
-  background: url("assets/icons/chat-inquiry-button.png") center / contain no-repeat;
+  background: url("assets/icons/chat-inquiry-button-transparent.png") center / contain no-repeat;
   filter:
     drop-shadow(0 12px 16px rgba(0, 0, 0, 0.34))
     drop-shadow(0 0 14px rgba(255, 213, 31, 0.14));
@@ -4336,24 +4451,24 @@ body.game-overlay-open {
 }
 
 .detail-card-art {
-  width: min(100%, clamp(166px, 15vw, 232px));
-  aspect-ratio: 1.1;
+  width: min(100%, clamp(118px, 10vw, 164px));
+  aspect-ratio: 1 / 2;
   margin: 0 auto 26px;
   background-image: var(--detail-section-icons);
   background-repeat: no-repeat;
   background-size: 300% auto;
-  background-position: left center;
+  background-position: left top;
   filter:
     drop-shadow(0 12px 18px rgba(0, 0, 0, 0.36))
     drop-shadow(0 0 14px rgba(255, 213, 31, 0.13));
 }
 
 .detail-card-art-features {
-  background-position: center center;
+  background-position: center top;
 }
 
 .detail-card-art-how {
-  background-position: right center;
+  background-position: right top;
 }
 
 body:not(.has-detail-section-icons) .detail-card-art {
@@ -4668,6 +4783,28 @@ body:not(.has-detail-section-icons) .detail-info-card h2 .detail-heading-image::
   50% {
     opacity: 1;
     transform: translateX(4px) rotate(45deg);
+  }
+}
+
+@keyframes gameCardArrowTrail {
+  0% {
+    opacity: 0;
+    transform: translateX(-12px) rotate(45deg) scale(0.78);
+  }
+
+  28% {
+    opacity: 1;
+    transform: translateX(-2px) rotate(45deg) scale(1);
+  }
+
+  58% {
+    opacity: 0.72;
+    transform: translateX(8px) rotate(45deg) scale(1.04);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(18px) rotate(45deg) scale(0.9);
   }
 }
 
@@ -5449,13 +5586,13 @@ body:not(.has-detail-section-icons) .detail-info-card h2 .detail-heading-image::
   }
 
   .chat-toggle {
-    width: 60px;
-    height: 70px;
+    width: 76px;
+    height: 90px;
   }
 
   .chat-toggle .chat-toggle-icon {
-    width: 58px;
-    height: 68px;
+    width: 74px;
+    height: 88px;
   }
 
   .auth-dialog {

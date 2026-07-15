@@ -122,9 +122,11 @@ let autoplayTimer;
 let activeHeroDrag;
 let logoCarouselFrame;
 let logoMarquees = [];
+let logoCarouselViewportWidth = window.innerWidth;
 let activeLogoDrag;
 let revealObserver;
 let revealFrame;
+const newsFilterTimers = new WeakMap();
 let chatHistory = [];
 let chatPollTimer;
 let chatSessionId;
@@ -383,13 +385,25 @@ function setupGameCardHoverCtas() {
     }
 
     const cta = document.createElement("span");
-    const label = document.createElement("span");
-    const arrow = document.createElement("i");
+    const inner = document.createElement("span");
+    const arrow = document.createElement("span");
+    const firstArrow = document.createElement("i");
+    const secondArrow = document.createElement("i");
+    const copy = document.createElement("span");
+    const firstLine = document.createElement("span");
+    const secondLine = document.createElement("strong");
 
     cta.className = "game-card-hover-cta";
+    inner.className = "game-card-hover-inner";
+    arrow.className = "game-card-hover-arrow";
+    copy.className = "game-card-hover-copy";
     cta.setAttribute("aria-hidden", "true");
-    label.textContent = "CLICK TO SEE GAME DETAILS";
-    cta.append(label, arrow);
+    firstLine.textContent = "CLICK TO SEE";
+    secondLine.textContent = "MORE GAME DETAILS";
+    arrow.append(firstArrow, secondArrow);
+    copy.append(firstLine, secondLine);
+    inner.append(arrow, copy);
+    cta.appendChild(inner);
     imageFrame.appendChild(cta);
   });
 }
@@ -565,6 +579,11 @@ function handleLogoPointerMove(event) {
 
   const deltaX = event.clientX - activeLogoDrag.startX;
   const deltaY = event.clientY - activeLogoDrag.startY;
+  const movement = Math.hypot(deltaX, deltaY);
+
+  if (movement > 8) {
+    activeLogoDrag.shouldSuppressClick = true;
+  }
 
   if (!activeLogoDrag.didMove && Math.abs(deltaY) > Math.abs(deltaX)) {
     return;
@@ -591,9 +610,13 @@ function endLogoDrag(event) {
     return;
   }
 
-  const { carousel, didMove, link, marquee } = activeLogoDrag;
+  const { carousel, didMove, link, marquee, shouldSuppressClick } = activeLogoDrag;
 
-  if (didMove) {
+  if (carousel.hasPointerCapture?.(event.pointerId)) {
+    carousel.releasePointerCapture(event.pointerId);
+  }
+
+  if (didMove || shouldSuppressClick) {
     const draggedCarousel = carousel;
 
     draggedCarousel.dataset.suppressClick = "true";
@@ -607,7 +630,7 @@ function endLogoDrag(event) {
   carousel.classList.remove("is-dragging");
   activeLogoDrag = undefined;
 
-  if (!didMove && link?.href) {
+  if (!didMove && !shouldSuppressClick && link?.href) {
     carousel.dataset.suppressClick = "true";
     window.setTimeout(() => {
       delete carousel.dataset.suppressClick;
@@ -698,6 +721,11 @@ function buildLogoMarquees() {
     track.querySelectorAll("[data-logo-clone='true']").forEach((clone) => clone.remove());
 
     const originals = Array.from(track.querySelectorAll(".game-logo-item"));
+
+    if (!originals.length) {
+      return undefined;
+    }
+
     const previousRatio = existingMarquee?.setWidth
       ? existingMarquee.offset / existingMarquee.setWidth
       : 0;
@@ -776,7 +804,14 @@ function handleResize() {
   scheduleRevealCheck();
 
   if (logoCarousels.length) {
-    buildLogoMarquees();
+    const nextWidth = window.innerWidth;
+
+    if (Math.abs(nextWidth - logoCarouselViewportWidth) > 16) {
+      logoCarouselViewportWidth = nextWidth;
+      buildLogoMarquees();
+    } else {
+      renderLogoMarquees();
+    }
   }
 }
 
@@ -821,17 +856,41 @@ function setNewsFilter(filter) {
   }
 
   let visibleCount = 0;
+  const transitionDelay = prefersReducedMotion ? 0 : 220;
 
   newsCards.forEach((card) => {
     const cardCategories = (card.dataset.newsCategory || "").split(/\s+/);
     const isVisible = filter === "all" || cardCategories.includes(filter);
+    const existingTimer = newsFilterTimers.get(card);
 
-    card.hidden = !isVisible;
-    card.classList.toggle("is-filtered-out", !isVisible);
+    if (existingTimer) {
+      window.clearTimeout(existingTimer);
+      newsFilterTimers.delete(card);
+    }
 
     if (isVisible) {
+      const shouldAnimateIn = card.hidden || card.classList.contains("is-filtered-out");
+
       visibleCount += 1;
+      card.hidden = false;
+
+      if (shouldAnimateIn) {
+        card.classList.add("is-filtered-out");
+      }
+
+      window.requestAnimationFrame(() => {
+        card.classList.remove("is-filtered-out");
+      });
       revealItem(card);
+    } else {
+      card.classList.add("is-filtered-out");
+
+      const timer = window.setTimeout(() => {
+        card.hidden = true;
+        newsFilterTimers.delete(card);
+      }, transitionDelay);
+
+      newsFilterTimers.set(card, timer);
     }
   });
 
