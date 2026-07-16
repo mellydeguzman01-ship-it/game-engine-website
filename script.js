@@ -1061,6 +1061,10 @@ function isContactEmailValid(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+function isContactPhoneValid(value) {
+  return String(value || "").replace(/\D/g, "").length >= 7;
+}
+
 function getContactFieldError(control) {
   const value = String(control.value || "").trim();
 
@@ -1070,6 +1074,10 @@ function getContactFieldError(control) {
 
   if (control.name === "email" && !isContactEmailValid(value)) {
     return "Please enter a valid email address.";
+  }
+
+  if (control.name === "phone" && !isContactPhoneValid(value)) {
+    return "Please enter a valid phone number.";
   }
 
   return "";
@@ -1136,8 +1144,8 @@ function updateContactSubmitState(options = {}) {
   const isValid = validateContactForm(options);
 
   if (submitButton) {
-    submitButton.disabled = false;
-    submitButton.removeAttribute("aria-disabled");
+    submitButton.disabled = !isValid;
+    submitButton.setAttribute("aria-disabled", String(!isValid));
   }
 
   return isValid;

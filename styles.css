@@ -4065,13 +4065,25 @@ button {
 
 .contact-form .button {
   margin-top: 4px;
+  background: linear-gradient(135deg, #ffe95a 0%, var(--color-yellow) 54%, #ffaf2e 100%);
+  color: #050814;
+  box-shadow:
+    0 0 0 1px rgba(255, 213, 31, 0.34),
+    0 14px 32px rgba(255, 170, 28, 0.28);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background 220ms ease,
+    color 180ms ease,
+    opacity 180ms ease;
 }
 
 .contact-form .button:disabled,
 .contact-form .button:disabled:hover,
 .contact-form .button:disabled:focus-visible {
   border-color: rgba(160, 166, 178, 0.38);
-  background: linear-gradient(135deg, #777d88, #545b66);
+  background: linear-gradient(135deg, #7a808b, #555c66);
   color: rgba(255, 255, 255, 0.68);
   box-shadow: none;
   cursor: not-allowed;
@@ -4081,6 +4093,22 @@ button {
 
 .contact-form .button:not(:disabled) {
   cursor: pointer;
+}
+
+.contact-form .button:not(:disabled):hover,
+.contact-form .button:not(:disabled):focus-visible {
+  background: linear-gradient(135deg, #fff36b 0%, var(--color-yellow) 50%, var(--color-orange) 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 213, 31, 0.42),
+    0 0 20px rgba(255, 213, 31, 0.34),
+    0 18px 38px rgba(255, 170, 28, 0.32);
+}
+
+.contact-form .button:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow:
+    0 0 0 1px rgba(255, 213, 31, 0.32),
+    0 10px 22px rgba(255, 170, 28, 0.22);
 }
 
 .form-status {
