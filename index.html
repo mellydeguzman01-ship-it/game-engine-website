@@ -154,125 +154,159 @@
         <img src="assets/game-section-background.png" alt="">
       </div>
 
-      <section class="games-showcase" id="games" aria-label="Game Engine game catalog">
-        <section class="section game-section" id="innovation-games" aria-label="Innovation Games">
-          <div class="section-inner">
-            <div class="game-section-title reveal">
-              <h2>INNOVATION GAMES</h2>
+      <section class="games-showcase games-library" id="games" data-games-library aria-label="Game Engine game catalog">
+        <span class="games-anchor" id="innovation-games" aria-hidden="true"></span>
+        <span class="games-anchor" id="classic-games" aria-hidden="true"></span>
+        <span class="games-anchor" id="live-games" aria-hidden="true"></span>
+
+        <div class="section-inner games-library-inner">
+          <div class="games-library-main">
+            <div class="games-library-heading reveal">
+              <p class="eyebrow">Game Portfolio</p>
+              <h2>EXPLORE OUR GAMES</h2>
+              <p>Browse instant-win, classic, and live game experiences built for fast demos, polished gameplay, and partner-ready launches.</p>
             </div>
 
-            <div class="game-logo-carousel game-logo-carousel-innovation" data-logo-carousel aria-label="Innovation Games logo gallery" tabindex="0">
-              <div class="game-logo-track">
-                <a class="game-logo-item game-card" href="game-detail.html?game=blazing-7s" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/innovation/blazing-7s.png" alt="BLAZING 7S logo">
-                  <h3>BLAZING 7S</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=banana-craze" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/innovation/banana-craze.png" alt="BANANA CRAZE logo">
-                  <h3>BANANA CRAZE</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=pikapika" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/innovation/pikapika.png" alt="PIKAPIKA logo">
-                  <h3>PIKAPIKA</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=ginto-match" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/innovation/ginto-match.png" alt="GINTO MATCH logo">
-                  <h3>GINTO MATCH</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=lucky-color" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/innovation/lucky-color.png" alt="LUCKY COLOR logo">
-                  <h3>LUCKY COLOR</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=bingo-flux" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/innovation/bingo-flux.png" alt="BINGO FLUX logo">
-                  <h3>BINGO FLUX</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=fortune-ocean" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/innovation/deep-sea-mystery.png" alt="DEEP SEA MYSTERY logo">
-                  <h3>DEEP SEA MYSTERY</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=lucky-color-combo" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/innovation/lucky-color-combo.png" alt="LUCKY COLOR COMBO logo">
-                  <h3>LUCKY COLOR COMBO</h3>
-                </a>
+            <div class="games-library-toolbar" aria-label="Game search and filters">
+              <label class="games-search">
+                <span aria-hidden="true"></span>
+                <input type="search" data-games-search placeholder="Search games" aria-label="Search games">
+              </label>
+
+              <div class="games-filter-tabs" role="tablist" aria-label="Game categories">
+                <button type="button" data-games-filter="innovation" aria-pressed="false">Innovative Games</button>
+                <button type="button" data-games-filter="classic" aria-pressed="false">Classic Games</button>
+                <button type="button" data-games-filter="live" aria-pressed="false">Live Games</button>
+                <button type="button" data-games-filter="new" aria-pressed="false">New Release</button>
+                <button class="is-active" type="button" data-games-filter="all" aria-pressed="true">All Games</button>
               </div>
             </div>
-          </div>
-        </section>
 
-        <section class="section classic-section" id="classic-games" aria-label="Classic Games">
-          <div class="section-inner">
-            <div class="game-section-title reveal">
-              <h2>CLASSIC GAMES</h2>
+            <div class="games-catalog-grid" data-games-grid>
+              <a class="games-catalog-card is-selected" href="game-detail.html?game=lucky-color-combo" data-library-game-card data-game-title="Lucky Color Combo" data-game-category="Innovative Game" data-game-filter-groups="innovation new all" data-game-image="assets/game-logos/innovation/lucky-color-combo.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A vibrant carnival color-matching game with Rainbow Dice, multiplier rewards, and instant-win excitement." data-game-features="Rainbow Dice|Multiplier Wheel|Instant Play">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/innovation/lucky-color-combo.png" alt="Lucky Color Combo logo"></span>
+                <span class="games-card-body"><span>Innovative Game</span><strong>Lucky Color Combo</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=banana-craze" data-library-game-card data-game-title="Banana Craze" data-game-category="Innovative Game" data-game-filter-groups="innovation new all" data-game-image="assets/game-logos/innovation/banana-craze.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A Mayan jungle treasure scratch game with money-match wins, multipliers, and a Free 10 Bonus Round." data-game-features="Money Match|Free 10 Bonus|Mayan Jungle">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/innovation/banana-craze.png" alt="Banana Craze logo"></span>
+                <span class="games-card-body"><span>Innovative Game</span><strong>Banana Craze</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=bingo-flux" data-library-game-card data-game-title="Bingo Flux" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-logos/innovation/bingo-flux.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A neon bingo-style instant game with futuristic visuals, quick rounds, and high-energy reward pacing." data-game-features="Bingo Grid|Neon Theme|Quick Rounds">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/innovation/bingo-flux.png" alt="Bingo Flux logo"></span>
+                <span class="games-card-body"><span>Innovative Game</span><strong>Bingo Flux</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=fortune-ocean" data-library-game-card data-game-title="Deep Sea Mystery" data-game-category="Innovative Game" data-game-filter-groups="innovation new all" data-game-image="assets/game-logos/innovation/deep-sea-mystery.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="Dive into an underwater treasure hunt with pearl rewards, ocean bonuses, and polished instant-play flow." data-game-features="Ocean Rewards|Treasure Bonus|Mobile Ready">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/innovation/deep-sea-mystery.png" alt="Deep Sea Mystery logo"></span>
+                <span class="games-card-body"><span>Innovative Game</span><strong>Deep Sea Mystery</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=blazing-7s" data-library-game-card data-game-title="Blazing 7s" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-logos/innovation/blazing-7s.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A fiery instant-win title built around lucky sevens, molten visuals, and dramatic win reveals." data-game-features="Lucky 7s|Fire Theme|Fast Reveal">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/innovation/blazing-7s.png" alt="Blazing 7s logo"></span>
+                <span class="games-card-body"><span>Innovative Game</span><strong>Blazing 7s</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=pikapika" data-library-game-card data-game-title="PIKAPIKA" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-logos/innovation/pikapika.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A Filipino street-food inspired match-3 scratch card game with playful visuals and instant rewards." data-game-features="Match 3|Street Food Theme|Instant Rewards">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/innovation/pikapika.png" alt="PIKAPIKA logo"></span>
+                <span class="games-card-body"><span>Innovative Game</span><strong>PIKAPIKA</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=ginto-match" data-library-game-card data-game-title="Ginto Match" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-logos/innovation/ginto-match.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A golden vault number-matching game with cumulative rewards and premium wealth-themed visuals." data-game-features="Number Match|Golden Vault|Cumulative Wins">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/innovation/ginto-match.png" alt="Ginto Match logo"></span>
+                <span class="games-card-body"><span>Innovative Game</span><strong>Ginto Match</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=lucky-color" data-library-game-card data-game-title="Lucky Color" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-logos/innovation/lucky-color.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A carnival scratch experience where players reveal colors, match combinations, and chase multiplier wins." data-game-features="Color Match|Multipliers|Carnival Theme">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/innovation/lucky-color.png" alt="Lucky Color logo"></span>
+                <span class="games-card-body"><span>Innovative Game</span><strong>Lucky Color</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=go-bananas" data-library-game-card data-game-title="Go Bananas" data-game-category="Classic Game" data-game-filter-groups="classic all" data-game-image="assets/game-logos/classic/go-bananas.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A classic fruit-forward instant game with friendly pacing, colorful rewards, and simple replay appeal." data-game-features="Classic Play|Fruit Theme|Fast Demo">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/classic/go-bananas.webp" alt="Go Bananas logo"></span>
+                <span class="games-card-body"><span>Classic Game</span><strong>Go Bananas</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=red-hot-7s" data-library-game-card data-game-title="Red Hot 7's" data-game-category="Classic Game" data-game-filter-groups="classic all" data-game-image="assets/game-logos/classic/red-hot-7s.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A timeless sevens game with bold red-hot styling, instant outcomes, and easy-to-understand play." data-game-features="Classic 7s|Hot Streaks|Instant Win">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/classic/red-hot-7s.webp" alt="Red Hot 7's logo"></span>
+                <span class="games-card-body"><span>Classic Game</span><strong>Red Hot 7's</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=bingo-card" data-library-game-card data-game-title="Bingo Card" data-game-category="Classic Game" data-game-filter-groups="classic all" data-game-image="assets/game-logos/classic/bingo-card.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A familiar bingo card format refined for instant play, quick recognition, and clean mobile interaction." data-game-features="Bingo Format|Quick Scan|Mobile Play">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/classic/bingo-card.webp" alt="Bingo Card logo"></span>
+                <span class="games-card-body"><span>Classic Game</span><strong>Bingo Card</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=instant-keno" data-library-game-card data-game-title="Instant Keno" data-game-category="Classic Game" data-game-filter-groups="classic all" data-game-image="assets/game-logos/classic/instant-keno.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A compact keno experience built for quick rounds, clear number reveals, and repeatable play sessions." data-game-features="Keno Picks|Fast Rounds|Clear Results">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/classic/instant-keno.webp" alt="Instant Keno logo"></span>
+                <span class="games-card-body"><span>Classic Game</span><strong>Instant Keno</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=lucky-number" data-library-game-card data-game-title="Lucky Number" data-game-category="Classic Game" data-game-filter-groups="classic all" data-game-image="assets/game-logos/classic/lucky-number.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A number-driven classic game with simple reveal mechanics and a familiar instant-win rhythm." data-game-features="Number Reveal|Classic Mechanics|Fast Payout">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/classic/lucky-number.webp" alt="Lucky Number logo"></span>
+                <span class="games-card-body"><span>Classic Game</span><strong>Lucky Number</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=in-between" data-library-game-card data-game-title="In Between" data-game-category="Classic Game" data-game-filter-groups="classic all" data-game-image="assets/game-logos/classic/in-between.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A quick card-style classic where players chase the right range and get instant feedback every round." data-game-features="Card Style|Quick Decision|Instant Result">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/classic/in-between.webp" alt="In Between logo"></span>
+                <span class="games-card-body"><span>Classic Game</span><strong>In Between</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=classic-lucky-color" data-library-game-card data-game-title="Lucky Color Classic" data-game-category="Classic Game" data-game-filter-groups="classic all" data-game-image="assets/game-logos/classic/lucky-color.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A streamlined classic take on color matching with bright styling and simple instant-win pacing." data-game-features="Color Pick|Classic Flow|Easy Play">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/classic/lucky-color.webp" alt="Lucky Color Classic logo"></span>
+                <span class="games-card-body"><span>Classic Game</span><strong>Lucky Color</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=ginto-scratch" data-library-game-card data-game-title="Ginto Scratch" data-game-category="Classic Game" data-game-filter-groups="classic all" data-game-image="assets/game-logos/classic/ginto-scratch.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A classic scratch format wrapped in a gold prize theme with clear reveals and strong reward messaging." data-game-features="Scratch Reveal|Gold Theme|Prize Match">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/classic/ginto-scratch.webp" alt="Ginto Scratch logo"></span>
+                <span class="games-card-body"><span>Classic Game</span><strong>Ginto Scratch</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=pika-pika" data-library-game-card data-game-title="Pika-Pika Classic" data-game-category="Classic Game" data-game-filter-groups="classic all" data-game-image="assets/game-logos/classic/pika-pika.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A classic Pika-Pika instant game tuned for fast scratch gameplay and approachable player flow." data-game-features="Scratch Card|Classic Theme|Quick Reveal">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/classic/pika-pika.webp" alt="Pika-Pika Classic logo"></span>
+                <span class="games-card-body"><span>Classic Game</span><strong>Pika-Pika</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=grand-sabado" data-library-game-card data-game-title="Grand Sabado" data-game-category="Live Game" data-game-filter-groups="live all" data-game-image="assets/game-logos/live/grand-sabado.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A live-style number draw experience with bold Sabado branding and broadcast-ready energy." data-game-features="Live Draw|Big Prize Feel|Number Play">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/live/grand-sabado.png" alt="Grand Sabado logo"></span>
+                <span class="games-card-body"><span>Live Game</span><strong>Grand Sabado</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=pick-2-win" data-library-game-card data-game-title="Pick 2 Win" data-game-category="Live Game" data-game-filter-groups="live all" data-game-image="assets/game-logos/live/pick-2-win.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A compact live game format centered on quick Pick 2 outcomes, simple entry, and energetic presentation." data-game-features="Pick 2|Live Style|Fast Result">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/live/pick-2-win.png" alt="Pick 2 Win logo"></span>
+                <span class="games-card-body"><span>Live Game</span><strong>Pick 2 Win</strong><em>Launch Demo</em></span>
+              </a>
+              <a class="games-catalog-card" href="game-detail.html?game=pick-3-turbo" data-library-game-card data-game-title="Pick 3 Turbo" data-game-category="Live Game" data-game-filter-groups="live all" data-game-image="assets/game-logos/live/pick-3-turbo.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A tropical Pick 3 game with turbo-paced energy, bright visuals, and a smooth live-game feel." data-game-features="Pick 3|Turbo Pace|Tropical Theme">
+                <span class="games-selected-badge">Selected</span>
+                <span class="games-card-image"><img src="assets/game-logos/live/pick-3-turbo.png" alt="Pick 3 Turbo logo"></span>
+                <span class="games-card-body"><span>Live Game</span><strong>Pick 3 Turbo</strong><em>Launch Demo</em></span>
+              </a>
             </div>
 
-            <div class="game-logo-carousel game-logo-carousel-classic" data-logo-carousel aria-label="Classic Games logo gallery" tabindex="0">
-              <div class="game-logo-track">
-                <a class="game-logo-item game-card" href="game-detail.html?game=go-bananas" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/classic/go-bananas.webp" alt="GO BANANAS logo">
-                  <h3>GO BANANAS</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=red-hot-7s" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/classic/red-hot-7s.webp" alt="RED HOT 7'S logo">
-                  <h3>RED HOT 7'S</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=bingo-card" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/classic/bingo-card.webp" alt="BINGO CARD logo">
-                  <h3>BINGO CARD</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=instant-keno" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/classic/instant-keno.webp" alt="INSTANT KENO logo">
-                  <h3>INSTANT KENO</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=lucky-number" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/classic/lucky-number.webp" alt="LUCKY NUMBER logo">
-                  <h3>LUCKY NUMBER</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=in-between" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/classic/in-between.webp" alt="IN BETWEEN logo">
-                  <h3>IN BETWEEN</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=classic-lucky-color" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/classic/lucky-color.webp" alt="LUCKY COLOR logo">
-                  <h3>LUCKY COLOR</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=ginto-scratch" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/classic/ginto-scratch.webp" alt="GINTO SCRATCH logo">
-                  <h3>GINTO SCRATCH</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=pika-pika" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/classic/pika-pika.webp" alt="PIKA-PIKA logo">
-                  <h3>PIKA-PIKA</h3>
-                </a>
+            <p class="games-empty-state" data-games-empty hidden>No games match your search yet.</p>
+          </div>
+
+          <aside class="games-featured-panel" aria-label="Featured game preview">
+            <div class="games-featured-sticky" data-games-featured>
+              <div class="games-featured-image">
+                <img data-games-featured-image src="assets/game-logos/innovation/lucky-color-combo.png" alt="Lucky Color Combo logo">
+              </div>
+              <div class="games-featured-copy">
+                <span class="games-featured-badge" data-games-featured-category>Innovative Game</span>
+                <h3 data-games-featured-title>Lucky Color Combo</h3>
+                <p data-games-featured-description>A vibrant carnival color-matching game with Rainbow Dice, multiplier rewards, and instant-win excitement.</p>
+                <ul data-games-featured-features>
+                  <li>Rainbow Dice</li>
+                  <li>Multiplier Wheel</li>
+                  <li>Instant Play</li>
+                </ul>
+                <button class="button button-primary games-featured-cta" type="button" data-games-featured-demo>Launch Demo</button>
               </div>
             </div>
-          </div>
-        </section>
-
-        <section class="section live-section" id="live-games" aria-label="Live Games">
-          <div class="section-inner">
-            <div class="game-section-title reveal">
-              <h2>LIVE GAMES</h2>
-            </div>
-
-            <div class="game-logo-carousel game-logo-carousel-live" data-logo-carousel aria-label="Live Games logo gallery" tabindex="0">
-              <div class="game-logo-track">
-                <a class="game-logo-item game-card" href="game-detail.html?game=grand-sabado" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/live/grand-sabado.png" alt="GRAND SABADO logo">
-                  <h3>GRAND SABADO</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=pick-2-win" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/live/pick-2-win.png" alt="PICK 2 WIN logo">
-                  <h3>PICK 2 WIN</h3>
-                </a>
-                <a class="game-logo-item game-card" href="game-detail.html?game=pick-3-turbo" data-game-url="https://pilot.gelotto-test.com/">
-                  <img src="assets/game-logos/live/pick-3-turbo.png" alt="PICK 3 TURBO logo">
-                  <h3>PICK 3 TURBO</h3>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+          </aside>
+        </div>
       </section>
 
       <section class="company-section company-home-section" id="company" aria-label="Company">

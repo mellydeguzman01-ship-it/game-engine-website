@@ -97,6 +97,18 @@ const gameFrame = document.querySelector("[data-game-frame]");
 const gameCloseButton = document.querySelector("[data-game-close]");
 const gameOverlayTitle = document.querySelector("[data-game-overlay-title]");
 const gameOverlayBalance = document.querySelector("[data-game-overlay-balance]");
+const gamesLibrary = document.querySelector("[data-games-library]");
+const gamesSearch = document.querySelector("[data-games-search]");
+const gamesFilterButtons = Array.from(document.querySelectorAll("[data-games-filter]"));
+const libraryGameCards = Array.from(document.querySelectorAll("[data-library-game-card]"));
+const gamesGrid = document.querySelector("[data-games-grid]");
+const gamesEmpty = document.querySelector("[data-games-empty]");
+const gamesFeaturedImage = document.querySelector("[data-games-featured-image]");
+const gamesFeaturedCategory = document.querySelector("[data-games-featured-category]");
+const gamesFeaturedTitle = document.querySelector("[data-games-featured-title]");
+const gamesFeaturedDescription = document.querySelector("[data-games-featured-description]");
+const gamesFeaturedFeatures = document.querySelector("[data-games-featured-features]");
+const gamesFeaturedDemo = document.querySelector("[data-games-featured-demo]");
 const backToTopButton = document.querySelector("[data-back-to-top]");
 const chatWidget = document.querySelector("[data-chat-widget]");
 const chatToggle = document.querySelector("[data-chat-toggle]");
@@ -144,13 +156,19 @@ let chatScrollResetFrame;
 let chatWidgetVideo;
 let chatWidgetVideoFrame;
 let chatWidgetVideoMode = "idle";
+let chatWidgetPointerActive = false;
+let chatWidgetFocusActive = false;
+let chatWidgetClickBoostTimer;
 let demoAccounts = {};
 let demoSessionKey = "";
 let pendingGameCard;
 let authToastTimer;
+let selectedLibraryGameCard;
 const autoplayDelay = 5000;
 const demoAccountsStorageKey = "game-engine-demo-accounts-v1";
 const demoSessionStorageKey = "game-engine-demo-session-v1";
+const newReleaseGameTitles = ["Lucky Color Combo", "Banana Craze", "Deep Sea Mystery"];
+const newReleaseGameTitleSet = new Set(newReleaseGameTitles.map((title) => title.toLowerCase()));
 const initialDemoBalance = 1000000;
 const chatHistoryStorageKey = "game-engine-chat-history";
 const chatSessionStorageKey = "game-engine-chat-session";
@@ -1510,7 +1528,7 @@ function buildGameLaunchUrl(rawUrl) {
 }
 
 function getGameTitle(card) {
-  return card?.querySelector("h3")?.textContent?.trim() || card?.textContent?.trim() || "Game Engine Demo";
+  return card?.dataset.gameTitle || card?.querySelector("h3")?.textContent?.trim() || card?.textContent?.trim() || "Game Engine Demo";
 }
 
 function openGameOverlay(card) {
@@ -1522,7 +1540,7 @@ function openGameOverlay(card) {
     return;
   }
 
-  const rawUrl = card?.dataset.gameUrl;
+  const rawUrl = card?.dataset.gameDemoUrl || card?.dataset.gameUrl;
 
   if (!rawUrl || !gameOverlay || !gameFrame) {
     return;
@@ -1891,9 +1909,7 @@ function getChatWidgetVideoSegment(mode = chatWidgetVideoMode) {
   return chatWidgetVideoSegments[mode] || chatWidgetVideoSegments.idle;
 }
 
-function syncChatWidgetVideoSegment() {
-  chatWidgetVideoFrame = undefined;
-
+function keepChatWidgetVideoInSegment() {
   if (!chatWidgetVideo) {
     return;
   }
@@ -1911,8 +1927,22 @@ function syncChatWidgetVideoSegment() {
   if (chatWidgetVideo.paused) {
     chatWidgetVideo.play().catch(() => {});
   }
+}
+
+function syncChatWidgetVideoSegment() {
+  chatWidgetVideoFrame = undefined;
+
+  if (!chatWidgetVideo) {
+    return;
+  }
+
+  keepChatWidgetVideoInSegment();
 
   chatWidgetVideoFrame = window.requestAnimationFrame(syncChatWidgetVideoSegment);
+}
+
+function handleChatWidgetVideoProgress() {
+  keepChatWidgetVideoInSegment();
 }
 
 function playChatWidgetVideoSegment(mode, shouldRestart = false) {
@@ -1943,8 +1973,57 @@ function playChatWidgetVideoSegment(mode, shouldRestart = false) {
   }
 }
 
-function setChatWidgetVisualMode(mode) {
-  playChatWidgetVideoSegment(mode);
+function updateChatWidgetVisualMode() {
+  playChatWidgetVideoSegment(
+    chatWidgetPointerActive || chatWidgetFocusActive || chatWidgetClickBoostTimer ? "hover" : "idle",
+  );
+}
+
+function stopChatWidgetClickBoost() {
+  if (!chatWidgetClickBoostTimer) {
+    return;
+  }
+
+  window.clearTimeout(chatWidgetClickBoostTimer);
+  chatWidgetClickBoostTimer = undefined;
+}
+
+function boostChatWidgetActiveAnimation(duration = 1600) {
+  stopChatWidgetClickBoost();
+  chatWidgetClickBoostTimer = window.setTimeout(() => {
+    chatWidgetClickBoostTimer = undefined;
+    updateChatWidgetVisualMode();
+  }, duration);
+  updateChatWidgetVisualMode();
+}
+
+function setChatWidgetPointerActive(isActive) {
+  if (chatWidgetPointerActive === isActive) {
+    return;
+  }
+
+  chatWidgetPointerActive = isActive;
+
+  if (!isActive) {
+    stopChatWidgetClickBoost();
+  }
+
+  updateChatWidgetVisualMode();
+}
+
+function syncChatWidgetPointerPosition(event) {
+  if (!chatToggle) {
+    return;
+  }
+
+  const rect = chatToggle.getBoundingClientRect();
+  const isInside =
+    event.clientX >= rect.left &&
+    event.clientX <= rect.right &&
+    event.clientY >= rect.top &&
+    event.clientY <= rect.bottom;
+
+  setChatWidgetPointerActive(isInside);
 }
 
 function preloadChatWidgetVideo() {
@@ -1986,20 +2065,38 @@ function setupChatWidgetVideo() {
 
   chatWidgetVideo = video;
 
+  if (chatWidgetVideo.dataset.segmentLoopBound !== "true") {
+    chatWidgetVideo.addEventListener("timeupdate", handleChatWidgetVideoProgress);
+    chatWidgetVideo.addEventListener("ended", handleChatWidgetVideoProgress);
+    chatWidgetVideo.dataset.segmentLoopBound = "true";
+  }
+
   const startVideoLoop = () => playChatWidgetVideoSegment(chatWidgetVideoMode, true);
 
   if (chatWidgetVideo.readyState >= 1) {
     startVideoLoop();
   } else {
     chatWidgetVideo.addEventListener("loadedmetadata", startVideoLoop, { once: true });
+    chatWidgetVideo.load();
   }
 
-  chatWidgetVideo.load();
-
-  chatToggle?.addEventListener("pointerenter", () => setChatWidgetVisualMode("hover"));
-  chatToggle?.addEventListener("pointerleave", () => setChatWidgetVisualMode("idle"));
-  chatToggle?.addEventListener("focus", () => setChatWidgetVisualMode("hover"));
-  chatToggle?.addEventListener("blur", () => setChatWidgetVisualMode("idle"));
+  chatToggle?.addEventListener("pointerenter", () => {
+    setChatWidgetPointerActive(true);
+  });
+  chatToggle?.addEventListener("pointerleave", () => {
+    setChatWidgetPointerActive(false);
+  });
+  chatToggle?.addEventListener("focus", () => {
+    if (chatToggle.matches(":focus-visible")) {
+      chatWidgetFocusActive = true;
+      updateChatWidgetVisualMode();
+    }
+  });
+  chatToggle?.addEventListener("blur", () => {
+    chatWidgetFocusActive = false;
+    updateChatWidgetVisualMode();
+  });
+  document.addEventListener("pointermove", syncChatWidgetPointerPosition, { passive: true });
 }
 
 function handleChatDragStart(event) {
@@ -2288,7 +2385,7 @@ function setupChatWidget() {
 
     const shouldOpen = chatWindow.hidden;
 
-    playChatWidgetVideoSegment("hover");
+    boostChatWidgetActiveAnimation();
     playChatClickAnimation();
 
     if (shouldOpen && !prefersReducedMotion) {
@@ -2411,6 +2508,211 @@ function setupDemoAuth() {
       closeAccountDropdown();
     }
   });
+}
+
+function getActiveGamesFilter() {
+  return gamesFilterButtons.find((button) => button.classList.contains("is-active"))?.dataset.gamesFilter || "all";
+}
+
+function getLibraryGameTitle(card) {
+  return String(card?.dataset.gameTitle || getGameTitle(card)).trim();
+}
+
+function getNewReleaseGameIndex(card) {
+  const title = getLibraryGameTitle(card).toLowerCase();
+  return newReleaseGameTitles.findIndex((newReleaseTitle) => newReleaseTitle.toLowerCase() === title);
+}
+
+function getLibraryCardFeatures(card) {
+  return String(card?.dataset.gameFeatures || "")
+    .split("|")
+    .map((feature) => feature.trim())
+    .filter(Boolean);
+}
+
+function setLibraryFeaturedGame(card) {
+  if (!card || card.hidden) {
+    return;
+  }
+
+  selectedLibraryGameCard = card;
+
+  libraryGameCards.forEach((item) => {
+    const isSelected = item === card;
+    item.classList.toggle("is-selected", isSelected);
+    item.setAttribute("aria-current", isSelected ? "true" : "false");
+  });
+
+  if (gamesFeaturedImage) {
+    gamesFeaturedImage.src = card.dataset.gameImage || card.querySelector("img")?.src || "";
+    gamesFeaturedImage.alt = `${card.dataset.gameTitle || getGameTitle(card)} logo`;
+  }
+
+  if (gamesFeaturedCategory) {
+    gamesFeaturedCategory.textContent = card.dataset.gameCategory || "Game";
+  }
+
+  if (gamesFeaturedTitle) {
+    gamesFeaturedTitle.textContent = card.dataset.gameTitle || getGameTitle(card);
+  }
+
+  if (gamesFeaturedDescription) {
+    gamesFeaturedDescription.textContent = card.dataset.gameDescription || "";
+  }
+
+  if (gamesFeaturedFeatures) {
+    const features = getLibraryCardFeatures(card).map((feature) => {
+      const item = document.createElement("li");
+      item.textContent = feature;
+      return item;
+    });
+
+    gamesFeaturedFeatures.replaceChildren(...features);
+  }
+}
+
+function cardMatchesGamesFilter(card, filter, query) {
+  const groups = String(card.dataset.gameFilterGroups || "")
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean);
+  const title = getLibraryGameTitle(card).toLowerCase();
+  const matchesFilter =
+    filter === "all" ||
+    (filter === "new" ? newReleaseGameTitleSet.has(title) : groups.includes(filter));
+  const searchableText = [
+    card.dataset.gameTitle,
+    card.dataset.gameCategory,
+    card.dataset.gameDescription,
+    card.dataset.gameFeatures,
+  ].join(" ").toLowerCase();
+
+  return matchesFilter && (!query || searchableText.includes(query));
+}
+
+function getOrderedLibraryCards(visibleCards, filter) {
+  const visibleSet = new Set(visibleCards);
+  const sortedVisibleCards = [...visibleCards];
+
+  if (filter === "all") {
+    sortedVisibleCards.sort((cardA, cardB) =>
+      getLibraryGameTitle(cardA).localeCompare(getLibraryGameTitle(cardB), undefined, {
+        numeric: true,
+        sensitivity: "base",
+      }),
+    );
+  } else if (filter === "new") {
+    sortedVisibleCards.sort((cardA, cardB) => getNewReleaseGameIndex(cardA) - getNewReleaseGameIndex(cardB));
+  } else {
+    sortedVisibleCards.sort((cardA, cardB) => libraryGameCards.indexOf(cardA) - libraryGameCards.indexOf(cardB));
+  }
+
+  return [
+    ...sortedVisibleCards,
+    ...libraryGameCards.filter((card) => !visibleSet.has(card)),
+  ];
+}
+
+function renderGamesCatalogOrder(visibleCards, filter) {
+  if (!gamesGrid) {
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+  getOrderedLibraryCards(visibleCards, filter).forEach((card) => {
+    fragment.appendChild(card);
+  });
+  gamesGrid.appendChild(fragment);
+}
+
+function animateGamesCatalogFilter(visibleCards) {
+  if (!gamesGrid) {
+    return;
+  }
+
+  libraryGameCards.forEach((card) => {
+    card.classList.remove("is-filter-visible");
+    card.style.removeProperty("--games-card-delay");
+  });
+
+  gamesGrid.classList.add("is-filtering");
+
+  window.requestAnimationFrame(() => {
+    gamesGrid.classList.remove("is-filtering");
+    visibleCards.forEach((card, index) => {
+      card.style.setProperty("--games-card-delay", `${Math.min(index, 12) * 18}ms`);
+      card.classList.add("is-filter-visible");
+    });
+  });
+}
+
+function updateGamesCatalog(shouldAnimate = false) {
+  if (!gamesLibrary) {
+    return;
+  }
+
+  const filter = getActiveGamesFilter();
+  const query = String(gamesSearch?.value || "").trim().toLowerCase();
+  const visibleCards = [];
+
+  libraryGameCards.forEach((card) => {
+    const isVisible = cardMatchesGamesFilter(card, filter, query);
+    card.hidden = !isVisible;
+    card.setAttribute("aria-hidden", String(!isVisible));
+
+    if (isVisible) {
+      visibleCards.push(card);
+    }
+  });
+
+  renderGamesCatalogOrder(visibleCards, filter);
+
+  if (gamesEmpty) {
+    gamesEmpty.hidden = visibleCards.length > 0;
+  }
+
+  if (!visibleCards.includes(selectedLibraryGameCard)) {
+    setLibraryFeaturedGame(visibleCards[0]);
+  }
+
+  if (shouldAnimate) {
+    animateGamesCatalogFilter(visibleCards);
+  }
+}
+
+function setupGamesLibrary() {
+  if (!gamesLibrary || !libraryGameCards.length) {
+    return;
+  }
+
+  gamesFilterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      gamesFilterButtons.forEach((item) => {
+        const isActive = item === button;
+        item.classList.toggle("is-active", isActive);
+        item.setAttribute("aria-pressed", String(isActive));
+      });
+
+      updateGamesCatalog(true);
+    });
+  });
+
+  gamesSearch?.addEventListener("input", () => updateGamesCatalog(true));
+
+  libraryGameCards.forEach((card) => {
+    card.addEventListener("pointerenter", () => setLibraryFeaturedGame(card));
+    card.addEventListener("focus", () => setLibraryFeaturedGame(card));
+    card.addEventListener("click", () => setLibraryFeaturedGame(card));
+  });
+
+  gamesFeaturedDemo?.addEventListener("click", () => {
+    if (selectedLibraryGameCard) {
+      openGameOverlay(selectedLibraryGameCard);
+    }
+  });
+
+  setLibraryFeaturedGame(libraryGameCards.find((card) => card.classList.contains("is-selected")) || libraryGameCards[0]);
+  updateGamesCatalog();
 }
 
 function setupGameLauncher() {
@@ -2568,6 +2870,7 @@ document.addEventListener("keydown", (event) => {
 
 setupDemoAuth();
 setupGameCardHoverCtas();
+setupGamesLibrary();
 setupGameLauncher();
 setupContactForm();
 setupFloatingActions();

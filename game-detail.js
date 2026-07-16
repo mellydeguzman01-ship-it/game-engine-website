@@ -1530,13 +1530,6 @@ function renderGameDetail(game) {
   logo.src = game.logo;
   logo.alt = `${game.title} logo`;
 
-  const stats = document.querySelector("[data-stats]");
-  if (game.type === "innovation" && game.stats) {
-    renderStats(stats, game.stats);
-  } else {
-    stats.hidden = true;
-  }
-
   appendParagraphs(document.querySelector("[data-overview]"), game.overview);
   appendHowToPlay(document.querySelector("[data-how-to-play]"), game.howToPlay);
 
@@ -1545,56 +1538,6 @@ function renderGameDetail(game) {
     appendParagraphs(document.querySelector("[data-features]"), game.features);
   } else {
     featuresCard.hidden = true;
-  }
-
-  const overviewTable = game.overviewTable;
-  if (overviewTable?.length) {
-    renderTable(document.querySelector("[data-overview]"), overviewTable, ["Label", "Value"]);
-  }
-
-  const featuresTable = game.featuresTable;
-  const featuresContainer = document.querySelector("[data-features]");
-  if (featuresTable?.length) {
-    renderTable(featuresContainer, featuresTable, ["Feature", "Detail"]);
-    if (featuresCard) featuresCard.hidden = false;
-  }
-
-  const howToPlayTable = game.howToPlayTable;
-  const howContainer = document.querySelector("[data-how-to-play]");
-  if (howToPlayTable?.length) {
-    renderHowToPlayTable(howContainer, howToPlayTable);
-  }
-
-  const buttonsFields = game.buttonsFields;
-  const bfContainer = document.querySelector("[data-buttons-fields]");
-  if (buttonsFields?.length && bfContainer) {
-    renderTable(bfContainer, buttonsFields, ["Name", "Function"]);
-    const bfCard = document.getElementById("game-buttons");
-    if (bfCard) bfCard.hidden = false;
-  }
-
-  const scratchHowTo = game.scratchHowTo;
-  const shContainer = document.querySelector("[data-scratch-howto]");
-  if (scratchHowTo?.length && shContainer) {
-    renderHowToPlayTable(shContainer, scratchHowTo);
-    const shCard = document.getElementById("scratch-howto");
-    if (shCard) shCard.hidden = false;
-  }
-
-  const freeTicket = game.freeTicket;
-  const ftContainer = document.querySelector("[data-free-ticket]");
-  if (freeTicket?.length && ftContainer) {
-    renderTable(ftContainer, freeTicket, ["Condition", "Reward"]);
-    const ftCard = document.getElementById("free-ticket");
-    if (ftCard) ftCard.hidden = false;
-  }
-
-  const faq = game.faq;
-  const faqContainer = document.querySelector("[data-faq]");
-  if (faq?.length && faqContainer) {
-    renderTable(faqContainer, faq, ["Question", "Answer"]);
-    const faqCard = document.getElementById("faq");
-    if (faqCard) faqCard.hidden = false;
   }
 }
 
