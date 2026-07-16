@@ -1047,13 +1047,23 @@ function getContactSubmitButton() {
   return contactForm?.querySelector('button[type="submit"]');
 }
 
+function getContactControl(fieldName) {
+  const namedControl = contactForm?.elements?.namedItem(fieldName);
+
+  if (namedControl && typeof namedControl.setCustomValidity === "function") {
+    return namedControl;
+  }
+
+  return contactForm?.querySelector(`[name="${fieldName}"]`) || null;
+}
+
 function getContactRequiredControls() {
   if (!contactForm) {
     return [];
   }
 
   return Object.keys(contactRequiredFields)
-    .map((fieldName) => contactForm.elements[fieldName])
+    .map((fieldName) => getContactControl(fieldName))
     .filter(Boolean);
 }
 
