@@ -169,6 +169,7 @@ const demoAccountsStorageKey = "game-engine-demo-accounts-v1";
 const demoSessionStorageKey = "game-engine-demo-session-v1";
 const newReleaseGameTitles = ["Lucky Color Combo", "Banana Craze", "Deep Sea Mystery"];
 const newReleaseGameTitleSet = new Set(newReleaseGameTitles.map((title) => title.toLowerCase()));
+const allGamesCategoryOrder = ["innovation", "classic", "live"];
 const initialDemoBalance = 1000000;
 const chatHistoryStorageKey = "game-engine-chat-history";
 const chatSessionStorageKey = "game-engine-chat-session";
@@ -2592,6 +2593,26 @@ function getNewReleaseGameIndex(card) {
   return newReleaseGameTitles.findIndex((newReleaseTitle) => newReleaseTitle.toLowerCase() === title);
 }
 
+function getLibraryGameFilterGroups(card) {
+  return String(card?.dataset.gameFilterGroups || "")
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function getAllGamesSortRank(card) {
+  const newReleaseIndex = getNewReleaseGameIndex(card);
+
+  if (newReleaseIndex >= 0) {
+    return newReleaseIndex;
+  }
+
+  const groups = getLibraryGameFilterGroups(card);
+  const categoryIndex = allGamesCategoryOrder.findIndex((category) => groups.includes(category));
+
+  return newReleaseGameTitles.length + (categoryIndex >= 0 ? categoryIndex : allGamesCategoryOrder.length);
+}
+
 function getLibraryCardFeatures(card) {
   return String(card?.dataset.gameFeatures || "")
     .split("|")
@@ -2646,10 +2667,7 @@ function setLibraryFeaturedGame(card) {
 }
 
 function cardMatchesGamesFilter(card, filter, query) {
-  const groups = String(card.dataset.gameFilterGroups || "")
-    .toLowerCase()
-    .split(/\s+/)
-    .filter(Boolean);
+  const groups = getLibraryGameFilterGroups(card);
   const title = getLibraryGameTitle(card).toLowerCase();
   const matchesFilter =
     filter === "all" ||
@@ -2669,12 +2687,15 @@ function getOrderedLibraryCards(visibleCards, filter) {
   const sortedVisibleCards = [...visibleCards];
 
   if (filter === "all") {
-    sortedVisibleCards.sort((cardA, cardB) =>
-      getLibraryGameTitle(cardA).localeCompare(getLibraryGameTitle(cardB), undefined, {
-        numeric: true,
-        sensitivity: "base",
-      }),
-    );
+    sortedVisibleCards.sort((cardA, cardB) => {
+      const rankDifference = getAllGamesSortRank(cardA) - getAllGamesSortRank(cardB);
+
+      if (rankDifference !== 0) {
+        return rankDifference;
+      }
+
+      return libraryGameCards.indexOf(cardA) - libraryGameCards.indexOf(cardB);
+    });
   } else if (filter === "new") {
     sortedVisibleCards.sort((cardA, cardB) => getNewReleaseGameIndex(cardA) - getNewReleaseGameIndex(cardB));
   } else {
