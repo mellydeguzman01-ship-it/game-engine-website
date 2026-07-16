@@ -109,6 +109,20 @@ const gamesFeaturedTitle = document.querySelector("[data-games-featured-title]")
 const gamesFeaturedDescription = document.querySelector("[data-games-featured-description]");
 const gamesFeaturedFeatures = document.querySelector("[data-games-featured-features]");
 const gamesFeaturedDemo = document.querySelector("[data-games-featured-demo]");
+const homeGameDetailsSection = document.querySelector("[data-home-game-details-section]");
+const homeGameDetailShell = document.querySelector("[data-home-game-detail]");
+const homeGameDetailHeading = document.querySelector("[data-home-game-detail-heading]");
+const homeGameLogo = document.querySelector("[data-home-game-logo]");
+const homeGameCategory = document.querySelector("[data-home-game-category]");
+const homeGameTitle = document.querySelector("[data-home-game-title]");
+const homeGameTagline = document.querySelector("[data-home-game-tagline]");
+const homePlayGameButton = document.querySelector("[data-home-play-game]");
+const homeDemoScreen = document.querySelector("[data-home-demo-screen]");
+const homeStatsGrid = document.querySelector("[data-home-stats]");
+const homeOverview = document.querySelector("[data-home-overview]");
+const homeFeaturesCard = document.querySelector("[data-home-features-card]");
+const homeFeatures = document.querySelector("[data-home-features]");
+const homeHowToPlay = document.querySelector("[data-home-how-to-play]");
 const backToTopButton = document.querySelector("[data-back-to-top]");
 const chatWidget = document.querySelector("[data-chat-widget]");
 const chatToggle = document.querySelector("[data-chat-toggle]");
@@ -186,6 +200,11 @@ const contactRequiredFields = {
   company: "Company is required.",
   message: "Your Message is required.",
 };
+const homeDetailFeatureBadges = [
+  { label: "Mobile Ready", type: "mobile" },
+  { label: "Localized", type: "globe" },
+  { label: "PHP Currency", type: "currency" },
+];
 const chatWelcomeMessage = "Hi, welcome to Game Engine. Send us a message and our partnership team will reply here once live chat is connected.";
 
 const featuredGames = {
@@ -402,6 +421,22 @@ function setupFeaturedShowcase() {
     button.addEventListener("click", () => {
       setFeaturedGame(button.dataset.featuredGame);
     });
+  });
+
+  featuredLaunch?.addEventListener("click", (event) => {
+    if (!shouldHandleInPageGameRoute(event)) {
+      return;
+    }
+
+    const slug = new URL(featuredLaunch.href, window.location.href).searchParams.get("game");
+    const card = findLibraryGameCardBySlug(slug);
+
+    if (!card) {
+      return;
+    }
+
+    event.preventDefault();
+    routeLibraryGameToDetails(card);
   });
 
   setFeaturedGame("lucky-color-combo");
@@ -1112,7 +1147,7 @@ function validateContactField(control, options = {}) {
     (showError || control.dataset.contactTouched === "true" || contactForm?.classList.contains("was-validated"));
 
   control.setCustomValidity(errorMessage);
-  control.setAttribute("aria-invalid", errorMessage ? "true" : "false");
+  control.setAttribute("aria-invalid", shouldShowError ? "true" : "false");
 
   if (errorElement) {
     errorElement.textContent = shouldShowError ? errorMessage : "";
@@ -1133,8 +1168,8 @@ function updateContactSubmitState(options = {}) {
   const isValid = validateContactForm(options);
 
   if (submitButton) {
-    submitButton.disabled = !isValid;
-    submitButton.setAttribute("aria-disabled", String(!isValid));
+    submitButton.disabled = false;
+    submitButton.removeAttribute("aria-disabled");
   }
 
   return isValid;
@@ -2325,6 +2360,7 @@ function setupContactForm() {
   });
 
   updateContactSubmitState();
+  getContactSubmitButton()?.addEventListener("click", handleContactSubmit);
   contactForm.addEventListener("submit", handleContactSubmit);
 }
 
@@ -2530,6 +2566,315 @@ function getLibraryCardFeatures(card) {
     .filter(Boolean);
 }
 
+function getLibraryGameSlug(card) {
+  if (!card?.href) {
+    return "";
+  }
+
+  try {
+    return new URL(card.href, window.location.href).searchParams.get("game") || "";
+  } catch (error) {
+    return "";
+  }
+}
+
+function getGameDetailBySlug(slug) {
+  return window.GAME_DETAILS?.[slug];
+}
+
+function getGameCategoryLabel(game) {
+  if (game?.type === "classic") {
+    return "Classic Game";
+  }
+
+  if (game?.type === "live") {
+    return "Live Game";
+  }
+
+  return "Innovation Game";
+}
+
+function createHomeDetailSvgElement(tag, attributes) {
+  const element = document.createElementNS("http://www.w3.org/2000/svg", tag);
+
+  Object.entries(attributes).forEach(([name, value]) => {
+    element.setAttribute(name, value);
+  });
+
+  return element;
+}
+
+function createHomeDetailStatIcon(type) {
+  const icon = document.createElement("span");
+  icon.className = `detail-stat-icon detail-stat-icon-${type}`;
+
+  if (type === "currency") {
+    icon.textContent = "\u20b1";
+    return icon;
+  }
+
+  const svg = createHomeDetailSvgElement("svg", {
+    viewBox: "0 0 24 24",
+    "aria-hidden": "true",
+  });
+
+  if (type === "mobile") {
+    svg.append(
+      createHomeDetailSvgElement("rect", { x: "7", y: "2.5", width: "10", height: "19", rx: "2.4" }),
+      createHomeDetailSvgElement("path", { d: "M10.5 18h3" }),
+    );
+  } else {
+    svg.append(
+      createHomeDetailSvgElement("circle", { cx: "12", cy: "12", r: "8.5" }),
+      createHomeDetailSvgElement("path", { d: "M3.5 12h17M12 3.5c2.2 2.4 3.2 5.3 3.2 8.5s-1 6.1-3.2 8.5M12 3.5C9.8 5.9 8.8 8.8 8.8 12s1 6.1 3.2 8.5" }),
+    );
+  }
+
+  icon.appendChild(svg);
+  return icon;
+}
+
+function renderHomeDetailParagraphs(container, paragraphs = []) {
+  if (!container) {
+    return;
+  }
+
+  const elements = paragraphs.map((paragraph) => {
+    const element = document.createElement("p");
+    element.textContent = paragraph;
+    return element;
+  });
+
+  container.replaceChildren(...elements);
+}
+
+function renderHomeHowToPlay(container, steps = []) {
+  if (!container) {
+    return;
+  }
+
+  const list = document.createElement("ol");
+  const items = steps.map((step) => {
+    const item = document.createElement("li");
+    item.textContent = step;
+    return item;
+  });
+
+  list.append(...items);
+  container.replaceChildren(list);
+}
+
+function renderHomeStats(container, stats = {}) {
+  if (!container) {
+    return;
+  }
+
+  const statCards = Object.entries(stats).map(([label, value]) => {
+    const card = document.createElement("article");
+    const labelElement = document.createElement("span");
+    const valueElement = document.createElement("strong");
+
+    labelElement.textContent = label;
+    valueElement.textContent = value;
+    card.append(labelElement, valueElement);
+    return card;
+  });
+
+  const featureCard = document.createElement("article");
+  featureCard.className = "detail-feature-card";
+
+  homeDetailFeatureBadges.forEach((badge) => {
+    const item = document.createElement("span");
+    const labelElement = document.createElement("strong");
+
+    item.className = "detail-feature-pill";
+    labelElement.textContent = badge.label;
+    item.append(createHomeDetailStatIcon(badge.type), labelElement);
+    featureCard.appendChild(item);
+  });
+
+  container.replaceChildren(...statCards, featureCard);
+}
+
+function renderHomeDemoPreview(game) {
+  if (!homeDemoScreen) {
+    return;
+  }
+
+  homeDemoScreen.replaceChildren();
+  homeDemoScreen.classList.toggle("has-video", Boolean(game.video));
+
+  if (game.video) {
+    const video = document.createElement("video");
+
+    video.className = "detail-demo-video";
+    video.src = game.video;
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = "metadata";
+    video.setAttribute("autoplay", "");
+    video.setAttribute("loop", "");
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.setAttribute("aria-label", `${game.title} demo video`);
+    video.addEventListener("canplay", () => video.classList.add("is-ready"), { once: true });
+    homeDemoScreen.appendChild(video);
+
+    const playRequest = video.play();
+    if (playRequest?.catch) {
+      playRequest.catch(() => {});
+    }
+    return;
+  }
+
+  const poster = document.createElement("div");
+  const winLabel = document.createElement("span");
+  const prize = document.createElement("strong");
+  const caption = document.createElement("small");
+
+  poster.className = "detail-demo-poster";
+  winLabel.textContent = "MEGA WIN!";
+  prize.textContent = game.demoPrize || "DEMO PREVIEW";
+  caption.textContent = game.title;
+  poster.append(winLabel, prize, caption);
+  homeDemoScreen.appendChild(poster);
+}
+
+function renderHomeGameDetails(card) {
+  const slug = getLibraryGameSlug(card);
+  const game = getGameDetailBySlug(slug);
+
+  if (!homeGameDetailsSection || !homeGameDetailShell || !game) {
+    return false;
+  }
+
+  const categoryLabel = getGameCategoryLabel(game);
+  const sectionIcons = window.DETAIL_SECTION_ICONS?.[slug];
+
+  homeGameDetailsSection.dataset.currentGame = slug;
+  homeGameDetailsSection.style.setProperty("--home-game-detail-background", `url("${game.background}")`);
+  homeGameDetailShell.classList.remove("game-detail-kind-innovation", "game-detail-kind-classic", "game-detail-kind-live");
+  homeGameDetailShell.classList.add(`game-detail-kind-${game.type}`);
+  homeGameDetailShell.classList.toggle("has-detail-section-icons", Boolean(sectionIcons));
+
+  if (sectionIcons) {
+    homeGameDetailShell.style.setProperty("--detail-section-icons", `url("${sectionIcons}")`);
+  } else {
+    homeGameDetailShell.style.removeProperty("--detail-section-icons");
+  }
+
+  if (homeGameDetailHeading) {
+    homeGameDetailHeading.textContent = game.title;
+  }
+
+  if (homeGameLogo) {
+    homeGameLogo.src = game.logo;
+    homeGameLogo.alt = `${game.title} logo`;
+  }
+
+  if (homeGameCategory) {
+    homeGameCategory.textContent = categoryLabel;
+  }
+
+  if (homeGameTitle) {
+    homeGameTitle.textContent = game.title;
+  }
+
+  if (homeGameTagline) {
+    homeGameTagline.textContent = game.tagline;
+  }
+
+  if (homePlayGameButton) {
+    homePlayGameButton.href = game.playUrl || card?.dataset.gameDemoUrl || "https://pilot.gelotto-test.com/";
+    homePlayGameButton.setAttribute("aria-label", `Play ${game.title}`);
+  }
+
+  renderHomeDemoPreview(game);
+
+  if (homeStatsGrid) {
+    if (game.stats) {
+      renderHomeStats(homeStatsGrid, game.stats);
+      homeStatsGrid.hidden = false;
+    } else {
+      homeStatsGrid.replaceChildren();
+      homeStatsGrid.hidden = true;
+    }
+  }
+
+  renderHomeDetailParagraphs(homeOverview, game.overview);
+  renderHomeDetailParagraphs(homeFeatures, game.features);
+  renderHomeHowToPlay(homeHowToPlay, game.howToPlay);
+
+  if (homeFeaturesCard) {
+    homeFeaturesCard.hidden = !game.features?.length;
+  }
+
+  return true;
+}
+
+function findLibraryGameCardBySlug(slug) {
+  return libraryGameCards.find((card) => getLibraryGameSlug(card) === slug);
+}
+
+function getRoutedLibraryGameCard() {
+  const slug = new URLSearchParams(window.location.search).get("game");
+  return slug ? findLibraryGameCardBySlug(slug) : undefined;
+}
+
+function updateHomeGameDetailsRoute(card) {
+  const slug = getLibraryGameSlug(card);
+
+  if (!slug || !window.history?.pushState) {
+    return;
+  }
+
+  const nextUrl = new URL(window.location.href);
+  nextUrl.searchParams.set("game", slug);
+  nextUrl.hash = "game-details";
+
+  if (nextUrl.href !== window.location.href) {
+    window.history.pushState({ game: slug }, "", nextUrl);
+  }
+}
+
+function scrollHomeGameDetailsIntoView() {
+  if (homeGameDetailsSection) {
+    scrollToSection(homeGameDetailsSection);
+  }
+}
+
+function routeLibraryGameToDetails(card, options = {}) {
+  const { updateRoute = true, scroll = true } = options;
+
+  if (!card || !renderHomeGameDetails(card)) {
+    return;
+  }
+
+  setLibraryFeaturedGame(card);
+
+  if (updateRoute) {
+    updateHomeGameDetailsRoute(card);
+  }
+
+  if (scroll) {
+    scrollHomeGameDetailsIntoView();
+  }
+}
+
+function shouldHandleInPageGameRoute(event) {
+  return !(
+    event.defaultPrevented ||
+    event.button !== 0 ||
+    event.metaKey ||
+    event.ctrlKey ||
+    event.shiftKey ||
+    event.altKey
+  );
+}
+
 function setLibraryFeaturedGame(card) {
   if (!card || card.hidden) {
     return;
@@ -2569,6 +2914,8 @@ function setLibraryFeaturedGame(card) {
 
     gamesFeaturedFeatures.replaceChildren(...features);
   }
+
+  renderHomeGameDetails(card);
 }
 
 function cardMatchesGamesFilter(card, filter, query) {
@@ -2702,17 +3049,41 @@ function setupGamesLibrary() {
   libraryGameCards.forEach((card) => {
     card.addEventListener("pointerenter", () => setLibraryFeaturedGame(card));
     card.addEventListener("focus", () => setLibraryFeaturedGame(card));
-    card.addEventListener("click", () => setLibraryFeaturedGame(card));
+    card.addEventListener("click", (event) => {
+      if (!shouldHandleInPageGameRoute(event)) {
+        setLibraryFeaturedGame(card);
+        return;
+      }
+
+      event.preventDefault();
+      routeLibraryGameToDetails(card);
+    });
   });
 
   gamesFeaturedDemo?.addEventListener("click", () => {
     if (selectedLibraryGameCard) {
-      openGameOverlay(selectedLibraryGameCard);
+      routeLibraryGameToDetails(selectedLibraryGameCard);
     }
   });
 
-  setLibraryFeaturedGame(libraryGameCards.find((card) => card.classList.contains("is-selected")) || libraryGameCards[0]);
+  setLibraryFeaturedGame(
+    getRoutedLibraryGameCard() ||
+    libraryGameCards.find((card) => card.classList.contains("is-selected")) ||
+    libraryGameCards[0],
+  );
   updateGamesCatalog();
+
+  if (window.location.hash === "#game-details") {
+    window.requestAnimationFrame(scrollHomeGameDetailsIntoView);
+  }
+
+  window.addEventListener("popstate", () => {
+    const routedCard = getRoutedLibraryGameCard();
+
+    if (routedCard) {
+      routeLibraryGameToDetails(routedCard, { updateRoute: false, scroll: window.location.hash === "#game-details" });
+    }
+  });
 }
 
 function setupGameLauncher() {

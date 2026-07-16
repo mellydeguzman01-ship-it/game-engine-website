@@ -1248,6 +1248,9 @@ const DETAIL_SECTION_ICONS = {
 
 const params = new URLSearchParams(window.location.search);
 
+window.GAME_DETAILS = GAME_DETAILS;
+window.DETAIL_SECTION_ICONS = DETAIL_SECTION_ICONS;
+
 function renderTable(container, rows, columns) {
   container.replaceChildren();
   const table = document.createElement("table");
@@ -1533,6 +1536,14 @@ function renderGameDetail(game) {
   appendParagraphs(document.querySelector("[data-overview]"), game.overview);
   appendHowToPlay(document.querySelector("[data-how-to-play]"), game.howToPlay);
 
+  const statsGrid = document.querySelector("[data-stats]");
+  if (statsGrid && game.stats) {
+    statsGrid.hidden = false;
+    renderStats(statsGrid, game.stats);
+  } else if (statsGrid) {
+    statsGrid.hidden = true;
+  }
+
   const featuresCard = document.querySelector("[data-features-card]");
   if (game.features?.length) {
     appendParagraphs(document.querySelector("[data-features]"), game.features);
@@ -1541,8 +1552,8 @@ function renderGameDetail(game) {
   }
 }
 
-if (currentGame) {
+if (detailRoot && currentGame) {
   renderGameDetail(currentGame);
-} else {
+} else if (missingRoot) {
   missingRoot.hidden = false;
 }

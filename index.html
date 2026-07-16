@@ -13,8 +13,9 @@
     <link rel="preload" as="image" href="assets/home-partnership-banner-desktop-final.png">
     <link rel="preload" as="image" href="assets/game-section-background.png">
     <link rel="preload" as="image" href="assets/game-logos/innovation/lucky-color-combo.png">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260716-ui2">
+    <script src="game-detail.js?v=20260716-ui2" defer></script>
+    <script src="script.js?v=20260716-ui2" defer></script>
   </head>
   <body class="home-page">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -309,6 +310,50 @@
         </div>
       </section>
 
+      <section class="section home-game-detail-section" id="game-details" data-home-game-details-section aria-label="Selected game details">
+        <div class="section-inner home-game-detail-heading reveal">
+          <p class="eyebrow">Game Details</p>
+          <h2 data-home-game-detail-heading>Lucky Color Combo</h2>
+        </div>
+
+        <section class="game-detail-shell home-game-detail-shell reveal" data-home-game-detail>
+          <section class="detail-hero-grid" aria-label="Selected game introduction">
+            <div class="detail-intro-card">
+              <img class="detail-game-logo" data-home-game-logo src="assets/game-logos/innovation/lucky-color-combo.png" alt="Lucky Color Combo logo">
+              <div class="detail-game-copy">
+                <p class="detail-kicker" data-home-game-category>Innovation Game</p>
+                <h1 data-home-game-title>Lucky Color Combo</h1>
+                <p data-home-game-tagline></p>
+              </div>
+              <a class="button button-primary detail-play-button" data-home-play-game href="https://pilot.gelotto-test.com/" target="_blank" rel="noopener noreferrer">PLAY GAME</a>
+            </div>
+
+            <section class="detail-demo-card" aria-label="Selected game demo video">
+              <div class="detail-demo-screen" data-home-demo-screen aria-label="Selected game demo preview"></div>
+            </section>
+          </section>
+
+          <section class="detail-stats-grid" data-home-stats aria-label="Basic Stats"></section>
+
+          <section class="detail-info-panel" data-home-detail-info aria-label="Selected game profile details">
+            <article class="detail-info-card detail-overview-card">
+              <div class="detail-card-art detail-card-art-overview" role="img" aria-label="Game Overview"></div>
+              <div data-home-overview></div>
+            </article>
+
+            <article class="detail-info-card detail-features-card" data-home-features-card>
+              <div class="detail-card-art detail-card-art-features" role="img" aria-label="Features"></div>
+              <div data-home-features></div>
+            </article>
+
+            <article class="detail-info-card detail-how-card">
+              <div class="detail-card-art detail-card-art-how" role="img" aria-label="How to Play"></div>
+              <div data-home-how-to-play></div>
+            </article>
+          </section>
+        </section>
+      </section>
+
       <section class="company-section company-home-section" id="company" aria-label="Company">
         <section class="company-hero" aria-label="Game Engine company introduction">
           <video
@@ -514,6 +559,7 @@
 
           <div class="contact-form-stack">
             <form class="contact-form" data-contact-form aria-label="Partnership contact form" novalidate>
+              <p class="contact-form-note"><strong>Note:</strong> Required fields must be completed before submitting.</p>
               <div class="contact-form-grid">
                 <label>
                   <span>Name</span>
@@ -524,7 +570,7 @@
                   <input type="email" name="email" autocomplete="email" placeholder="you@company.com" required>
                 </label>
                 <label>
-                  <span>Phone</span>
+                  <span>Phone Number</span>
                   <input type="tel" name="phone" autocomplete="tel" placeholder="+63 900 000 0000" required>
                 </label>
                 <label>
@@ -540,7 +586,7 @@
                 <span>Your Message</span>
                 <textarea name="message" rows="5" placeholder="Tell us what you want to launch" required></textarea>
               </label>
-              <button class="button button-primary" type="submit" disabled aria-disabled="true">Submit</button>
+              <button class="button button-primary" type="submit">Submit</button>
               <p class="form-status" data-contact-status role="status" aria-live="polite"></p>
             </form>
 
