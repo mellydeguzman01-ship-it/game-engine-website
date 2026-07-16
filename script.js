@@ -2259,10 +2259,9 @@ async function sendChatMessage(message) {
   const controller = "AbortController" in window ? new AbortController() : undefined;
   let timeoutId;
 
-  const timeout = new Promise((_, reject) => {
+  const timeout = new Promise((resolve) => {
     timeoutId = window.setTimeout(() => {
-      reject(new Error(chatSendTimeoutMessage));
-      controller?.abort();
+      resolve({ didTimeout: true });
     }, chatSendTimeoutMs);
   });
 
@@ -2287,7 +2286,24 @@ async function sendChatMessage(message) {
   });
 
   try {
-    return await Promise.race([request, timeout]);
+    const result = await Promise.race([
+      request.then(
+        (data) => ({ data }),
+        (error) => ({ error }),
+      ),
+      timeout,
+    ]);
+
+    if (result.didTimeout) {
+      controller?.abort();
+      throw new Error(chatSendTimeoutMessage);
+    }
+
+    if (result.error) {
+      throw result.error;
+    }
+
+    return result.data;
   } finally {
     window.clearTimeout(timeoutId);
   }
@@ -2388,6 +2404,7 @@ function setupChatWidget() {
   }
 
   chatWidget.dataset.initialized = "true";
+  chatForm?.setAttribute("novalidate", "");
   setupChatWidgetVideo();
   restoreChatWidgetPosition();
 
