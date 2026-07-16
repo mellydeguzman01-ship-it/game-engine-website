@@ -1298,6 +1298,60 @@ button {
   min-width: 164px;
 }
 
+.hero .hero-partner-cta {
+  border-width: 1px;
+  border-style: solid;
+  color: #050814;
+  text-shadow: none;
+}
+
+.hero .hero-partner-demo {
+  border-color: rgba(255, 213, 31, 0.82);
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.72), transparent 24%),
+    linear-gradient(135deg, #fff36b 0%, #ffd51f 42%, #ff8a1f 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 213, 31, 0.32),
+    0 0 24px rgba(255, 213, 31, 0.58),
+    0 20px 42px rgba(255, 122, 26, 0.28);
+}
+
+.hero .hero-partner-partner {
+  border-color: rgba(39, 226, 255, 0.74);
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.55), transparent 24%),
+    linear-gradient(135deg, #27e2ff 0%, #1f98ff 44%, #a855ff 100%);
+  color: var(--color-white);
+  box-shadow:
+    0 0 0 1px rgba(39, 226, 255, 0.24),
+    0 0 24px rgba(39, 226, 255, 0.48),
+    0 20px 42px rgba(168, 85, 255, 0.3);
+}
+
+.hero .hero-partner-cta:hover,
+.hero .hero-partner-cta:focus-visible {
+  border-color: rgba(255, 255, 255, 0.86);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.36),
+    0 0 32px rgba(255, 213, 31, 0.58),
+    0 20px 48px rgba(0, 0, 0, 0.32);
+}
+
+.hero .hero-partner-partner:hover,
+.hero .hero-partner-partner:focus-visible {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.34),
+    0 0 34px rgba(39, 226, 255, 0.58),
+    0 20px 48px rgba(0, 0, 0, 0.32);
+}
+
+.hero .hero-partner-cta:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.26),
+    0 10px 26px rgba(0, 0, 0, 0.28);
+}
+
 @media (min-width: 1101px) {
   .hero,
   .hero-carousel,
@@ -1724,6 +1778,11 @@ button {
 }
 
 .games-filter-tabs button {
+  --games-filter-icon-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
   background:
@@ -1734,6 +1793,8 @@ button {
   font-size: 0.82rem;
   font-weight: 900;
   letter-spacing: 0.02em;
+  line-height: 1;
+  white-space: nowrap;
   transition:
     transform 180ms ease,
     border-color 180ms ease,
@@ -1757,6 +1818,21 @@ button {
   transform: translateY(-1px);
 }
 
+.games-filter-icon {
+  width: var(--games-filter-icon-size);
+  height: var(--games-filter-icon-size);
+  flex: 0 0 var(--games-filter-icon-size);
+  color: currentColor;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition:
+    color 180ms ease,
+    stroke 180ms ease;
+}
+
 .games-catalog-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1775,6 +1851,7 @@ button {
 .games-catalog-card {
   position: relative;
   display: grid;
+  grid-template-rows: auto 1fr;
   min-width: 0;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.13);
@@ -1837,8 +1914,11 @@ button {
 }
 
 .games-card-image img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
   object-fit: contain;
   object-position: center;
   padding: clamp(10px, 1.2vw, 18px);
@@ -1852,7 +1932,10 @@ button {
 
 .games-card-body {
   display: grid;
+  grid-template-rows: auto minmax(2.7em, auto) auto;
+  align-content: start;
   gap: 8px;
+  min-height: 116px;
   padding: 16px;
 }
 
@@ -2106,6 +2189,12 @@ button {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
     margin-top: 18px;
+  }
+
+  .games-filter-tabs button {
+    --games-filter-icon-size: 14px;
+    gap: 6px;
+    padding: 10px 13px;
   }
 
   .games-catalog-card {
@@ -4694,6 +4783,16 @@ button {
   background: linear-gradient(135deg, var(--color-red), var(--color-orange) 48%, var(--color-yellow));
 }
 
+.chat-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.chat-form.is-sending button:disabled {
+  cursor: wait;
+  opacity: 1;
+}
+
 .chat-form button svg {
   transition: opacity 160ms ease;
 }
@@ -4965,65 +5064,6 @@ button {
 body.auth-modal-open,
 body.game-overlay-open {
   overflow: hidden;
-}
-
-.home-game-detail-section {
-  position: relative;
-  overflow: hidden;
-  background: #050814;
-  scroll-margin-top: calc(var(--header-height) + 18px);
-  isolation: isolate;
-}
-
-.home-game-detail-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image: var(--home-game-detail-background);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0.2;
-  transform: scale(1.04);
-}
-
-.home-game-detail-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background:
-    linear-gradient(180deg, rgba(5, 8, 20, 0.86), rgba(5, 8, 20, 0.76)),
-    radial-gradient(circle at 12% 18%, rgba(255, 213, 31, 0.12), transparent 34%),
-    radial-gradient(circle at 88% 42%, rgba(32, 151, 255, 0.14), transparent 34%);
-  pointer-events: none;
-}
-
-.home-game-detail-section > * {
-  position: relative;
-  z-index: 1;
-}
-
-.home-game-detail-heading {
-  margin-bottom: clamp(24px, 3vw, 38px);
-}
-
-.home-game-detail-heading h2 {
-  margin: 0;
-  color: var(--color-white);
-  font-size: clamp(2rem, 4vw, 4.2rem);
-  line-height: 0.98;
-  text-transform: uppercase;
-}
-
-.home-game-detail-shell {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.home-game-detail-shell.game-detail-kind-classic {
-  background: transparent;
 }
 
 @media (min-width: 1101px) {
@@ -5549,46 +5589,25 @@ body.game-overlay-open {
 }
 
 .detail-info-card {
-  min-height: 420px;
-  padding: 26px clamp(22px, 2.4vw, 36px) clamp(26px, 2.4vw, 36px);
+  min-height: 440px;
+  padding: 26px clamp(26px, 3vw, 44px) clamp(26px, 3vw, 44px);
   scroll-margin-top: 110px;
 }
 
 .detail-card-art {
-  width: min(100%, clamp(104px, 8vw, 146px));
-  aspect-ratio: 1 / 2;
-  margin: 0 auto 22px;
-  background-image: var(--detail-section-icons);
-  background-repeat: no-repeat;
-  background-size: 300% auto;
-  background-position: left top;
+  display: block;
+  width: min(100%, clamp(136px, 11vw, 188px));
+  height: auto;
+  margin: 0 auto 26px;
+  object-fit: contain;
+  object-position: center;
   filter:
     drop-shadow(0 12px 18px rgba(0, 0, 0, 0.36))
     drop-shadow(0 0 14px rgba(255, 213, 31, 0.13));
 }
 
-.detail-card-art-features {
-  background-position: center top;
-}
-
-.detail-card-art-how {
-  background-position: right top;
-}
-
-.detail-card-art-buttons {
-  background-position: left bottom;
-}
-
-.detail-card-art-scratch {
-  background-position: center bottom;
-}
-
-.detail-card-art-ticket {
-  background-position: right bottom;
-}
-
-.detail-card-art-faq {
-  background-position: right center;
+.detail-card-art[hidden] {
+  display: none;
 }
 
 /* Rule Table Styles */
@@ -5628,29 +5647,12 @@ body.game-overlay-open {
   white-space: nowrap;
 }
 
-body:not(.has-detail-section-icons) .detail-card-art {
-  display: inline-grid;
-  width: auto;
-  min-height: 0;
-  aspect-ratio: auto;
-  margin-right: auto;
-  margin-left: auto;
-  place-items: center;
-  border: 1px solid rgba(255, 213, 31, 0.24);
-  border-radius: 12px;
-  background:
-    linear-gradient(135deg, rgba(255, 213, 31, 0.16), rgba(39, 226, 255, 0.08)),
-    rgba(255, 255, 255, 0.04);
-  padding: 10px 14px;
-  color: var(--color-yellow);
-  filter: none;
+.detail-card-fallback-title {
+  display: none;
 }
 
-body:not(.has-detail-section-icons) .detail-card-art::after {
-  content: attr(aria-label);
-  font-weight: 950;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+body:not(.has-detail-section-icons) .detail-card-fallback-title {
+  display: block;
 }
 
 .detail-info-card + .detail-info-card {
@@ -5830,7 +5832,7 @@ body:not(.has-detail-section-icons) .detail-info-card h2 .detail-heading-image::
 }
 
 .game-detail-kind-classic .detail-info-panel {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
   overflow: visible;
   border: 0;
@@ -6577,9 +6579,12 @@ body:not(.has-detail-section-icons) .detail-info-card h2 .detail-heading-image::
     grid-template-columns: repeat(3, minmax(0, auto));
   }
 
-  .detail-info-panel,
-  .game-detail-kind-classic .detail-info-panel {
+  .detail-info-panel {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .game-detail-kind-classic .detail-info-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .detail-info-card,
@@ -6589,7 +6594,7 @@ body:not(.has-detail-section-icons) .detail-info-card h2 .detail-heading-image::
   }
 
   .detail-card-art {
-    width: min(100%, 112px);
+    width: min(100%, clamp(104px, 14vw, 146px));
     margin-bottom: 18px;
   }
 
@@ -7245,6 +7250,10 @@ body:not(.has-detail-section-icons) .detail-info-card h2 .detail-heading-image::
   .detail-info-card {
     min-height: auto;
     padding: 24px;
+  }
+
+  .detail-card-art {
+    width: min(70vw, 188px);
   }
 
   .has-detail-section-icons .detail-info-card h2 .detail-section-icon {

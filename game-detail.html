@@ -9,9 +9,9 @@
     >
     <title>Game Detail | Game Engine</title>
     <link rel="preload" as="image" href="assets/ge-logo.png">
-    <link rel="stylesheet" href="styles.css?v=20260716-ui2">
-    <script src="game-detail.js?v=20260716-ui2" defer></script>
-    <script src="script.js?v=20260716-ui2" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260716-ui8">
+    <script src="game-detail.js?v=20260716-ui8" defer></script>
+    <script src="script.js?v=20260716-ui8" defer></script>
   </head>
   <body class="game-detail-page">
     <header class="detail-topbar">
@@ -49,17 +49,20 @@
 
         <section class="detail-info-panel" data-detail-info aria-label="Game profile details">
           <article class="detail-info-card detail-overview-card" id="game-overview">
-            <div class="detail-card-art detail-card-art-overview" role="img" aria-label="Game Overview"></div>
+            <img class="detail-card-art detail-card-art-overview" data-detail-section-image="overview" src="" alt="Game Overview">
+            <h2 class="detail-card-fallback-title">Game Overview</h2>
             <div data-overview></div>
           </article>
 
           <article class="detail-info-card detail-features-card" id="game-features" data-features-card>
-            <div class="detail-card-art detail-card-art-features" role="img" aria-label="Features"></div>
+            <img class="detail-card-art detail-card-art-features" data-detail-section-image="features" src="" alt="Features">
+            <h2 class="detail-card-fallback-title">Features</h2>
             <div data-features></div>
           </article>
 
           <article class="detail-info-card detail-how-card" id="how-to-play">
-            <div class="detail-card-art detail-card-art-how" role="img" aria-label="How to Play"></div>
+            <img class="detail-card-art detail-card-art-how" data-detail-section-image="how" src="" alt="How to Play">
+            <h2 class="detail-card-fallback-title">How to Play</h2>
             <div data-how-to-play></div>
           </article>
         </section>

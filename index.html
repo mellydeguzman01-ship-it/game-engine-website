@@ -13,9 +13,8 @@
     <link rel="preload" as="image" href="assets/home-partnership-banner-desktop-final.png">
     <link rel="preload" as="image" href="assets/game-section-background.png">
     <link rel="preload" as="image" href="assets/game-logos/innovation/lucky-color-combo.png">
-    <link rel="stylesheet" href="styles.css?v=20260716-ui2">
-    <script src="game-detail.js?v=20260716-ui2" defer></script>
-    <script src="script.js?v=20260716-ui2" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260716-ui8">
+    <script src="script.js?v=20260716-ui8" defer></script>
   </head>
   <body class="home-page">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -130,8 +129,8 @@
               </p>
               <div class="hero-actions hero-actions-multiple">
                 <a class="button button-primary" href="#contact" target="_blank" rel="noopener noreferrer">CONTACT US</a>
-                <a class="button button-secondary" href="https://calendar.app.google/fy8Lhbc4J5BswETo8" target="_blank" rel="noopener noreferrer">SCHEDULE A DEMO</a>
-                <a class="button button-tertiary" href="https://gameengine.sg.larksuite.com/share/base/form/shrlgPGlr3hPkco6EyRMV9ejKHf" target="_blank" rel="noopener noreferrer">BECOME A PARTNER</a>
+                <a class="button button-secondary hero-partner-cta hero-partner-demo" href="https://calendar.app.google/fy8Lhbc4J5BswETo8" target="_blank" rel="noopener noreferrer">SCHEDULE A DEMO</a>
+                <a class="button button-tertiary hero-partner-cta hero-partner-partner" href="https://gameengine.sg.larksuite.com/share/base/form/shrlgPGlr3hPkco6EyRMV9ejKHf" target="_blank" rel="noopener noreferrer">BECOME A PARTNER</a>
               </div>
             </div>
           </article>
@@ -175,53 +174,89 @@
               </label>
 
               <div class="games-filter-tabs" role="tablist" aria-label="Game categories">
-                <button type="button" data-games-filter="innovation" aria-pressed="false">Innovative Games</button>
-                <button type="button" data-games-filter="classic" aria-pressed="false">Classic Games</button>
-                <button type="button" data-games-filter="live" aria-pressed="false">Live Games</button>
-                <button type="button" data-games-filter="new" aria-pressed="false">New Release</button>
-                <button class="is-active" type="button" data-games-filter="all" aria-pressed="true">All Games</button>
+                <button type="button" data-games-filter="innovation" aria-pressed="false">
+                  <svg class="games-filter-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M8.5 3.5h3.25a1.75 1.75 0 0 1 1.75 1.75v1.1a1.65 1.65 0 1 0 3.3 0v-.1h1.95a1.75 1.75 0 0 1 1.75 1.75v3.25a1.75 1.75 0 0 1-1.75 1.75h-1.1a1.65 1.65 0 1 0 0 3.3h.1v1.95A1.75 1.75 0 0 1 16 20.5h-3.25A1.75 1.75 0 0 1 11 18.75v-1.1a1.65 1.65 0 1 0-3.3 0v.1H5.75A1.75 1.75 0 0 1 4 16v-3.25A1.75 1.75 0 0 1 5.75 11h1.1a1.65 1.65 0 1 0 0-3.3h-.1V5.25A1.75 1.75 0 0 1 8.5 3.5Z"></path>
+                  </svg>
+                  <span>Innovative Games</span>
+                </button>
+                <button type="button" data-games-filter="classic" aria-pressed="false">
+                  <svg class="games-filter-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+                    <path d="M8 8h.01"></path>
+                    <path d="M16 8h.01"></path>
+                    <path d="M12 12h.01"></path>
+                    <path d="M8 16h.01"></path>
+                    <path d="M16 16h.01"></path>
+                  </svg>
+                  <span>Classic Games</span>
+                </button>
+                <button type="button" data-games-filter="live" aria-pressed="false">
+                  <svg class="games-filter-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M3 9.5V6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75V9.5a2.5 2.5 0 0 0 0 5v2.75A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V14.5a2.5 2.5 0 0 0 0-5Z"></path>
+                    <path d="M13 5v3"></path>
+                    <path d="M13 11v2"></path>
+                    <path d="M13 16v3"></path>
+                  </svg>
+                  <span>Live Games</span>
+                </button>
+                <button type="button" data-games-filter="new" aria-pressed="false">
+                  <svg class="games-filter-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="m12 2.75 2.8 5.68 6.27.91-4.54 4.42 1.07 6.24L12 17.06 6.4 20l1.07-6.24-4.54-4.42 6.27-.91L12 2.75Z"></path>
+                  </svg>
+                  <span>New Releases</span>
+                </button>
+                <button class="is-active" type="button" data-games-filter="all" aria-pressed="true">
+                  <svg class="games-filter-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                    <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                    <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                    <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                  </svg>
+                  <span>All Games</span>
+                </button>
               </div>
             </div>
 
             <div class="games-catalog-grid" data-games-grid>
-              <a class="games-catalog-card is-selected" href="game-detail.html?game=lucky-color-combo" data-library-game-card data-game-title="Lucky Color Combo" data-game-category="Innovative Game" data-game-filter-groups="innovation new all" data-game-image="assets/game-logos/innovation/lucky-color-combo.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A vibrant carnival color-matching game with Rainbow Dice, multiplier rewards, and instant-win excitement." data-game-features="Rainbow Dice|Multiplier Wheel|Instant Play">
+              <a class="games-catalog-card is-selected" href="game-detail.html?game=lucky-color-combo" data-library-game-card data-game-title="Lucky Color Combo" data-game-category="Innovative Game" data-game-filter-groups="innovation new all" data-game-image="assets/game-thumbnails/innovation/lucky-color-combo.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A vibrant carnival color-matching game with Rainbow Dice, multiplier rewards, and instant-win excitement." data-game-features="Rainbow Dice|Multiplier Wheel|Instant Play">
                 <span class="games-selected-badge">Selected</span>
-                <span class="games-card-image"><img src="assets/game-logos/innovation/lucky-color-combo.png" alt="Lucky Color Combo logo"></span>
+                <span class="games-card-image"><img src="assets/game-thumbnails/innovation/lucky-color-combo.webp" alt="Lucky Color Combo logo"></span>
                 <span class="games-card-body"><span>Innovative Game</span><strong>Lucky Color Combo</strong><em>Launch Demo</em></span>
               </a>
-              <a class="games-catalog-card" href="game-detail.html?game=banana-craze" data-library-game-card data-game-title="Banana Craze" data-game-category="Innovative Game" data-game-filter-groups="innovation new all" data-game-image="assets/game-logos/innovation/banana-craze.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A Mayan jungle treasure scratch game with money-match wins, multipliers, and a Free 10 Bonus Round." data-game-features="Money Match|Free 10 Bonus|Mayan Jungle">
+              <a class="games-catalog-card" href="game-detail.html?game=banana-craze" data-library-game-card data-game-title="Banana Craze" data-game-category="Innovative Game" data-game-filter-groups="innovation new all" data-game-image="assets/game-thumbnails/innovation/banana-craze.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A Mayan jungle treasure scratch game with money-match wins, multipliers, and a Free 10 Bonus Round." data-game-features="Money Match|Free 10 Bonus|Mayan Jungle">
                 <span class="games-selected-badge">Selected</span>
-                <span class="games-card-image"><img src="assets/game-logos/innovation/banana-craze.png" alt="Banana Craze logo"></span>
+                <span class="games-card-image"><img src="assets/game-thumbnails/innovation/banana-craze.webp" alt="Banana Craze logo"></span>
                 <span class="games-card-body"><span>Innovative Game</span><strong>Banana Craze</strong><em>Launch Demo</em></span>
               </a>
-              <a class="games-catalog-card" href="game-detail.html?game=bingo-flux" data-library-game-card data-game-title="Bingo Flux" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-logos/innovation/bingo-flux.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A neon bingo-style instant game with futuristic visuals, quick rounds, and high-energy reward pacing." data-game-features="Bingo Grid|Neon Theme|Quick Rounds">
+              <a class="games-catalog-card" href="game-detail.html?game=bingo-flux" data-library-game-card data-game-title="Bingo Flux" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-thumbnails/innovation/bingo-flux.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A neon bingo-style instant game with futuristic visuals, quick rounds, and high-energy reward pacing." data-game-features="Bingo Grid|Neon Theme|Quick Rounds">
                 <span class="games-selected-badge">Selected</span>
-                <span class="games-card-image"><img src="assets/game-logos/innovation/bingo-flux.png" alt="Bingo Flux logo"></span>
+                <span class="games-card-image"><img src="assets/game-thumbnails/innovation/bingo-flux.png" alt="Bingo Flux logo"></span>
                 <span class="games-card-body"><span>Innovative Game</span><strong>Bingo Flux</strong><em>Launch Demo</em></span>
               </a>
-              <a class="games-catalog-card" href="game-detail.html?game=fortune-ocean" data-library-game-card data-game-title="Deep Sea Mystery" data-game-category="Innovative Game" data-game-filter-groups="innovation new all" data-game-image="assets/game-logos/innovation/deep-sea-mystery.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="Dive into an underwater treasure hunt with pearl rewards, ocean bonuses, and polished instant-play flow." data-game-features="Ocean Rewards|Treasure Bonus|Mobile Ready">
+              <a class="games-catalog-card" href="game-detail.html?game=fortune-ocean" data-library-game-card data-game-title="Deep Sea Mystery" data-game-category="Innovative Game" data-game-filter-groups="innovation new all" data-game-image="assets/game-thumbnails/innovation/deep-sea-mystery.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="Dive into an underwater treasure hunt with pearl rewards, ocean bonuses, and polished instant-play flow." data-game-features="Ocean Rewards|Treasure Bonus|Mobile Ready">
                 <span class="games-selected-badge">Selected</span>
-                <span class="games-card-image"><img src="assets/game-logos/innovation/deep-sea-mystery.png" alt="Deep Sea Mystery logo"></span>
+                <span class="games-card-image"><img src="assets/game-thumbnails/innovation/deep-sea-mystery.webp" alt="Deep Sea Mystery logo"></span>
                 <span class="games-card-body"><span>Innovative Game</span><strong>Deep Sea Mystery</strong><em>Launch Demo</em></span>
               </a>
-              <a class="games-catalog-card" href="game-detail.html?game=blazing-7s" data-library-game-card data-game-title="Blazing 7s" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-logos/innovation/blazing-7s.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A fiery instant-win title built around lucky sevens, molten visuals, and dramatic win reveals." data-game-features="Lucky 7s|Fire Theme|Fast Reveal">
+              <a class="games-catalog-card" href="game-detail.html?game=blazing-7s" data-library-game-card data-game-title="Blazing 7s" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-thumbnails/innovation/blazing-7s.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A fiery instant-win title built around lucky sevens, molten visuals, and dramatic win reveals." data-game-features="Lucky 7s|Fire Theme|Fast Reveal">
                 <span class="games-selected-badge">Selected</span>
-                <span class="games-card-image"><img src="assets/game-logos/innovation/blazing-7s.png" alt="Blazing 7s logo"></span>
+                <span class="games-card-image"><img src="assets/game-thumbnails/innovation/blazing-7s.png" alt="Blazing 7s logo"></span>
                 <span class="games-card-body"><span>Innovative Game</span><strong>Blazing 7s</strong><em>Launch Demo</em></span>
               </a>
-              <a class="games-catalog-card" href="game-detail.html?game=pikapika" data-library-game-card data-game-title="PIKAPIKA" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-logos/innovation/pikapika.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A Filipino street-food inspired match-3 scratch card game with playful visuals and instant rewards." data-game-features="Match 3|Street Food Theme|Instant Rewards">
+              <a class="games-catalog-card" href="game-detail.html?game=pikapika" data-library-game-card data-game-title="PIKAPIKA" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-thumbnails/innovation/pikapika.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A Filipino street-food inspired match-3 scratch card game with playful visuals and instant rewards." data-game-features="Match 3|Street Food Theme|Instant Rewards">
                 <span class="games-selected-badge">Selected</span>
-                <span class="games-card-image"><img src="assets/game-logos/innovation/pikapika.png" alt="PIKAPIKA logo"></span>
+                <span class="games-card-image"><img src="assets/game-thumbnails/innovation/pikapika.webp" alt="PIKAPIKA logo"></span>
                 <span class="games-card-body"><span>Innovative Game</span><strong>PIKAPIKA</strong><em>Launch Demo</em></span>
               </a>
-              <a class="games-catalog-card" href="game-detail.html?game=ginto-match" data-library-game-card data-game-title="Ginto Match" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-logos/innovation/ginto-match.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A golden vault number-matching game with cumulative rewards and premium wealth-themed visuals." data-game-features="Number Match|Golden Vault|Cumulative Wins">
+              <a class="games-catalog-card" href="game-detail.html?game=ginto-match" data-library-game-card data-game-title="Ginto Match" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-thumbnails/innovation/ginto-match.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A golden vault number-matching game with cumulative rewards and premium wealth-themed visuals." data-game-features="Number Match|Golden Vault|Cumulative Wins">
                 <span class="games-selected-badge">Selected</span>
-                <span class="games-card-image"><img src="assets/game-logos/innovation/ginto-match.png" alt="Ginto Match logo"></span>
+                <span class="games-card-image"><img src="assets/game-thumbnails/innovation/ginto-match.png" alt="Ginto Match logo"></span>
                 <span class="games-card-body"><span>Innovative Game</span><strong>Ginto Match</strong><em>Launch Demo</em></span>
               </a>
-              <a class="games-catalog-card" href="game-detail.html?game=lucky-color" data-library-game-card data-game-title="Lucky Color" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-logos/innovation/lucky-color.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A carnival scratch experience where players reveal colors, match combinations, and chase multiplier wins." data-game-features="Color Match|Multipliers|Carnival Theme">
+              <a class="games-catalog-card" href="game-detail.html?game=lucky-color" data-library-game-card data-game-title="Lucky Color" data-game-category="Innovative Game" data-game-filter-groups="innovation all" data-game-image="assets/game-thumbnails/innovation/lucky-color.png" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A carnival scratch experience where players reveal colors, match combinations, and chase multiplier wins." data-game-features="Color Match|Multipliers|Carnival Theme">
                 <span class="games-selected-badge">Selected</span>
-                <span class="games-card-image"><img src="assets/game-logos/innovation/lucky-color.png" alt="Lucky Color logo"></span>
+                <span class="games-card-image"><img src="assets/game-thumbnails/innovation/lucky-color.png" alt="Lucky Color logo"></span>
                 <span class="games-card-body"><span>Innovative Game</span><strong>Lucky Color</strong><em>Launch Demo</em></span>
               </a>
               <a class="games-catalog-card" href="game-detail.html?game=go-bananas" data-library-game-card data-game-title="Go Bananas" data-game-category="Classic Game" data-game-filter-groups="classic all" data-game-image="assets/game-logos/classic/go-bananas.webp" data-game-demo-url="https://pilot.gelotto-test.com/" data-game-description="A classic fruit-forward instant game with friendly pacing, colorful rewards, and simple replay appeal." data-game-features="Classic Play|Fruit Theme|Fast Demo">
@@ -292,7 +327,7 @@
           <aside class="games-featured-panel" aria-label="Featured game preview">
             <div class="games-featured-sticky" data-games-featured>
               <div class="games-featured-image">
-                <img data-games-featured-image src="assets/game-logos/innovation/lucky-color-combo.png" alt="Lucky Color Combo logo">
+                <img data-games-featured-image src="assets/game-thumbnails/innovation/lucky-color-combo.webp" alt="Lucky Color Combo logo">
               </div>
               <div class="games-featured-copy">
                 <span class="games-featured-badge" data-games-featured-category>Innovative Game</span>
@@ -303,55 +338,11 @@
                   <li>Multiplier Wheel</li>
                   <li>Instant Play</li>
                 </ul>
-                <button class="button button-primary games-featured-cta" type="button" data-games-featured-demo>Launch Demo</button>
+                <a class="button button-primary games-featured-cta" data-games-featured-demo href="game-detail.html?game=lucky-color-combo">Launch Demo</a>
               </div>
             </div>
           </aside>
         </div>
-      </section>
-
-      <section class="section home-game-detail-section" id="game-details" data-home-game-details-section aria-label="Selected game details">
-        <div class="section-inner home-game-detail-heading reveal">
-          <p class="eyebrow">Game Details</p>
-          <h2 data-home-game-detail-heading>Lucky Color Combo</h2>
-        </div>
-
-        <section class="game-detail-shell home-game-detail-shell reveal" data-home-game-detail>
-          <section class="detail-hero-grid" aria-label="Selected game introduction">
-            <div class="detail-intro-card">
-              <img class="detail-game-logo" data-home-game-logo src="assets/game-logos/innovation/lucky-color-combo.png" alt="Lucky Color Combo logo">
-              <div class="detail-game-copy">
-                <p class="detail-kicker" data-home-game-category>Innovation Game</p>
-                <h1 data-home-game-title>Lucky Color Combo</h1>
-                <p data-home-game-tagline></p>
-              </div>
-              <a class="button button-primary detail-play-button" data-home-play-game href="https://pilot.gelotto-test.com/" target="_blank" rel="noopener noreferrer">PLAY GAME</a>
-            </div>
-
-            <section class="detail-demo-card" aria-label="Selected game demo video">
-              <div class="detail-demo-screen" data-home-demo-screen aria-label="Selected game demo preview"></div>
-            </section>
-          </section>
-
-          <section class="detail-stats-grid" data-home-stats aria-label="Basic Stats"></section>
-
-          <section class="detail-info-panel" data-home-detail-info aria-label="Selected game profile details">
-            <article class="detail-info-card detail-overview-card">
-              <div class="detail-card-art detail-card-art-overview" role="img" aria-label="Game Overview"></div>
-              <div data-home-overview></div>
-            </article>
-
-            <article class="detail-info-card detail-features-card" data-home-features-card>
-              <div class="detail-card-art detail-card-art-features" role="img" aria-label="Features"></div>
-              <div data-home-features></div>
-            </article>
-
-            <article class="detail-info-card detail-how-card">
-              <div class="detail-card-art detail-card-art-how" role="img" aria-label="How to Play"></div>
-              <div data-home-how-to-play></div>
-            </article>
-          </section>
-        </section>
       </section>
 
       <section class="company-section company-home-section" id="company" aria-label="Company">

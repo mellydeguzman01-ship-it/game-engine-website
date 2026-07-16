@@ -1246,6 +1246,25 @@ const DETAIL_SECTION_ICONS = {
   pikapika: "assets/game-detail-icons/pikapika.png",
 };
 
+const DETAIL_SECTION_IMAGE_SLUGS = {
+  "banana-craze": "banana-craze",
+  "bingo-flux": "bingo-flux",
+  "blazing-7s": "blazing-7s",
+  "classic-lucky-color": "lucky-color",
+  "fortune-ocean": "deep-sea-mystery",
+  "ginto-match": "ginto-match",
+  "lucky-color": "lucky-color",
+  "lucky-color-combo": "lucky-color-combo",
+  "pika-pika": "pikapika",
+  pikapika: "pikapika",
+};
+
+const DETAIL_SECTION_LABELS = {
+  overview: "Game Overview",
+  features: "Features",
+  how: "How to Play",
+};
+
 const params = new URLSearchParams(window.location.search);
 
 window.GAME_DETAILS = GAME_DETAILS;
@@ -1498,14 +1517,40 @@ function renderDemoPreview(game) {
 
 function applyDetailSectionIcons(slug) {
   const sectionIcons = DETAIL_SECTION_ICONS[slug];
+  const sectionImageSlug = DETAIL_SECTION_IMAGE_SLUGS[slug];
 
-  document.body.classList.toggle("has-detail-section-icons", Boolean(sectionIcons));
+  document.body.classList.toggle("has-detail-section-icons", Boolean(sectionImageSlug));
 
   if (sectionIcons) {
     document.body.style.setProperty("--detail-section-icons", `url("${sectionIcons}")`);
   } else {
     document.body.style.removeProperty("--detail-section-icons");
   }
+
+  document.querySelectorAll("[data-detail-section-image]").forEach((image) => {
+    const section = image.dataset.detailSectionImage;
+    const label = DETAIL_SECTION_LABELS[section] || "Game detail";
+
+    image.alt = label;
+
+    if (sectionImageSlug && section) {
+      image.src = `assets/game-detail-sections/${sectionImageSlug}-${section}.png`;
+      image.hidden = false;
+    } else {
+      image.removeAttribute("src");
+      image.hidden = true;
+    }
+  });
+}
+
+function buildPlayGameUrl(game, slug) {
+  const launchUrl = new URL(game.playUrl || defaultGameLaunchUrl, window.location.href);
+
+  if (!game.playUrl) {
+    launchUrl.searchParams.set("game", slug);
+  }
+
+  return launchUrl.toString();
 }
 
 function renderGameDetail(game) {
@@ -1525,7 +1570,7 @@ function renderGameDetail(game) {
   renderDemoPreview(game);
 
   if (playGameButton) {
-    playGameButton.href = game.playUrl || defaultGameLaunchUrl;
+    playGameButton.href = buildPlayGameUrl(game, currentSlug);
     playGameButton.setAttribute("aria-label", `Play ${game.title}`);
   }
 
