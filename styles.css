@@ -5815,6 +5815,18 @@ body:not(.has-detail-section-icons) .detail-info-card h2 .detail-heading-image::
   counter-increment: how-to-play;
 }
 
+.detail-how-card [data-how-to-play] {
+  counter-reset: how-to-play;
+}
+
+.detail-how-card [data-how-to-play] li {
+  list-style: none;
+}
+
+.detail-how-card [data-how-to-play] li::marker {
+  content: "";
+}
+
 .detail-info-card li::before {
   content: counter(how-to-play);
   position: absolute;
